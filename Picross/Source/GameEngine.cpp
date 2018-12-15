@@ -1,4 +1,6 @@
 #include "GameEngine.h"
+#include "Display.h"
+#include "Renderer/Renderer.h"
 
 GameEngine::GameEngine(const std::string& title, float width, float height)
 	: m_Running(false)
@@ -56,7 +58,7 @@ void GameEngine::Update()
 
 void GameEngine::Render()
 {
-	m_Renderer->Render();
+	//m_Renderer->Render();
 }
 
 void GameEngine::Quit()

@@ -125,14 +125,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Mesh\IndexBuffer.cpp" />
+    <ClCompile Include="Source\Mesh\Mesh.cpp" />
+    <ClCompile Include="Source\Mesh\Texture.cpp" />
+    <ClCompile Include="Source\Mesh\VertexArray.cpp" />
+    <ClCompile Include="Source\Mesh\VertexBuffer.cpp" />
     <ClCompile Include="Source\Renderer\Renderer.cpp" />
     <ClCompile Include="Source\GameEngine.cpp" />
     <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Shader\ShaderBase.cpp" />
+    <ClCompile Include="Source\Shader\ShaderProgram.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Mesh\IndexBuffer.h" />
+    <ClInclude Include="Source\Mesh\Mesh.h" />
+    <ClInclude Include="Source\Mesh\stb_image.h" />
+    <ClInclude Include="Source\Mesh\Texture.h" />
+    <ClInclude Include="Source\Mesh\VertexArray.h" />
+    <ClInclude Include="Source\Mesh\VertexBuffer.h" />
+    <ClInclude Include="Source\Mesh\VertexBufferLayout.h" />
     <ClInclude Include="Source\Renderer\Renderer.h" />
     <ClInclude Include="Source\Display.h" />
     <ClInclude Include="Source\GameEngine.h" />
+    <ClInclude Include="Source\Shader\ShaderBase.h" />
+    <ClInclude Include="Source\Shader\ShaderProgram.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

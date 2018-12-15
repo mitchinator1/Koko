@@ -1,8 +1,10 @@
 #ifndef GAME_H
 #define GAME_H
 #include <memory>
-#include "Display.h"
-#include "Renderer/Renderer.h"
+#include <string>
+
+struct Display;
+class Renderer;
 
 class GameEngine
 {
