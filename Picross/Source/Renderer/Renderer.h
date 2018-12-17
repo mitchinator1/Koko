@@ -20,8 +20,8 @@ public:
 
 private:
 	void Clear() const;
-	void Prepare();
-	void CleanUp();
+	void Prepare() const;
+	void CleanUp() const;
 	void Swap() const;
 };
 

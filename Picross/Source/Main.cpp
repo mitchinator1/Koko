@@ -1,12 +1,11 @@
+#include <memory>
 #include "GameEngine.h"
+#include "State/StateMenu.h"
 
 int main()
 {
 	auto Game = std::make_unique<GameEngine>("Picross", 1800.0f, 1400.0f);
-	if (!Game->Init())
-	{
-		return -1;
-	}
+	Game->ChangeState(std::make_unique<State::StateMenu>(Game->GetDisplay()));
 
 	while (Game->IsRunning())
 	{

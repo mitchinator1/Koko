@@ -1,17 +1,25 @@
 #include "GameEngine.h"
 #include "Display.h"
 #include "Renderer/Renderer.h"
+#include "State/StateBase.h"
 
 GameEngine::GameEngine(const std::string& title, float width, float height)
-	: m_Running(false)
+	: m_Running(false), m_Display(std::make_shared<Display>(title, width, height))
 {
-	glfwInit();
-	m_Display = std::make_shared<Display>(title, width, height);
-	m_Renderer = std::make_unique<Renderer>(m_Display);
+	if (!Init())
+	{
+		std::cout << "Error on Game Engine Init.\n";
+	}
+
+	
 }
 
 GameEngine::~GameEngine()
 {
+	while (!m_States.empty())
+	{
+		m_States.pop_back();
+	}
 	glfwTerminate();
 }
 
@@ -41,24 +49,46 @@ bool GameEngine::Init()
 	return true;
 }
 
+void GameEngine::ChangeState(std::unique_ptr<State::StateBase> state)
+{
+	if (!m_States.empty())
+		m_States.pop_back();
+
+	m_States.emplace_back(std::move(state));
+}
+
+void GameEngine::PushState(std::unique_ptr<State::StateBase> state)
+{
+	if (!m_States.empty())
+		m_States.back()->Pause();
+
+	m_States.emplace_back(std::move(state));
+}
+
+void GameEngine::PopState()
+{
+	if (m_States.size() > 1)
+		m_States.pop_back();
+
+	if (!m_States.empty())
+		m_States.back()->Resume();
+}
+
 void GameEngine::HandleEvents()
 {
 	glfwPollEvents();
 
-	if (glfwWindowShouldClose(m_Display->Window))
-	{
-		Quit();
-	}
+	m_States.back()->HandleEvents(this);
 }
 
 void GameEngine::Update()
 {
-
+	m_States.back()->Update(this);
 }
 
 void GameEngine::Render()
 {
-	//m_Renderer->Render();
+	m_States.back()->Render();
 }
 
 void GameEngine::Quit()

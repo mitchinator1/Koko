@@ -45,6 +45,9 @@
     <ClCompile Include="Source\Shader\ShaderProgram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\State\StateMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GameEngine.h">
@@ -83,5 +86,17 @@
     <ClInclude Include="Source\Shader\ShaderBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\State\StateMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\State\StateBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entity\EntityBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Shader\Basic.shader" />
   </ItemGroup>
 </Project>
