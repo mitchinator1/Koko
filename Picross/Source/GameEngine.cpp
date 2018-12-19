@@ -4,7 +4,7 @@
 #include "State/StateBase.h"
 
 GameEngine::GameEngine(const std::string& title, float width, float height)
-	: m_Running(false), m_Display(std::make_shared<Display>(title, width, height))
+	: m_Running(false), s_Display(std::make_shared<Display>(title, width, height))
 {
 	if (!Init())
 	{
@@ -32,7 +32,7 @@ bool GameEngine::Init()
 		return false;
 	}
 
-	if (!m_Display->Init())
+	if (!s_Display->Init())
 	{
 		std::cout << "Window not created.\n";
 		return false;
@@ -93,6 +93,6 @@ void GameEngine::Render()
 
 void GameEngine::Quit()
 {
-	glfwSetWindowShouldClose(m_Display->Window, true);
+	glfwSetWindowShouldClose(s_Display->Window, true);
 	m_Running = false;
 }

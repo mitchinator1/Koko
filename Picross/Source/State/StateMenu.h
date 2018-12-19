@@ -3,6 +3,7 @@
 #include "StateBase.h"
 
 class Mesh;
+namespace Input { class Mouse; }
 
 namespace State
 {
@@ -10,6 +11,7 @@ namespace State
 	{
 	private:
 		Mesh* m_Mesh;
+		std::unique_ptr<Input::Mouse> m_Mouse;
 
 	public:
 		StateMenu(std::shared_ptr<Display>& display);

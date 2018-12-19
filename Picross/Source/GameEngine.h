@@ -12,7 +12,7 @@ class Renderer;
 class GameEngine
 {
 public:
-	std::shared_ptr<Display> m_Display;
+	std::shared_ptr<Display> s_Display;
 	std::unique_ptr<Renderer> m_Renderer;
 
 	std::vector<std::unique_ptr<State::StateBase>> m_States;
@@ -36,7 +36,7 @@ public:
 	void Quit();
 
 	inline auto IsRunning()		{ return m_Running; }
-	inline auto& GetDisplay()	{ return m_Display; }
+	inline auto& GetDisplay()	{ return s_Display; }
 };
 
 #endif

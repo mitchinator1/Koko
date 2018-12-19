@@ -12,14 +12,15 @@ namespace State
 	class StateBase
 	{
 	protected:
-		std::shared_ptr<Display> m_Display;
+		std::shared_ptr<Display> s_Display;
 		//std::unique_ptr<UI::UIMaster> m_UI;
 		//std::shared_ptr<Camera::CameraBase> m_Camera;
 		std::unique_ptr<Renderer> m_Renderer;
 		
 	public:
 		StateBase(std::shared_ptr<Display>& display) 
-			: m_Display(display)//, m_UI(std::make_unique<UI::UIMaster>(display))
+			: s_Display(display)
+			//, m_UI(std::make_unique<UI::UIMaster>(display))
 			//, m_Camera(std::make_shared<Camera::CameraBase>(display))
 			, m_Renderer(std::make_unique<Renderer>(display))
 		{}
