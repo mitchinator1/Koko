@@ -1,10 +1,10 @@
 #include "Renderer.h"
-#include "../Display.h"
+#include "../Window.h"
 #include "../Mesh/Mesh.h"
 #include "../Shader/ShaderBase.h"
 
-Renderer::Renderer(std::shared_ptr<Display> display)
-	: m_Display(display), m_Shader(std::make_unique<Shader::ShaderBase>())
+Renderer::Renderer()
+	: m_Shader(std::make_unique<Shader::ShaderBase>())
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glEnable(GL_DEPTH);
@@ -15,19 +15,32 @@ Renderer::~Renderer()
 {
 }
 
-void Renderer::Render(Mesh* mesh) const
+void Renderer::RenderMesh(Mesh* mesh)
 {
-	Clear();
+	if (!mesh)
+	{
+		return;
+	}
 
-	Prepare();
 	mesh->Bind();
 
 	glDrawElements(mesh->GetMode(), mesh->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 	mesh->Unbind();
+}
+
+void Renderer::Render(LayerStack& layers)
+{
+	Clear();
+
+	Prepare();
+
+	for (auto layer : layers.GetLayer())
+	{
+		RenderMesh(layer->GetMesh());
+	}
 
 	CleanUp();
-	Swap();
 }
 
 void Renderer::Clear() const
@@ -43,9 +56,4 @@ void Renderer::Prepare() const
 void Renderer::CleanUp() const
 {
 	m_Shader->Unbind();
-}
-
-void Renderer::Swap() const
-{
-	glfwSwapBuffers(m_Display->Window);
 }

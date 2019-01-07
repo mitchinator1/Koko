@@ -1,28 +1,28 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 #include <memory>
+#include "../LayerStack.h"
 
-struct Display;
 class Mesh;
 namespace Shader { class ShaderBase; }
 
 class Renderer
 {
 private:
-	std::shared_ptr<Display> m_Display;
 	std::unique_ptr<Shader::ShaderBase> m_Shader;
 
 public:
-	Renderer(std::shared_ptr<Display> display);
+	Renderer();
 	virtual ~Renderer();
 
-	void Render(Mesh* mesh) const;
+	void Render(LayerStack& layers);
 
 private:
-	void Clear() const;
-	void Prepare() const;
-	void CleanUp() const;
-	void Swap() const;
+	void RenderMesh(Mesh* mesh);
+
+	void Clear()	const;
+	void Prepare()	const;
+	void CleanUp()	const;
 };
 
 #endif

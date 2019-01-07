@@ -1,18 +1,15 @@
 #include <memory>
-#include "GameEngine.h"
-#include "State/StateMenu.h"
+#include "Application.h"
+#include "State/MenuState.h"
 
 int main()
 {
-	auto Game = std::make_unique<GameEngine>("Picross", 1800.0f, 1400.0f);
-	Game->ChangeState(std::make_unique<State::StateMenu>(Game->GetDisplay()));
+	auto Game = new Application;
+	Game->GetState().PushState(new MenuState());
 
-	while (Game->IsRunning())
-	{
-		Game->HandleEvents();
-		Game->Update();
-		Game->Render();
-	}
+	Game->Run();
+
+	delete Game;
 
 	return 0;
 }

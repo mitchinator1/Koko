@@ -126,21 +126,32 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Input\Mouse.cpp" />
+    <ClCompile Include="Source\LayerStack.cpp" />
     <ClCompile Include="Source\Mesh\IndexBuffer.cpp" />
     <ClCompile Include="Source\Mesh\Mesh.cpp" />
     <ClCompile Include="Source\Mesh\Texture.cpp" />
     <ClCompile Include="Source\Mesh\VertexArray.cpp" />
     <ClCompile Include="Source\Mesh\VertexBuffer.cpp" />
     <ClCompile Include="Source\Renderer\Renderer.cpp" />
-    <ClCompile Include="Source\GameEngine.cpp" />
+    <ClCompile Include="Source\Application.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Shader\ShaderBase.cpp" />
     <ClCompile Include="Source\Shader\ShaderProgram.cpp" />
-    <ClCompile Include="Source\State\StateMenu.cpp" />
+    <ClCompile Include="Source\State\MenuState.cpp" />
+    <ClCompile Include="Source\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="Source\State\StateStack.cpp" />
+    <ClCompile Include="Source\UILayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Entity\EntityBase.h" />
+    <ClInclude Include="Source\Event\ApplicationEvent.h" />
+    <ClInclude Include="Source\Event\Event.h" />
+    <ClInclude Include="Source\Event\KeyEvent.h" />
+    <ClInclude Include="Source\Event\MouseEvent.h" />
+    <ClInclude Include="Source\Input\InputBase.h" />
     <ClInclude Include="Source\Input\Mouse.h" />
+    <ClInclude Include="Source\Layer.h" />
+    <ClInclude Include="Source\LayerStack.h" />
     <ClInclude Include="Source\Mesh\IndexBuffer.h" />
     <ClInclude Include="Source\Mesh\Mesh.h" />
     <ClInclude Include="Source\Mesh\stb_image.h" />
@@ -149,12 +160,15 @@
     <ClInclude Include="Source\Mesh\VertexBuffer.h" />
     <ClInclude Include="Source\Mesh\VertexBufferLayout.h" />
     <ClInclude Include="Source\Renderer\Renderer.h" />
-    <ClInclude Include="Source\Display.h" />
-    <ClInclude Include="Source\GameEngine.h" />
+    <ClInclude Include="Source\State\StateStack.h" />
+    <ClInclude Include="Source\UILayer.h" />
+    <ClInclude Include="Source\Window.h" />
+    <ClInclude Include="Source\Application.h" />
     <ClInclude Include="Source\Shader\ShaderBase.h" />
     <ClInclude Include="Source\Shader\ShaderProgram.h" />
-    <ClInclude Include="Source\State\StateBase.h" />
-    <ClInclude Include="Source\State\StateMenu.h" />
+    <ClInclude Include="Source\State\State.h" />
+    <ClInclude Include="Source\State\MenuState.h" />
+    <ClInclude Include="Source\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shader\Basic.shader" />

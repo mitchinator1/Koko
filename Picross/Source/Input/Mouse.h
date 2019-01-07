@@ -2,8 +2,7 @@
 #define MOUSE_H
 #include <memory>
 
-namespace State { class StateBase; }
-struct Display;
+class Window;
 
 namespace Input
 {
@@ -13,7 +12,7 @@ namespace Input
 		double x, y;
 
 	protected:
-		std::shared_ptr<Display> s_Display;
+		std::shared_ptr<Window> s_Window;
 
 		bool m_Held;
 		bool m_Toggled;
@@ -22,10 +21,10 @@ namespace Input
 		const float DELAY = 0.25f;
 
 	public:
-		Mouse(std::shared_ptr<Display>& display);
+		Mouse(std::shared_ptr<Window>& display);
 		virtual ~Mouse();
 
-		void GetInput(); //TODO: Change to bool. if no input, return false.
+		bool GetInput();
 
 	private:
 		void ToViewportSpace(double* x, double* y);

@@ -8,6 +8,9 @@ namespace Entity
 	{
 	public:
 		float x, y, width, height;
+		float r, g, b;
+
+		bool mouseOver = false;
 
 	private:
 		//std::vector<float> m_Vertices;
@@ -15,8 +18,9 @@ namespace Entity
 		//include with mesh, can pass vertices class to mesh
 
 	public:
-		EntityBase(float x, float y, float width, float height)
-			: x(x), y(100.0f - y), width(width), height(height)
+		EntityBase(float x, float y, float width, float height, float r = 100.0f, float g = 100.0f, float b = 100.0f)
+			: x(x), y(y), width(width), height(height)
+			, r(r), g(g), b(b)
 		{
 			
 		}
@@ -42,13 +46,15 @@ namespace Entity
 
 		std::vector<float> CalculateVertices()
 		{
+			float flipY = 100.0f - y;
+
 			std::vector<float> vertices;
 
 			vertices.insert(vertices.end(), {
-				x,			y,			0.0f,		80.0f, 40.0f, 50.0f, 100.0f,
-				x,			y - height,	0.0f,		80.0f, 40.0f, 50.0f, 100.0f,
-				x + width,	y - height,	0.0f,		80.0f, 40.0f, 50.0f, 100.0f,
-				x + width,	y,			0.0f,		80.0f, 40.0f, 50.0f, 100.0f
+				x,			flipY,			0.0f,		r, g, b, 100.0f,
+				x,			flipY - height,	0.0f,		r, g, b, 100.0f,
+				x + width,	flipY - height,	0.0f,		r, g, b, 100.0f,
+				x + width,	flipY,			0.0f,		r, g, b, 100.0f
 				});
 
 			return vertices;

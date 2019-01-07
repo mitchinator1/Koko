@@ -1,11 +1,11 @@
 #include "Mouse.h"
-#include "../Display.h"
+#include "../Window.h"
 
 namespace Input
 {
-	Mouse::Mouse(std::shared_ptr<Display>& display)
+	Mouse::Mouse(std::shared_ptr<Window>& display)
 		: x(0.0), y(0.0)
-		, s_Display(display)
+		//, s_Display(display)
 		, m_Held(false), m_Toggled(false)
 		, m_ToggledTime(0.0f)
 	{
@@ -17,10 +17,11 @@ namespace Input
 
 	}
 
-	void Mouse::GetInput()
+	bool Mouse::GetInput()
 	{
-		glfwGetCursorPos(s_Display->Window, &x, &y);
-		ToViewportSpace(&x, &y);
+		//TODO: Change to Event Call Back Function using CallBackFn = std::function<void(Event&)>
+		//glfwGetCursorPos(s_Display->m_Window, &x, &y);
+		/*ToViewportSpace(&x, &y);
 
 		if (glfwGetMouseButton(s_Display->Window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS && m_ToggledTime < glfwGetTime() - DELAY)
 		{
@@ -36,12 +37,14 @@ namespace Input
 		else
 		{
 			m_Toggled = false;
-		}
+		}*/
+
+		return false;
 	}
 
 	void Mouse::ToViewportSpace(double* x, double* y)
 	{
-		*x = *x / (s_Display->Width	 / 100.0);
-		*y = *y / (s_Display->Height / 100.0);
+		//*x = *x / (s_Display->Width	 / 100.0);
+		//*y = *y / (s_Display->Height / 100.0);
 	}
 }
