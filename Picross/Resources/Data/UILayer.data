@@ -1,0 +1,20 @@
+<UI>
+	<Button name="foo" position="50, 40" size="10, 20">
+		<Traits>
+			<MousePress>Event</MousePress>
+      <MouseRelease>Event</MouseRelease>
+		</Traits>
+  </Button>
+<!--Button "Test" 
+{
+	Position: "50, 50"
+	Size: "10, 20"
+  <MousePress>Event</MousePress>
+}-->
+  <Traits>
+  <!--Test-->
+    <MousePress>Event</MousePress>
+    <MouseRelease>Event</MouseRelease>
+  </Traits>
+
+</UI>

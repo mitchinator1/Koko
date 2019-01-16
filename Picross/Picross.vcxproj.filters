@@ -1,150 +1,192 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Entity">
+      <UniqueIdentifier>{A2E9DAB0-8E8B-0587-7746-19DB63878CD7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="Event">
+      <UniqueIdentifier>{E70B220D-5320-4ABE-1CA2-ED1D887546EF}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Input">
+      <UniqueIdentifier>{953A660D-014F-8EBE-CAD0-311E36A48AEF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layer">
+      <UniqueIdentifier>{6287950D-CE9B-BDBE-971D-611E03F1B9EF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mesh">
+      <UniqueIdentifier>{9205897C-7E3C-8A0D-2729-7010133F060F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{7CCE658F-689B-C09A-91B4-AE427DE0F528}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{FC0C0CD1-E8AE-36A7-D169-4AFBBDAABDF7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="State">
+      <UniqueIdentifier>{E6391E0E-524E-46BF-1BD0-E91E87A342F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{594615A9-C525-9444-CE3D-1F1B3A9CFAA5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Renderer\Renderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Mesh\IndexBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Mesh\Mesh.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Mesh\Texture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Mesh\VertexArray.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Mesh\VertexBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Shader\ShaderBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Shader\ShaderProgram.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Input\Mouse.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Application.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Platform\Windows\WindowsWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\LayerStack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\State\MenuState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\State\StateStack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\UILayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Source\Renderer\Renderer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\Entity\Entity.h">
+      <Filter>Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mesh\IndexBuffer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Entity\EntityBuilder.h">
+      <Filter>Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mesh\Mesh.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Entity\EntityComponent.h">
+      <Filter>Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mesh\stb_image.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Entity\EntityDirector.h">
+      <Filter>Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mesh\Texture.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Event\ApplicationEvent.h">
+      <Filter>Event</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mesh\VertexArray.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Event\Event.h">
+      <Filter>Event</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mesh\VertexBuffer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Event\KeyEvent.h">
+      <Filter>Event</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mesh\VertexBufferLayout.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Event\MouseEvent.h">
+      <Filter>Event</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Shader\ShaderProgram.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Layer\Layer.h">
+      <Filter>Layer</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Shader\ShaderBase.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Layer\LayerBuilder.h">
+      <Filter>Layer</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entity\EntityBase.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Layer\LayerDirector.h">
+      <Filter>Layer</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Input\Mouse.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Layer\LayerStack.h">
+      <Filter>Layer</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Input\InputBase.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Layer\UILayer.h">
+      <Filter>Layer</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Event\Event.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Layer\UILayerBuilder.h">
+      <Filter>Layer</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Event\MouseEvent.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Mesh\IndexBuffer.h">
+      <Filter>Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Window.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Mesh\Mesh.h">
+      <Filter>Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Event\ApplicationEvent.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Mesh\Texture.h">
+      <Filter>Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Application.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Mesh\VertexArray.h">
+      <Filter>Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Event\KeyEvent.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Mesh\VertexBuffer.h">
+      <Filter>Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Platform\Windows\WindowsWindow.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Mesh\VertexBufferLayout.h">
+      <Filter>Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Layer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Mesh\stb_image.h">
+      <Filter>Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="Source\LayerStack.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Platform\Window.h">
+      <Filter>Platform</Filter>
     </ClInclude>
-    <ClInclude Include="Source\State\State.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="Source\State\MenuState.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Renderer\Renderer.h">
+      <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="Source\State\StateStack.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Shader\ShaderBase.h">
+      <Filter>Shader</Filter>
     </ClInclude>
-    <ClInclude Include="Source\UILayer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Shader\ShaderProgram.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\State\MenuState.h">
+      <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="src\State\State.h">
+      <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="src\State\StateStack.h">
+      <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\Builder.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\FileProgram.h">
+      <Filter>Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Shader\Basic.shader" />
+    <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\Entity\EntityBuilder.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\EntityDirector.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Layer\LayerBuilder.cpp">
+      <Filter>Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Layer\LayerDirector.cpp">
+      <Filter>Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Layer\LayerStack.cpp">
+      <Filter>Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Layer\UILayer.cpp">
+      <Filter>Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Mesh\IndexBuffer.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mesh\Mesh.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mesh\Texture.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mesh\VertexArray.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mesh\VertexBuffer.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\Renderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shader\ShaderBase.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shader\ShaderProgram.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\State\MenuState.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+    <ClCompile Include="src\State\StateStack.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utility\FileProgram.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
