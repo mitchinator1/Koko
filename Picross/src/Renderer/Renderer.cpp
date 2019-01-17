@@ -1,7 +1,7 @@
 #include "Renderer.h"
-#include "../Platform/Window.h"
-#include "../Mesh/Mesh.h"
-#include "../Shader/ShaderBase.h"
+#include "Platform/Window.h"
+#include "Mesh/Mesh.h"
+#include "Shader/ShaderBase.h"
 
 Renderer::Renderer()
 	: m_Shader(std::make_unique<Shader::ShaderBase>())

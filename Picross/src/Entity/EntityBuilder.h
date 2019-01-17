@@ -7,6 +7,8 @@
 class EntityBuilder : public Builder
 {
 public:
+	EntityBuilder(const std::string& name) : Builder(name) {}
+
 	Position GetPosition();
 	Size GetSize();
 	Colour GetColour();

@@ -2,11 +2,14 @@
 #define LAYER_BUILDER_H
 #include <string>
 #include "../Entity/EntityComponent.h"
+#include "Utility/Builder.h"
 
 class LayerStack;
 
-class LayerBuilder
+class LayerBuilder : public Builder
 {
+private:
+	std::string m_Name;
 public:
 	LayerBuilder(const std::string& name);
 	~LayerBuilder();

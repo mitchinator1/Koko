@@ -1,4 +1,3 @@
-#include <memory>
 #include "Application.h"
 #include "State/MenuState.h"
 

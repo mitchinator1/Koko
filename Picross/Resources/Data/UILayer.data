@@ -1,20 +1,14 @@
 <UI>
-	<Button name="foo" position="50, 40" size="10, 20">
+	<Entity type="button" position="50, 40" size="10, 20" colour="40, 60, 80, 100">
 		<Traits>
 			<MousePress>Event</MousePress>
       <MouseRelease>Event</MouseRelease>
 		</Traits>
-  </Button>
-<!--Button "Test" 
-{
-	Position: "50, 50"
-	Size: "10, 20"
-  <MousePress>Event</MousePress>
-}-->
-  <Traits>
-  <!--Test-->
-    <MousePress>Event</MousePress>
-    <MouseRelease>Event</MouseRelease>
-  </Traits>
-
+  </Entity>
+  <Entity type="button" position="20, 30" size="15, 15" colour="40, 50, 70, 100">
+    <traits>
+      <MousePress>Event</MousePress>
+      <MouseRelease>Event</MouseRelease>
+    </traits>
+  </Entity>
 </UI>
