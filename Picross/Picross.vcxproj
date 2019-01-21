@@ -169,6 +169,7 @@
     <ClInclude Include="src\State\StateStack.h" />
     <ClInclude Include="src\Utility\Builder.h" />
     <ClInclude Include="src\Utility\FileProgram.h" />
+    <ClInclude Include="src\Utility\XMLReader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
@@ -191,6 +192,7 @@
     <ClCompile Include="src\State\MenuState.cpp" />
     <ClCompile Include="src\State\StateStack.cpp" />
     <ClCompile Include="src\Utility\FileProgram.cpp" />
+    <ClCompile Include="src\Utility\XMLReader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

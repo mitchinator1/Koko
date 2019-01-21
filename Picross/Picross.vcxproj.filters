@@ -130,6 +130,7 @@
     <ClInclude Include="src\Utility\FileProgram.h">
       <Filter>Utility</Filter>
     </ClInclude>
+    <ClInclude Include="src\Utility\XMLReader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
@@ -188,5 +189,6 @@
     <ClCompile Include="src\Utility\FileProgram.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
+    <ClCompile Include="src\Utility\XMLReader.cpp" />
   </ItemGroup>
 </Project>
