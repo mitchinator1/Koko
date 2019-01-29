@@ -40,9 +40,6 @@
     <ClInclude Include="src\Entity\Entity.h">
       <Filter>Entity</Filter>
     </ClInclude>
-    <ClInclude Include="src\Entity\EntityBuilder.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
     <ClInclude Include="src\Entity\EntityComponent.h">
       <Filter>Entity</Filter>
     </ClInclude>
@@ -131,12 +128,10 @@
       <Filter>Utility</Filter>
     </ClInclude>
     <ClInclude Include="src\Utility\XMLReader.h" />
+    <ClInclude Include="src\Utility\Node.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\Entity\EntityBuilder.cpp">
-      <Filter>Entity</Filter>
-    </ClCompile>
     <ClCompile Include="src\Entity\EntityDirector.cpp">
       <Filter>Entity</Filter>
     </ClCompile>
@@ -190,5 +185,6 @@
       <Filter>Utility</Filter>
     </ClCompile>
     <ClCompile Include="src\Utility\XMLReader.cpp" />
+    <ClCompile Include="src\Utility\Node.cpp" />
   </ItemGroup>
 </Project>

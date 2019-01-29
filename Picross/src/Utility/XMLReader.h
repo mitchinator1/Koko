@@ -1,9 +1,9 @@
 #ifndef XML_READER_H
 #define XML_READER_H
-#include <sstream>
-#include <fstream>
-#include <vector>
-#include <unordered_map>
+#include <string>
+#include "FileProgram.h"
+
+struct Node;
 
 namespace XML
 {
@@ -34,33 +34,25 @@ namespace XML
 		return os << e.ToString();
 	}
 
-	struct Node
-	{
-		std::vector<Node> ChildNodes;
-		std::vector<std::unordered_map<std::string, std::string>> Attributes;
-		std::string InnerText;
-		bool HasChildNode() { return !ChildNodes.empty(); }
-	};
-
 	class Reader
 	{
-		std::string m_FileName;
-		std::ifstream m_FS;
+		FileProgram m_File;
 		Error m_Error;
 
 	public:
 		Reader(const std::string& fileName)
-		: m_FileName(fileName) {}
-		~Reader() { m_FS.close(); }
+		: m_File(fileName) {}
+		~Reader() { m_File.Close(); }
 
 		inline Error GetError() { return m_Error; }
 
-		bool Load();
-		std::vector<Node> GetNodes();
+		Node GetNode(const std::string& name);
 
 	private:
-		void GetAttributes(const std::string& line);
+		void GetAttributes(Node& node);
 
+		Node BuildNode();
+		std::string GetName();
 	};
 }
 

@@ -139,7 +139,6 @@
   <ItemGroup>
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Entity\Entity.h" />
-    <ClInclude Include="src\Entity\EntityBuilder.h" />
     <ClInclude Include="src\Entity\EntityComponent.h" />
     <ClInclude Include="src\Entity\EntityDirector.h" />
     <ClInclude Include="src\Event\ApplicationEvent.h" />
@@ -169,11 +168,11 @@
     <ClInclude Include="src\State\StateStack.h" />
     <ClInclude Include="src\Utility\Builder.h" />
     <ClInclude Include="src\Utility\FileProgram.h" />
+    <ClInclude Include="src\Utility\Node.h" />
     <ClInclude Include="src\Utility\XMLReader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\Entity\EntityBuilder.cpp" />
     <ClCompile Include="src\Entity\EntityDirector.cpp" />
     <ClCompile Include="src\Layer\LayerBuilder.cpp" />
     <ClCompile Include="src\Layer\LayerDirector.cpp" />
@@ -192,6 +191,7 @@
     <ClCompile Include="src\State\MenuState.cpp" />
     <ClCompile Include="src\State\StateStack.cpp" />
     <ClCompile Include="src\Utility\FileProgram.cpp" />
+    <ClCompile Include="src\Utility\Node.cpp" />
     <ClCompile Include="src\Utility\XMLReader.cpp" />
   </ItemGroup>
   <ItemGroup>

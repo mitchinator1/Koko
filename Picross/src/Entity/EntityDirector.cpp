@@ -1,17 +1,18 @@
 #include "EntityDirector.h"
+#include "Utility/Node.h"
 
-void EntityDirector::SetBuilder(EntityBuilder* builder)
+void EntityDirector::SetBuilder(Builder* builder)
 {
 	m_Builder = builder;
 }
 
-Entity* EntityDirector::GetEntity()
+Entity* EntityDirector::GetEntity(Node& node)
 {
 	Entity* entity = new Entity();
 
-	entity->position = m_Builder->GetPosition();
-	entity->size	 = m_Builder->GetSize();
-	entity->colour	 = m_Builder->GetColour();
+	entity->position = node.GetVec2("position");
+	entity->size	 = node.GetVec2("size");
+	entity->colour	 = node.GetVec4("colour");
 
 	return entity;
 }

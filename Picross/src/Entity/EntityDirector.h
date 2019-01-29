@@ -1,16 +1,19 @@
 #ifndef ENTITY_DIRECTOR_H
 #define ENTITY_DIRECTOR_H
-#include "EntityBuilder.h"
+#include "Utility/Builder.h"
+#include "Entity.h"
+
+struct Node;
 
 class EntityDirector
 {
 private:
-	EntityBuilder* m_Builder;
+	Builder* m_Builder;
 
 public:
-	void SetBuilder(EntityBuilder* builder);
+	void SetBuilder(Builder* builder);
 
-	Entity* GetEntity();
+	Entity* GetEntity(Node& node);
 
 };
 

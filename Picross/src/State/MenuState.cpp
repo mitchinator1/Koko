@@ -1,16 +1,13 @@
 #include "MenuState.h"
-#include "../Entity/Entity.h"
 
-#include "../Event/MouseEvent.h"
-#include "../Event/ApplicationEvent.h"
 #include "../Application.h"
-#include "../Layer/UILayer.h"
 
+#include "../Layer/UILayer.h"
 #include "../Layer/LayerBuilder.h"
 
 MenuState::MenuState()
 {
-	LayerBuilder builder("UILayer");
+	LayerBuilder builder("Menu");
 	builder.Build(m_LayerStack);
 }
 

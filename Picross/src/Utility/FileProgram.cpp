@@ -2,12 +2,9 @@
 #include <iostream>
 
 FileProgram::FileProgram(const std::string& filepath)
-	: m_Stream(filepath)
+	: m_FilePath(filepath)
 {
-	if (!m_Stream)
-	{
-		std::cout << "Failed to open file at " << filepath << '\n';
-	}
+
 }
 
 FileProgram::~FileProgram()
@@ -18,13 +15,12 @@ FileProgram::~FileProgram()
 	}
 }
 
-bool FileProgram::LoadLine()
+bool FileProgram::GetLine()
 {
 	std::getline(m_Stream, m_CurrentLine);
 
 	if (m_CurrentLine.size() == 0)
 	{
-		LoadLine();
 		return false;
 	}
 
@@ -39,74 +35,86 @@ bool FileProgram::LoadLine()
 	return true;
 }
 
-bool FileProgram::FindTrait(const std::string& target)
+bool FileProgram::Open()
 {
-	if (m_CurrentLine.find(target) != std::string::npos)
+	m_Stream.open(m_FilePath);
+
+	if (!m_Stream)
 	{
-		return true;
+		std::cout << "Failed to open file at " << m_FilePath << '\n';
+		return false;
 	}
 
-	return false;
+	return true;
 }
 
-glm::vec2 FileProgram::GetVec2(const std::string& v)
+void FileProgram::Load(const std::string& start, const std::string& end)
 {
-	glm::vec2 vector(0.0f, 0.0f);
-
-	if (m_CurrentLine.find(v) != std::string::npos)
+	if (!Open())
 	{
-		auto start = m_CurrentLine.find('"', m_CurrentLine.find(v)) + 1;
-		auto end = m_CurrentLine.find(',', start);
-
-		std::string value = m_CurrentLine.substr(start, end - start);
-		std::string::size_type sz;
-
-		vector.x = std::stoi(value, &sz);
-
-		start = end + 2;
-		end = m_CurrentLine.find('"', start);
-
-		value = m_CurrentLine.substr(start, end - start);
-		vector.y = std::stoi(value, &sz);
+		return;
 	}
 
-	return vector;
+	bool begin = false;
+
+	if (start.size() > 0 && end.size() > 0)
+	{
+		while (std::getline(m_Stream, m_CurrentLine))
+		{
+			if (m_CurrentLine.find(end) != std::string::npos && begin)
+			{
+				break;
+			}
+			if (m_CurrentLine.find(start) != std::string::npos)
+			{
+				begin = true;
+			}
+			if (begin)
+			{
+				IgnoreComment();
+				TrimLeadingSpace(m_CurrentLine);
+				m_Contents += m_CurrentLine;
+			}
+		}
+	}
+	else
+	{
+		while (std::getline(m_Stream, m_CurrentLine))
+		{
+			IgnoreComment();
+			TrimLeadingSpace(m_CurrentLine);
+			m_Contents += m_CurrentLine;
+		}
+	}
 }
 
-glm::vec4 FileProgram::GetVec4(const std::string& v)
+void FileProgram::Close()
 {
-	glm::vec4 vector(0.0f, 0.0f, 0.0f, 0.0f);
+	m_Stream.close();
+}
 
-	if (m_CurrentLine.find(v) != std::string::npos)
-	{
-		auto start = m_CurrentLine.find('"', m_CurrentLine.find(v)) + 1;
-		auto end = m_CurrentLine.find(',', start);
+void FileProgram::SetStart(const std::string& start, size_t offset)
+{
+	m_Start = m_Contents.find_first_of(start) + offset;
+}
 
-		std::string value = m_CurrentLine.substr(start, end - start);
-		std::string::size_type sz;
+void FileProgram::SetStart(size_t start)
+{
+	m_Start = start;
+}
 
-		vector.x = std::stoi(value, &sz);
+void FileProgram::SetEnd(const std::string& end, size_t offset)
+{
+	m_End = m_Contents.find_first_of(end) + offset;
+}
 
-		start = end + 2;
-		end = m_CurrentLine.find(',', start);
+std::string FileProgram::GetSetString()
+{
+	std::string value = m_Contents.substr(m_Start, m_End - m_Start);
 
-		value = m_CurrentLine.substr(start, end - start);
-		vector.y = std::stoi(value, &sz);
+	m_Contents.erase(m_Start, m_End);
 
-		start = end + 2;
-		end = m_CurrentLine.find(',', start);
-
-		value = m_CurrentLine.substr(start, end - start);
-		vector.z = std::stoi(value, &sz);
-
-		start = end + 2;
-		end = m_CurrentLine.find('"', start);
-
-		value = m_CurrentLine.substr(start, end - start);
-		vector.w = std::stoi(value, &sz);
-	}
-
-	return vector;
+	return value;
 }
 
 void FileProgram::TrimLeadingSpace(std::string& value, const char* t)

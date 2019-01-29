@@ -1,4 +1,7 @@
 #include "XMLReader.h"
+#include <sstream>
+#include "FileProgram.h"
+#include "Node.h"
 
 namespace XML
 {
@@ -17,28 +20,94 @@ namespace XML
 		}
 	}
 
-	bool Reader::Load()
+	Node Reader::GetNode(const std::string& name)
 	{
-		m_FS.open(m_FileName);
+		Node node;
 
-		if (m_FS.fail())
+		m_File.Load(name, name);
+		if (m_File.Empty())
 		{
-			m_Error = Error(ErrorCode::FileNotFound, m_FileName);
-			return false;
+			return node;
 		}
 
-		return true;
+		node.Name = GetName();
+
+		GetAttributes(node);
+
+		//TODO: Recursive read as needed
+		for (unsigned int i = 0; i < 2; ++i)
+		{
+			Node childNode;
+
+			childNode.Name = GetName();
+			GetAttributes(childNode);
+
+			childNode.ChildNodes.emplace_back(BuildNode());
+			childNode.ChildNodes.emplace_back(BuildNode());
+
+			m_File.SetStart(0);
+			m_File.SetEnd("<", childNode.Name.size());
+			m_File.GetSetString();
+
+			node.ChildNodes.emplace_back(childNode);
+		}
+
+		m_File.Close();
+
+		return node;
 	}
 
-	std::vector<Node> Reader::GetNodes()
+	void Reader::GetAttributes(Node& node)
 	{
-		std::vector<Node> nodes;
+		m_File.SetStart(0);
+		m_File.SetEnd(">", 1);
 
-		return nodes;
+		std::stringstream line(m_File.GetSetString());
+
+		while (line)
+		{
+			std::string name;
+			std::getline(line, name, ' ');
+			std::getline(line, name, '=');
+
+			if (name == ">")
+			{
+				break;
+			}
+
+			std::string value;
+			std::getline(line, value, '"');
+			std::getline(line, value, '"');
+
+			node.Attributes.emplace(std::pair(name, value));
+		}
 	}
 
-	void Reader::GetAttributes(const std::string& line)
+	Node Reader::BuildNode()
 	{
+		Node node;
 
+		node.Name = GetName();
+		
+		GetAttributes(node);
+
+		m_File.SetStart(">", 1);
+		m_File.SetEnd("<");
+		node.InnerText = m_File.GetSetString();
+
+		return node;
+	}
+
+	std::string Reader::GetName()
+	{
+		m_File.SetStart(0);
+		m_File.SetEnd("<", 1);
+		std::string value = m_File.GetSetString();
+
+		m_File.SetStart(0);
+		m_File.SetEnd("> ");
+		value = m_File.GetSetString();
+
+		return value;
 	}
 }

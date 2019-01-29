@@ -20,7 +20,7 @@ public:
 		}
 	}
 
-	virtual void OnAttach() {}
+	virtual void OnAttach() { CalculateMesh(); }
 	virtual void OnDetach() {}
 	virtual void OnUpdate() {}
 	virtual void OnEvent(EventEngine::Event& e) {}
