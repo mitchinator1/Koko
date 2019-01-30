@@ -31,7 +31,7 @@ public:
 	void SetEnd(const std::string& end, size_t offset = 0);
 	std::string GetSetString();
 
-	inline bool Empty() { return m_Contents.size() > 0 ? false : true; }
+	inline bool Empty() { return m_Contents.empty(); }
 
 private:
 	void TrimLeadingSpace(std::string& value, const char* t = " \t\n\r\f\v");

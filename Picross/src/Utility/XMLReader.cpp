@@ -3,6 +3,9 @@
 #include "FileProgram.h"
 #include "Node.h"
 
+//Temporary
+#include <iostream>
+
 namespace XML
 {
 	void Error::ThrowError(ErrorCode& e, const std::string& fileName)
@@ -34,20 +37,26 @@ namespace XML
 
 		GetAttributes(node);
 
-		//TODO: Recursive read as needed
-		for (unsigned int i = 0; i < 2; ++i)
+		while (!m_File.Empty())
 		{
 			Node childNode;
+			std::string end;
 
 			childNode.Name = GetName();
 			GetAttributes(childNode);
 
-			childNode.ChildNodes.emplace_back(BuildNode());
-			childNode.ChildNodes.emplace_back(BuildNode());
+			while (end.find(childNode.Name) != std::string::npos)
+			{
+				childNode.ChildNodes.emplace_back(BuildNode());
 
-			m_File.SetStart(0);
-			m_File.SetEnd("<", childNode.Name.size());
-			m_File.GetSetString();
+				m_File.SetStart(0);
+				m_File.SetEnd(">", 1);
+				end = m_File.GetSetString();
+
+				m_File.SetStart(0);
+				m_File.SetEnd(">", 1);
+				end = m_File.GetSetString();
+			}
 
 			node.ChildNodes.emplace_back(childNode);
 		}
@@ -91,9 +100,13 @@ namespace XML
 		
 		GetAttributes(node);
 
-		m_File.SetStart(">", 1);
+		m_File.SetStart(0);
 		m_File.SetEnd("<");
 		node.InnerText = m_File.GetSetString();
+
+		m_File.SetStart(0);
+		m_File.SetEnd(">");
+		m_File.GetSetString();
 
 		return node;
 	}
@@ -102,12 +115,11 @@ namespace XML
 	{
 		m_File.SetStart(0);
 		m_File.SetEnd("<", 1);
-		std::string value = m_File.GetSetString();
+		m_File.GetSetString();
 
 		m_File.SetStart(0);
 		m_File.SetEnd("> ");
-		value = m_File.GetSetString();
-
-		return value;
+		
+		return m_File.GetSetString();
 	}
 }
