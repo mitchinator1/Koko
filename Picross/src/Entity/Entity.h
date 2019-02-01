@@ -3,6 +3,12 @@
 #include <vector>
 #include "EntityComponent.h"
 
+namespace EventEngine
+{
+	class MouseMovedEvent;
+	class MouseButtonPressedEvent;
+}
+
 class Entity
 {
 public:
@@ -12,8 +18,6 @@ public:
 
 	bool mouseOver = false;
 
-private:
-	//std::vector<float> m_Vertices;
 	//Todo: Make vertices seperate class with vertices data, stride, and count.
 	//include with mesh, can pass vertices class to mesh
 
@@ -26,6 +30,9 @@ public:
 
 		return ToViewportSpace(vertices);
 	}
+
+	virtual bool OnMouseMovedEvent(EventEngine::MouseMovedEvent& e) { return false; }
+	virtual bool OnMouseButtonPressedEvent(EventEngine::MouseButtonPressedEvent& e) { return false; }
 
 protected:
 	std::vector<float> ToViewportSpace(std::vector<float> vertices)
@@ -57,6 +64,12 @@ protected:
 			});
 
 		return vertices;
+	}
+
+	bool InHitbox(float x, float y)
+	{
+		return (x >= position.x && x <= position.x + size.width &&
+				y >= position.y && y <= position.y + size.height);
 	}
 };
 

@@ -166,6 +166,7 @@
     <ClInclude Include="src\State\MenuState.h" />
     <ClInclude Include="src\State\State.h" />
     <ClInclude Include="src\State\StateStack.h" />
+    <ClInclude Include="src\UI\UIEntity.h" />
     <ClInclude Include="src\Utility\Builder.h" />
     <ClInclude Include="src\Utility\FileProgram.h" />
     <ClInclude Include="src\Utility\Node.h" />
@@ -190,6 +191,7 @@
     <ClCompile Include="src\Shader\ShaderProgram.cpp" />
     <ClCompile Include="src\State\MenuState.cpp" />
     <ClCompile Include="src\State\StateStack.cpp" />
+    <ClCompile Include="src\UI\UIEntity.cpp" />
     <ClCompile Include="src\Utility\FileProgram.cpp" />
     <ClCompile Include="src\Utility\Node.cpp" />
     <ClCompile Include="src\Utility\XMLReader.cpp" />

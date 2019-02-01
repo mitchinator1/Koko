@@ -14,6 +14,8 @@ public:
 	void SetBuilder(Builder* builder);
 
 	Entity* GetEntity(Node& node);
+	Entity* GetUIEntity(Node& node);
+	Entity* GetUIDropdown(Node& node);
 
 };
 

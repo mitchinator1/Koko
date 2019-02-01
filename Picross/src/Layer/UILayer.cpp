@@ -40,29 +40,13 @@ void UILayer::PopEntity(Entity* entity)
 
 bool UILayer::OnMouseMovedEvent(EventEngine::MouseMovedEvent& e)
 {
-	auto x = e.GetX();
-	auto y = e.GetY();
-
 	bool hit = false;
 
-	//Sort through layers by top down
 	for (auto entity : m_Entities)
 	{
-		if (x >= entity->position.x && x <= entity->position.x + entity->size.width &&
-			y >= entity->position.y && y <= entity->position.y + entity->size.height)
+		if (entity->OnMouseMovedEvent(e))
 		{
-			entity->mouseOver = true;
 			hit = true;
-			break;
-		}
-		if (entity->mouseOver)
-		{
-			entity->mouseOver = false;
-		}
-
-		if (hit)
-		{
-			break;
 		}
 	}
 
@@ -74,9 +58,8 @@ bool UILayer::OnMouseButtonPressedEvent(EventEngine::MouseButtonPressedEvent& e)
 	//TODO: Pick left or right button
 	for (auto entity : m_Entities)
 	{
-		if (entity->mouseOver)
+		if (entity->OnMouseButtonPressedEvent(e))
 		{
-			//TODO: Set entity handling up
 			PopEntity(entity);
 			return true;
 		}

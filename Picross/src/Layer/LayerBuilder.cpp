@@ -29,7 +29,11 @@ void LayerBuilder::Build(LayerStack& stack)
 	{
 		if (n.Name == "Entity")
 		{
-			ui->PushEntity(director.GetEntity(n));
+			ui->PushEntity(director.GetUIEntity(n));
+		}
+		if (n.Name == "Dropdown")
+		{
+			ui->PushEntity(director.GetUIDropdown(n));
 		}
 	}
 

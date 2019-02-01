@@ -129,6 +129,7 @@
     </ClInclude>
     <ClInclude Include="src\Utility\XMLReader.h" />
     <ClInclude Include="src\Utility\Node.h" />
+    <ClInclude Include="src\UI\UIEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
@@ -186,5 +187,6 @@
     </ClCompile>
     <ClCompile Include="src\Utility\XMLReader.cpp" />
     <ClCompile Include="src\Utility\Node.cpp" />
+    <ClCompile Include="src\UI\UIEntity.cpp" />
   </ItemGroup>
 </Project>

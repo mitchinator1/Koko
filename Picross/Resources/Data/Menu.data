@@ -1,7 +1,9 @@
 <Layers>
   <UI test="true">
-    <Entity type="button" position="50, 40" size="30, 20" colour="45, 60, 80, 100">Test</Entity>
-    <Entity type="button" position="15, 30" size="25, 35" colour="80, 50, 70, 100">Hello</Entity>
+    <Dropdown activate="hover" position="50, 40" size="30, 20" colour="80, 60, 70, 100">
+      <Text font="arial" size="12">Hello</Text>
+      <!--add Child dropdown elements here-->
+    </Dropdown>
     <Entity type="icon" position="15, 20" size="25, 10" colour="0, 50, 70, 100">
       <MousePress>Event</MousePress>
       <MouseRelease>Event</MouseRelease>
@@ -9,10 +11,6 @@
   </UI>
   <Foreground>
     <Entity type="button" position="0, 0" size="20, 20" colour="80, 60, 80, 100">
-      <MousePress>Event</MousePress>
-      <MouseRelease>Event</MouseRelease>
-    </Entity>
-    <Entity type="button" position="20, 0" size="20, 20" colour="80, 50, 70, 100"> 
       <MousePress>Event</MousePress>
       <MouseRelease>Event</MouseRelease>
     </Entity>
