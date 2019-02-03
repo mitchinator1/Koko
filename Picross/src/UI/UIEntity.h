@@ -8,6 +8,8 @@ protected:
 	std::vector<Entity*> m_Entities;
 
 public:
+	std::vector<float> GetVertices() override;
+
 	virtual bool OnMouseMovedEvent(EventEngine::MouseMovedEvent& e) override;
 	virtual bool OnMouseButtonPressedEvent(EventEngine::MouseButtonPressedEvent& e) override;
 

@@ -19,8 +19,6 @@ private:
 public:
 	~UIDropdown();
 
-	std::vector<float> GetVertices() override;
-
 	bool OnMouseMovedEvent(EventEngine::MouseMovedEvent& e) override;
 	bool OnMouseButtonPressedEvent(EventEngine::MouseButtonPressedEvent& e) override;
 
@@ -32,6 +30,8 @@ public:
 private:
 	bool Reveal();
 	bool Hide();
+
+	void UpdateChildPosition(Entity* entity);
 
 };
 

@@ -1,6 +1,25 @@
 #include "UIEntity.h"
 #include "Event/MouseEvent.h"
 
+std::vector<float> UIEntity::GetVertices()
+{
+	auto vertices = CalculateVertices();
+
+	for (auto& entity : m_Entities)
+	{
+		if (entity->state == State::Hidden)
+		{
+			continue;
+		}
+		auto v = entity->CalculateVertices();
+		vertices.insert(vertices.end(), v.begin(), v.end());
+	}
+
+	state = State::None;
+
+	return ToViewportSpace(vertices);
+}
+
 bool UIEntity::OnMouseMovedEvent(EventEngine::MouseMovedEvent& e)
 {
 	if (InHitbox(e.GetX(), e.GetY()))

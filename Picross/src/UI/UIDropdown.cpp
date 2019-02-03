@@ -9,25 +9,6 @@ UIDropdown::~UIDropdown()
 	}
 }
 
-std::vector<float> UIDropdown::GetVertices()
-{
-	auto vertices = CalculateVertices();
-
-	for (auto& entity : m_Entities)
-	{
-		if (entity->state == State::Hidden)
-		{
-			continue;
-		}
-		auto v = entity->CalculateVertices();
-		vertices.insert(vertices.end(), v.begin(), v.end());
-	}
-
-	state = State::None;
-
-	return ToViewportSpace(vertices);
-}
-
 bool UIDropdown::OnMouseMovedEvent(EventEngine::MouseMovedEvent& e)
 {
 	bool hit = false;
@@ -98,30 +79,7 @@ bool UIDropdown::OnMouseButtonPressedEvent(EventEngine::MouseButtonPressedEvent&
 
 void UIDropdown::AddEntity(Entity* entity)
 {
-	//Move entity relative to parent entity
-	switch (direction)
-	{
-	case Direction::Up: {
-		entity->position.x += position.x;
-		entity->position.y = position.y - entity->position.y - entity->size.height;
-	}
-	break;
-	case Direction::Right: {
-		entity->position.y += position.y;
-		entity->position.x = position.x + size.width;
-	}
-	break;
-	case Direction::Down: {
-		entity->position.x += position.x;
-		entity->position.y = position.y + entity->position.y + size.height;
-	}
-	break;
-	case Direction::Left: {
-		entity->position.y += position.y;
-		entity->position.x = position.x - entity->position.x - entity->size.width;
-	}
-	break;
-	}
+	UpdateChildPosition(entity);
 
 	m_Entities.emplace_back(entity);
 	state = State::Update;
@@ -168,4 +126,31 @@ bool UIDropdown::Hide()
 		}
 	}
 	return hidden;
+}
+
+void UIDropdown::UpdateChildPosition(Entity* entity)
+{
+	switch (direction)
+	{
+	case Direction::Up: {
+		entity->position.x += position.x;
+		entity->position.y = position.y - entity->position.y - entity->size.height;
+	}
+	break;
+	case Direction::Right: {
+		entity->position.y += position.y;
+		entity->position.x = position.x + size.width;
+	}
+	break;
+	case Direction::Down: {
+		entity->position.x += position.x;
+		entity->position.y = position.y + entity->position.y + size.height;
+	}
+	break;
+	case Direction::Left: {
+		entity->position.y += position.y;
+		entity->position.x = position.x - entity->position.x - entity->size.width;
+	}
+	break;
+	}
 }
