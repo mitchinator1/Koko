@@ -27,8 +27,9 @@ public:
 	void Close();
 
 	void SetStart(const std::string& start, size_t offset = 0);
-	void SetStart(size_t start);
+	void SetStart(size_t start = 0);
 	void SetEnd(const std::string& end, size_t offset = 0);
+	void SetEndString(const std::string& end);
 	std::string GetSetString();
 
 	inline bool Empty() { return m_Contents.empty(); }

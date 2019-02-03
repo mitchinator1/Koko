@@ -48,6 +48,11 @@ bool UILayer::OnMouseMovedEvent(EventEngine::MouseMovedEvent& e)
 		{
 			hit = true;
 		}
+		if (entity->state == Entity::State::Update)
+		{
+			CalculateMesh();
+			entity->state = Entity::State::None;
+		}
 	}
 
 	return hit;
@@ -55,15 +60,24 @@ bool UILayer::OnMouseMovedEvent(EventEngine::MouseMovedEvent& e)
 
 bool UILayer::OnMouseButtonPressedEvent(EventEngine::MouseButtonPressedEvent& e)
 {
+	bool hit = false;
 	//TODO: Pick left or right button
 	for (auto entity : m_Entities)
 	{
 		if (entity->OnMouseButtonPressedEvent(e))
 		{
-			PopEntity(entity);
-			return true;
+			if (entity->state == Entity::State::Remove)
+			{
+				PopEntity(entity);
+			}
+			hit = true;
+		}
+		if (entity->state == Entity::State::Update)
+		{
+			CalculateMesh();
+			entity->state = Entity::State::None;
 		}
 	}
 
-	return false;
+	return hit;
 }

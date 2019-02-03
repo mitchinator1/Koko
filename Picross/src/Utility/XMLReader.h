@@ -50,9 +50,11 @@ namespace XML
 
 	private:
 		void GetAttributes(Node& node);
+		void GetAttributes(Node& node, std::string& content);
 
 		Node BuildNode();
 		std::string GetName();
+		std::string GetName(std::string& content);
 	};
 }
 

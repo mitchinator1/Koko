@@ -12,11 +12,16 @@ namespace EventEngine
 class Entity
 {
 public:
+	enum class State
+	{
+		None = 0,
+		Selected, Remove, Update, Hidden
+	};
+
 	Position position;
 	Size size;
 	Colour colour;
-
-	bool mouseOver = false;
+	State state = State::None;
 
 	//Todo: Make vertices seperate class with vertices data, stride, and count.
 	//include with mesh, can pass vertices class to mesh
@@ -24,27 +29,12 @@ public:
 public:
 	virtual ~Entity() {}
 
-	std::vector<float> GetVertices()
+	virtual std::vector<float> GetVertices()
 	{
 		auto vertices = CalculateVertices();
 
 		return ToViewportSpace(vertices);
 	}
-
-	virtual bool OnMouseMovedEvent(EventEngine::MouseMovedEvent& e) { return false; }
-	virtual bool OnMouseButtonPressedEvent(EventEngine::MouseButtonPressedEvent& e) { return false; }
-
-protected:
-	std::vector<float> ToViewportSpace(std::vector<float> vertices)
-	{
-		for (auto& point : vertices)
-		{
-			point = point / 50.0f - 1.0f;
-		}
-
-		return vertices;
-	}
-
 	std::vector<float> CalculateVertices()
 	{
 		float x = position.x;
@@ -66,11 +56,31 @@ protected:
 		return vertices;
 	}
 
-	bool InHitbox(float x, float y)
+	virtual bool OnMouseMovedEvent(EventEngine::MouseMovedEvent& e) { return false; }
+	virtual bool OnMouseButtonPressedEvent(EventEngine::MouseButtonPressedEvent& e) { return false; }
+
+	virtual bool InHitbox(float x, float y)
 	{
+		if (state == State::Hidden)
+		{
+			return false;
+		}
+
 		return (x >= position.x && x <= position.x + size.width &&
-				y >= position.y && y <= position.y + size.height);
+			y >= position.y && y <= position.y + size.height);
 	}
+
+protected:
+	std::vector<float> ToViewportSpace(std::vector<float> vertices)
+	{
+		for (auto& point : vertices)
+		{
+			point = point / 50.0f - 1.0f;
+		}
+
+		return vertices;
+	}
+
 };
 
 #endif

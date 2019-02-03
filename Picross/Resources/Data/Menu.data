@@ -1,8 +1,9 @@
 <Layers>
   <UI test="true">
-    <Dropdown activate="hover" position="50, 40" size="30, 20" colour="80, 60, 70, 100">
+    <Dropdown activate="hover" position="40, 40" size="30, 15" colour="80, 60, 70, 100">
       <Text font="arial" size="12">Hello</Text>
-      <!--add Child dropdown elements here-->
+      <Entity type="button" position="40, 55" size="30, 10" colour="90, 50, 85, 100"></Entity>
+      <Entity type="button" position="40, 65" size="30, 10" colour="80, 80, 85, 100"></Entity>
     </Dropdown>
     <Entity type="icon" position="15, 20" size="25, 10" colour="0, 50, 70, 100">
       <MousePress>Event</MousePress>

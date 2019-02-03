@@ -108,6 +108,11 @@ void FileProgram::SetEnd(const std::string& end, size_t offset)
 	m_End = m_Contents.find_first_of(end) + offset;
 }
 
+void FileProgram::SetEndString(const std::string& end)
+{
+	m_End = m_Contents.find(end);
+}
+
 std::string FileProgram::GetSetString()
 {
 	std::string value = m_Contents.substr(m_Start, m_End - m_Start);
