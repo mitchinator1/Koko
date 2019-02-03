@@ -8,6 +8,20 @@ struct Position
 	float x, y;
 	Position() {}
 	Position(const glm::vec2& v) : x(v.x), y(v.y) {}
+
+	Position& operator+=(const Position& rhs)
+	{
+		this->x += rhs.x;
+		this->y += rhs.y;
+		return *this;
+	}
+
+	Position& operator-=(const Position& rhs)
+	{
+		this->x -= rhs.x;
+		this->y -= rhs.y;
+		return *this;
+	}
 };
 
 struct Size

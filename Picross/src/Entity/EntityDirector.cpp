@@ -39,10 +39,12 @@ Entity* EntityDirector::GetUIDropdown(Node& node)
 {
 	UIDropdown* dropdown = new UIDropdown();
 
-	//TODO: add traits
 	dropdown->position  = node.GetVec2("position");
 	dropdown->size		= node.GetVec2("size");
 	dropdown->colour	= node.GetVec4("colour");
+
+	dropdown->SetDirection(node.GetValue("expand"));
+	//TODO: Implement activation method
 
 	for (auto& n : node.ChildNodes)
 	{
@@ -54,7 +56,7 @@ Entity* EntityDirector::GetUIDropdown(Node& node)
 			entity->size		= n.GetVec2("size");
 			entity->colour		= n.GetVec4("colour");
 
-			entity->state = Entity::State::Hidden;
+			entity->SetState(n.GetValue("state"));
 
 			dropdown->AddEntity(entity);
 		}

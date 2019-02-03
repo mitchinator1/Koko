@@ -29,6 +29,9 @@ bool UIEntity::OnMouseButtonPressedEvent(EventEngine::MouseButtonPressedEvent& e
 
 void UIEntity::AddEntity(Entity* entity)
 {
+	//Move entity relative to parent entity
+	entity->position += position;
+
 	m_Entities.emplace_back(entity);
 	state = State::Update;
 }
@@ -41,4 +44,17 @@ void UIEntity::PopEntity(Entity* entity)
 		m_Entities.erase(it);
 		state = State::Update;
 	}
+}
+
+void UIEntity::SetState(State s)
+{
+	state = s;
+}
+
+void UIEntity::SetState(const std::string& s)
+{
+	if (s == "selected") state = State::Selected;
+	if (s == "remove")	 state = State::Remove;
+	if (s == "update")	 state = State::Update;
+	if (s == "hidden")	 state = State::Hidden;
 }

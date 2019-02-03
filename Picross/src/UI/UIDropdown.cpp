@@ -1,9 +1,6 @@
 #include "UIDropdown.h"
 #include "Event/MouseEvent.h"
 
-//Temporary
-#include <iostream>
-
 UIDropdown::~UIDropdown()
 {
 	for (auto& e : m_Entities)
@@ -97,6 +94,50 @@ bool UIDropdown::OnMouseButtonPressedEvent(EventEngine::MouseButtonPressedEvent&
 	}
 
 	return false;
+}
+
+void UIDropdown::AddEntity(Entity* entity)
+{
+	//Move entity relative to parent entity
+	switch (direction)
+	{
+	case Direction::Up: {
+		entity->position.x += position.x;
+		entity->position.y = position.y - entity->position.y - entity->size.height;
+	}
+	break;
+	case Direction::Right: {
+		entity->position.y += position.y;
+		entity->position.x = position.x + size.width;
+	}
+	break;
+	case Direction::Down: {
+		entity->position.x += position.x;
+		entity->position.y = position.y + entity->position.y + size.height;
+	}
+	break;
+	case Direction::Left: {
+		entity->position.y += position.y;
+		entity->position.x = position.x - entity->position.x - entity->size.width;
+	}
+	break;
+	}
+
+	m_Entities.emplace_back(entity);
+	state = State::Update;
+}
+
+void UIDropdown::SetDirection(Direction d)
+{
+	this->direction = d;
+}
+
+void UIDropdown::SetDirection(const std::string& d)
+{
+	if (d == "up")		direction = Direction::Up;
+	if (d == "right")	direction = Direction::Right;
+	if (d == "down")	direction = Direction::Down;
+	if (d == "left")	direction = Direction::Left;
 }
 
 bool UIDropdown::Reveal()

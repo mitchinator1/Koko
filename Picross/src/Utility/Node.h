@@ -16,11 +16,10 @@ struct Node
 	std::string Name;
 	std::string InnerText;
 
+	std::string GetValue(const std::string& name);
 	glm::vec2 GetVec2(const std::string& name);
 	glm::vec3 GetVec3(const std::string& name);
 	glm::vec4 GetVec4(const std::string& name);
-
-	inline bool HasChildNode() { return !ChildNodes.empty(); }
 };
 
 #endif

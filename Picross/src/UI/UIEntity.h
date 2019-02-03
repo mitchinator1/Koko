@@ -11,8 +11,11 @@ public:
 	virtual bool OnMouseMovedEvent(EventEngine::MouseMovedEvent& e) override;
 	virtual bool OnMouseButtonPressedEvent(EventEngine::MouseButtonPressedEvent& e) override;
 
-	void AddEntity(Entity* entity);
+	virtual void AddEntity(Entity* entity);
 	void PopEntity(Entity* entity);
+
+	void SetState(State s);
+	void SetState(const std::string& s);
 };
 
 #endif
