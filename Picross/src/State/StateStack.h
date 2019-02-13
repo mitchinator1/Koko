@@ -1,8 +1,9 @@
 #ifndef STATE_STACK_H
 #define STATE_STACK_H
 #include "State.h"
-
 #include <vector>
+
+#include "Event/Action.h"
 
 class StateStack
 {
@@ -14,11 +15,14 @@ public:
 	~StateStack();
 
 	void PushState(State* state);
-	void PopState();
+	void PopState(); //change to State* state
 	void ChangeState(State* state);
 
-	auto& Back() { return m_States.back(); }
+	void NotifyStates();
+	void Listen(Action action);
 
+	auto& Back() { return m_States.back(); }
+	bool Empty() { return m_States.empty(); }
 };
 
 #endif

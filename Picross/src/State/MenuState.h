@@ -1,7 +1,7 @@
 #ifndef STATE_MENU_H
 #define STATE_MENU_H
 #include "State.h"
-#include "../Event/MouseEvent.h"
+#include "Event/MouseEvent.h"
 
 class MenuState : public State
 {
@@ -11,13 +11,13 @@ public:
 
 	bool OnEvent(EventEngine::Event& e)		override;
 	void OnUpdate(EventEngine::Event& e)	override;
-	void Render()		override;
+	void Render()							override;
 
 	void ChangeState(Application* app, State* state)	override;
 
-private:
-	bool OnMouseMovedEvent(EventEngine::MouseMovedEvent& e);
-	bool OnMouseButtonPressedEvent(EventEngine::MouseButtonPressedEvent& e);
+	void Notify(Stack<State>* stack)		override;
+	void NotifyLayers()						override;
+	void ReceiveAction(Action action)		override;
 };
 
 #endif

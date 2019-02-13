@@ -4,9 +4,6 @@
 #include "UI/UIEntity.h"
 #include "UI/UIDropdown.h"
 
-//Temporary
-#include <iostream>
-
 void EntityDirector::SetBuilder(Builder* builder)
 {
 	m_Builder = builder;
@@ -27,10 +24,20 @@ Entity* EntityDirector::GetUIEntity(Node& node)
 {
 	UIEntity* uiEntity = new UIEntity();
 
-	//TODO: add traits
 	uiEntity->position  = node.GetVec2("position");
 	uiEntity->size		= node.GetVec2("size");
 	uiEntity->colour	= node.GetVec4("colour");
+
+	uiEntity->SetState(node.GetValue("state"));
+	uiEntity->SetAction(node.GetValue("action"));
+
+	for (auto& child : node.ChildNodes)
+	{
+		if (child.Name == "MousePress")
+		{
+			uiEntity->SetMousePress(child.InnerText);
+		}
+	}
 
 	return uiEntity;
 }
@@ -50,15 +57,7 @@ Entity* EntityDirector::GetUIDropdown(Node& node)
 	{
 		if (n.Name == "Entity")
 		{
-			UIEntity* entity = new UIEntity();
-
-			entity->position	= n.GetVec2("position");
-			entity->size		= n.GetVec2("size");
-			entity->colour		= n.GetVec4("colour");
-
-			entity->SetState(n.GetValue("state"));
-
-			dropdown->AddEntity(entity);
+			dropdown->AddEntity(GetUIEntity(n));
 		}
 	}
 

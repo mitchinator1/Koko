@@ -1,10 +1,10 @@
 #ifndef LAYER_BUILDER_H
 #define LAYER_BUILDER_H
 #include <string>
-#include "../Entity/EntityComponent.h"
 #include "Utility/Builder.h"
 
-class LayerStack;
+template <typename T> class Stack;
+class Layer;
 
 class LayerBuilder : public Builder
 {
@@ -14,7 +14,7 @@ public:
 	LayerBuilder(const std::string& name);
 	~LayerBuilder();
 
-	void Build(LayerStack& stack);
+	void Build(Stack<Layer>& stack);
 };
 
 #endif

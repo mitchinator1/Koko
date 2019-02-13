@@ -4,6 +4,7 @@
 #include "UILayer.h"
 #include "Entity/EntityDirector.h"
 
+#include "Utility/Stack.h"
 
 LayerBuilder::LayerBuilder(const std::string& name)
 	: Builder(name), m_Name(name)
@@ -16,15 +17,15 @@ LayerBuilder::~LayerBuilder()
 
 }
 
-void LayerBuilder::Build(LayerStack& stack)
+void LayerBuilder::Build(Stack<Layer>& stack)
 {
 	EntityDirector director;
 	director.SetBuilder(new Builder(m_Name));
 
 	UILayer* ui = new UILayer();
 
-	auto node = GetNode("UI");
-	 
+	auto node = GetNodes("UI");
+
 	for (auto& n : node.ChildNodes)
 	{
 		if (n.Name == "Entity")
@@ -37,20 +38,19 @@ void LayerBuilder::Build(LayerStack& stack)
 		}
 	}
 
-	stack.PushOverlay(ui);
+	stack.Push(ui);
 
-	Layer* foreground = new Layer();
+	UILayer* layer = new UILayer();
 
-	node = GetNode("Foreground");
+	node = GetNodes("Foreground");
 
 	for (auto& n : node.ChildNodes)
 	{
 		if (n.Name == "Entity")
 		{
-			foreground->PushEntity(director.GetEntity(n));
+			layer->PushEntity(director.GetUIEntity(n));
 		}
 	}
 
-	stack.PushLayer(foreground);
-
+	stack.PushBack(layer);
 }

@@ -23,7 +23,7 @@ namespace XML
 		}
 	}
 
-	Node Reader::GetNode(const std::string& name)
+	Node Reader::ReadNodes(const std::string& name)
 	{
 		Node node;
 
@@ -39,8 +39,8 @@ namespace XML
 
 		while (!m_File.Empty())
 		{
+			/*
 			Node childNode;
-			std::string end;
 
 			childNode.Name = GetName();
 			GetAttributes(childNode);
@@ -49,19 +49,6 @@ namespace XML
 			m_File.SetEndString("</" + childNode.Name + ">");
 			std::string contents = m_File.GetSetString();
 
-			/*while (end.find(childNode.Name) != std::string::npos)
-			{
-				childNode.ChildNodes.emplace_back(BuildNode());
-
-				m_File.SetStart(0);
-				m_File.SetEnd(">", 1);
-				end = m_File.GetSetString();
-
-				m_File.SetStart(0);
-				m_File.SetEnd(">", 1);
-				end = m_File.GetSetString();
-			}*/
-
 			while (!contents.empty())
 			{
 				Node n;
@@ -69,22 +56,84 @@ namespace XML
 				GetAttributes(n, contents);
 
 				size_t start = 0;
-				size_t end = contents.find_first_of('>') + 1;
+				size_t end = contents.find_first_of('<');
+
+				node.InnerText = contents.substr(start, end - start);
 				contents.erase(start, end);
 
-				//end = contents.find_first_of('>') + 1;
-				//contents.erase(start, end);
+				end = contents.find_first_of('>') + 1;
+				contents.erase(start, end);
 
 				childNode.ChildNodes.emplace_back(n);
 			}
 			m_File.SetStart();
 			m_File.SetEnd(">", 1);
 			m_File.GetSetString();
+			*/
 
-			node.ChildNodes.emplace_back(childNode);
+			node.ChildNodes.emplace_back(GetNode());
 		}
 
 		m_File.Close();
+
+		return node;
+	}
+
+	Node Reader::GetNode()
+	{
+		Node node;
+
+		node.Name = GetName();
+		GetAttributes(node);
+
+		m_File.SetStart();
+		m_File.SetEndString("</" + node.Name + ">");
+		std::string contents = m_File.GetSetString();
+
+		while (!contents.empty())
+		{
+			/*Node n;
+			n.Name = GetName(contents);
+			GetAttributes(n, contents);
+
+			size_t start = 0;
+			size_t end = contents.find_first_of('<');
+
+			node.InnerText = contents.substr(start, end - start);
+			contents.erase(start, end);
+
+			end = contents.find_first_of('>') + 1;
+			contents.erase(start, end);*/
+
+			node.ChildNodes.emplace_back(GetNode(contents));
+		}
+		m_File.SetStart();
+		m_File.SetEnd(">", 1);
+		m_File.GetSetString();
+
+		return node;
+	}
+
+	Node Reader::GetNode(std::string& content)
+	{
+		Node node;
+
+		node.Name = GetName(content);
+		GetAttributes(node, content);
+
+		size_t start = 0;
+		size_t end = content.find_first_of('<');
+
+		node.InnerText = content.substr(start, end - start);
+		content.erase(start, end);
+
+		if (content.find("</") >= 2)
+		{
+			node.ChildNodes.emplace_back(GetNode(content));
+		}
+
+		end = content.find_first_of('>') + 1;
+		content.erase(start, end);
 
 		return node;
 	}
@@ -121,7 +170,7 @@ namespace XML
 		size_t end = content.find_first_of('>') + 1;
 
 		std::stringstream line(content.substr(start, end - start));
-		content.erase(start, end); //Grab string upon erase, instead of erasing after.
+		content.erase(start, end);
 
 		while (line)
 		{
@@ -140,25 +189,6 @@ namespace XML
 
 			node.Attributes.emplace(std::pair(name, value));
 		}
-	}
-
-	Node Reader::BuildNode()
-	{
-		Node node;
-
-		node.Name = GetName();
-		
-		GetAttributes(node);
-
-		m_File.SetStart(0);
-		m_File.SetEnd("<");
-		node.InnerText = m_File.GetSetString();
-
-		m_File.SetStart(0);
-		m_File.SetEnd(">");
-		m_File.GetSetString();
-
-		return node;
 	}
 
 	std::string Reader::GetName()

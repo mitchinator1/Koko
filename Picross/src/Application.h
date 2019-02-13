@@ -9,11 +9,15 @@
 #include "Platform/Window.h"
 #include "State/StateStack.h"
 
+#include "Utility/Stack.h"
+#include "State/State.h"
+
 class Application
 {
 public:
 	std::unique_ptr<Window> m_Window;
-	StateStack m_StateStack;
+	//StateStack m_StateStack;
+	Stack<State> m_StateStack;
 
 	bool m_Running;
 

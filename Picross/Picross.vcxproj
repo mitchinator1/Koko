@@ -141,6 +141,7 @@
     <ClInclude Include="src\Entity\Entity.h" />
     <ClInclude Include="src\Entity\EntityComponent.h" />
     <ClInclude Include="src\Entity\EntityDirector.h" />
+    <ClInclude Include="src\Event\Action.h" />
     <ClInclude Include="src\Event\ApplicationEvent.h" />
     <ClInclude Include="src\Event\Event.h" />
     <ClInclude Include="src\Event\KeyEvent.h" />
@@ -165,12 +166,12 @@
     <ClInclude Include="src\Shader\ShaderProgram.h" />
     <ClInclude Include="src\State\MenuState.h" />
     <ClInclude Include="src\State\State.h" />
-    <ClInclude Include="src\State\StateStack.h" />
     <ClInclude Include="src\UI\UIDropdown.h" />
     <ClInclude Include="src\UI\UIEntity.h" />
     <ClInclude Include="src\Utility\Builder.h" />
     <ClInclude Include="src\Utility\FileProgram.h" />
     <ClInclude Include="src\Utility\Node.h" />
+    <ClInclude Include="src\Utility\Stack.h" />
     <ClInclude Include="src\Utility\XMLReader.h" />
   </ItemGroup>
   <ItemGroup>
@@ -191,7 +192,6 @@
     <ClCompile Include="src\Shader\ShaderBase.cpp" />
     <ClCompile Include="src\Shader\ShaderProgram.cpp" />
     <ClCompile Include="src\State\MenuState.cpp" />
-    <ClCompile Include="src\State\StateStack.cpp" />
     <ClCompile Include="src\UI\UIDropdown.cpp" />
     <ClCompile Include="src\UI\UIEntity.cpp" />
     <ClCompile Include="src\Utility\FileProgram.cpp" />

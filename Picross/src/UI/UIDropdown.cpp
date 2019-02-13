@@ -66,15 +66,32 @@ bool UIDropdown::OnMouseButtonPressedEvent(EventEngine::MouseButtonPressedEvent&
 			Hide();
 			return true;
 		}
+		if (entity->state == State::Selected)
+		{
+			return true;
+		}
 	}
 
 	if (state == State::Selected)
 	{
-		state = State::Remove;
+		//state = State::Remove;
 		return true;
 	}
 
 	return false;
+}
+
+Action UIDropdown::GetMousePress()
+{
+	for (auto& entity : m_Entities)
+	{
+		if (entity->state == State::Selected)
+		{
+			return entity->GetMousePress();
+		}
+	}
+
+	return mousePress;
 }
 
 void UIDropdown::AddEntity(Entity* entity)

@@ -1,7 +1,11 @@
 #include "Renderer.h"
 #include "Platform/Window.h"
+
 #include "Mesh/Mesh.h"
 #include "Shader/ShaderBase.h"
+
+#include "Utility/Stack.h"
+#include "Layer/Layer.h"
 
 Renderer::Renderer()
 	: m_Shader(std::make_unique<Shader::ShaderBase>())
@@ -9,7 +13,6 @@ Renderer::Renderer()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glEnable(GL_DEPTH);
 }
-
 
 Renderer::~Renderer()
 {
@@ -29,15 +32,16 @@ void Renderer::RenderMesh(Mesh* mesh)
 	mesh->Unbind();
 }
 
-void Renderer::Render(LayerStack& layers)
+void Renderer::Render(Stack<Layer>& stack)
 {
 	Clear();
 
 	Prepare();
 
-	for (int it = layers.front(); it <= layers.size(); ++it)
+	//TODO: Probably rendering backwards
+	for (auto& layer : stack)
 	{
-		RenderMesh(layers[it]->GetMesh());
+		RenderMesh(layer->GetMesh());
 	}
 
 	CleanUp();

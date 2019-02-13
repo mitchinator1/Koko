@@ -46,13 +46,15 @@ namespace XML
 
 		inline Error GetError() { return m_Error; }
 
-		Node GetNode(const std::string& name);
+		Node ReadNodes(const std::string& name);
 
 	private:
+		Node GetNode();
+		Node GetNode(std::string& content);
+
 		void GetAttributes(Node& node);
 		void GetAttributes(Node& node, std::string& content);
 
-		Node BuildNode();
 		std::string GetName();
 		std::string GetName(std::string& content);
 	};

@@ -13,7 +13,7 @@ public:
 	Builder(const std::string& fileName) : m_Reader("Resources/Data/" + fileName + ".data") {}
 	virtual ~Builder() {}
 
-	Node GetNode(const std::string& name) { return m_Reader.GetNode(name); }
+	Node GetNodes(const std::string& name) { return m_Reader.ReadNodes(name); }
 
 };
 

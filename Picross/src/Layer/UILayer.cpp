@@ -1,5 +1,7 @@
 #include "UILayer.h"
 
+#include "State/State.h"
+
 UILayer::UILayer()
 {
 
@@ -28,14 +30,19 @@ void UILayer::OnEvent(EventEngine::Event& e)
 	dispatcher.Dispatch<MouseButtonPressedEvent>(BIND_EVENT_FN(UILayer::OnMouseButtonPressedEvent));
 }
 
-void UILayer::PopEntity(Entity* entity)
+void UILayer::Notify(State* state)
 {
-	auto it = std::find(m_Entities.begin(), m_Entities.end(), entity);
-	if (it != m_Entities.end())
+	for (auto action : m_Actions)
 	{
-		m_Entities.erase(it);
-		CalculateMesh();
+		if (action == Action::LayerRemove)
+		{
+			updatestate = Entity::State::Remove;
+			continue;
+		}
+		state->ReceiveAction(action);
 	}
+
+	m_Actions.clear();
 }
 
 bool UILayer::OnMouseMovedEvent(EventEngine::MouseMovedEvent& e)
@@ -70,8 +77,10 @@ bool UILayer::OnMouseButtonPressedEvent(EventEngine::MouseButtonPressedEvent& e)
 			{
 				PopEntity(entity);
 			}
+			m_Actions.emplace_back(entity->GetMousePress());
 			hit = true;
 		}
+
 		if (entity->state == Entity::State::Update)
 		{
 			CalculateMesh();

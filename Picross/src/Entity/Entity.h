@@ -2,6 +2,7 @@
 #define ENTITY_H
 #include <vector>
 #include "EntityComponent.h"
+#include "Event/Action.h"
 
 namespace EventEngine
 {
@@ -15,13 +16,19 @@ public:
 	enum class State
 	{
 		None = 0,
-		Selected, Remove, Update, Hidden
+		Selected,
+		Remove,
+		Update,
+		Hidden
 	};
 
 	Position position;
 	Size size;
 	Colour colour;
 	State state = State::None;
+
+	Action action = Action::None;
+	Action mousePress = Action::None;
 
 	//Todo: Make vertices seperate class with vertices data, stride, and count.
 	//include with mesh, can pass vertices class to mesh
@@ -69,6 +76,8 @@ public:
 		return (x >= position.x && x <= position.x + size.width &&
 			y >= position.y && y <= position.y + size.height);
 	}
+
+	virtual Action GetMousePress() { return mousePress; }
 
 protected:
 	std::vector<float> ToViewportSpace(std::vector<float> vertices)

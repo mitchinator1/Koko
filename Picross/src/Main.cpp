@@ -4,7 +4,7 @@
 int main()
 {
 	auto Game = new Application;
-	Game->GetState().PushState(new MenuState());
+	Game->GetState().Push(new MenuState());
 
 	Game->Run();
 

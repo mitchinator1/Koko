@@ -2,18 +2,27 @@
 #define STATE_BASE_H
 #include <memory>
 
-#include "../Renderer/Renderer.h"
-#include "../Layer/LayerStack.h"
-#include "../Event/Event.h"
+#include "Renderer/Renderer.h"
+#include "Utility/Stack.h"
+
+#include "Event/Event.h"
+#include "Event/Action.h"
+
+#include "Layer/Layer.h"
 
 class Application;
+class StateStack;
 
 class State
 {
+public:
+	bool remove = false;
+
 protected:
+	//TODO: Add vector of actions
 	std::unique_ptr<Renderer> m_Renderer;
 
-	LayerStack m_LayerStack;
+	Stack<Layer> m_LayerStack;
 
 public:
 	State()	: m_Renderer(std::make_unique<Renderer>()) {}
@@ -27,6 +36,10 @@ public:
 	virtual void Render()							= 0;
 
 	virtual void ChangeState(Application* app, State* state) = 0;
+
+	virtual void Notify(Stack<State>* stack) = 0;
+	virtual void NotifyLayers() = 0;
+	virtual void ReceiveAction(Action action) = 0;
 };
 
 #endif

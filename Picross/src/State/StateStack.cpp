@@ -25,7 +25,7 @@ void StateStack::PushState(State* state)
 
 void StateStack::PopState()
 {
-	if (m_States.size() > 1)
+	if (m_States.size() >= 1)
 	{
 		m_States.pop_back();
 	}
@@ -45,4 +45,20 @@ void StateStack::ChangeState(State* state)
 	}
 
 	m_States.emplace_back(state);
+}
+
+void StateStack::NotifyStates()
+{
+	for (auto& state : m_States)
+	{
+		//state->Notify(this);
+	}
+}
+
+void StateStack::Listen(Action action)
+{
+	if (action == Action::StateClose)
+	{
+		PopState();
+	}
 }

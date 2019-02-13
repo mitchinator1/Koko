@@ -26,18 +26,26 @@ void Application::Run()
 
 void Application::Render()
 {
-	m_StateStack.Back()->Render();
+	if (!m_StateStack.empty())
+	{
+		m_StateStack.back()->Render();
+	}
 }
 
 void Application::OnEvent(EventEngine::Event& e)
 {
-	m_StateStack.Back()->OnEvent(e);
+	m_StateStack.back()->OnEvent(e);
+	m_StateStack.Notify();
+
+	if (m_StateStack.empty())
+	{
+		m_Running = false;
+	}
 
 	using namespace EventEngine;
 	Dispatcher dispatcher(e);
 	dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
 	dispatcher.Dispatch<KeyPressedEvent>(BIND_EVENT_FN(Application::OnKeyEvent));
-
 }
 
 bool Application::OnWindowClose(EventEngine::WindowCloseEvent& e)

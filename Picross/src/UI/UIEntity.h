@@ -18,6 +18,12 @@ public:
 
 	void SetState(State s);
 	void SetState(const std::string& s);
+
+	void SetAction(Action a);
+	void SetAction(const std::string& a);
+
+	void SetMousePress(Action a);
+	void SetMousePress(const std::string& a);
 };
 
 #endif

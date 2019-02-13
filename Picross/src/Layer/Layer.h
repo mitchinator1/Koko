@@ -1,14 +1,20 @@
 #ifndef LAYER_H
 #define LAYER_H
-#include "../Event/Event.h"
-#include "../Mesh/Mesh.h"
-#include "../Entity/Entity.h"
+#include "Event/Event.h"
+#include "Mesh/Mesh.h"
+#include "Entity/Entity.h"
+#include "Event/Action.h"
+
+class State;
 
 class Layer
 {
 protected:
 	Mesh* m_Mesh;
 	std::vector<Entity*> m_Entities;
+
+public:
+	Entity::State updatestate = Entity::State::None;
 
 public:
 	Layer() {}
@@ -26,7 +32,18 @@ public:
 	virtual void OnEvent(EventEngine::Event& e) {}
 
 	void PushEntity(Entity* entity) { m_Entities.emplace_back(entity); }
-	virtual void PopEntity(Entity* entity) {}
+	void PopEntity(Entity* entity)
+	{
+		auto it = std::find(m_Entities.begin(), m_Entities.end(), entity);
+		if (it != m_Entities.end())
+		{
+			m_Entities.erase(it);
+			CalculateMesh();
+		}
+	}
+
+	virtual void Notify(State* state) {}
+
 	void CalculateMesh()
 	{
 		std::vector<float> vertices;
@@ -40,8 +57,8 @@ public:
 		m_Mesh = new Mesh(vertices);
 	}
 
-	auto& GetMesh()		{ return m_Mesh; }
-	auto& GetEntities() { return m_Entities; }
+	inline auto& GetMesh()		{ return m_Mesh; }
+	inline auto& GetEntities()	{ return m_Entities; }
 };
 
 #endif

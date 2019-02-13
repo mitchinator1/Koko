@@ -39,7 +39,10 @@ bool UIEntity::OnMouseButtonPressedEvent(EventEngine::MouseButtonPressedEvent& e
 {
 	if (state == State::Selected)
 	{
-		state = State::Remove;
+		if (mousePress == Action::EntityRemove)
+		{
+			state = State::Remove;
+		}
 		return true;
 	}
 
@@ -72,8 +75,43 @@ void UIEntity::SetState(State s)
 
 void UIEntity::SetState(const std::string& s)
 {
-	if (s == "selected") state = State::Selected;
-	if (s == "remove")	 state = State::Remove;
-	if (s == "update")	 state = State::Update;
-	if (s == "hidden")	 state = State::Hidden;
+	if (s == "none")	 SetState(State::None);
+	if (s == "selected") SetState(State::Selected);
+	if (s == "remove")	 SetState(State::Remove);
+	if (s == "update")	 SetState(State::Update);
+	if (s == "hidden")	 SetState(State::Hidden);
+}
+
+void UIEntity::SetAction(Action a)
+{
+	action = a;
+}
+
+void UIEntity::SetAction(const std::string& a)
+{
+	if (a == "none")			SetAction(Action::None);
+	if (a == "appclose")		SetAction(Action::AppClose);
+	if (a == "apppause")		SetAction(Action::AppPause);
+	if (a == "stateremove")		SetAction(Action::StateRemove);
+	if (a == "statepause")		SetAction(Action::StatePause);
+	if (a == "stateresume")		SetAction(Action::StateResume);
+	if (a == "layerremove")		SetAction(Action::LayerRemove);
+	if (a == "entityremove")	SetAction(Action::EntityRemove);
+}
+
+void UIEntity::SetMousePress(Action a)
+{
+	mousePress = a;
+}
+
+void UIEntity::SetMousePress(const std::string& a)
+{
+	if (a == "none")			SetMousePress(Action::None);
+	if (a == "appclose")		SetMousePress(Action::AppClose);
+	if (a == "apppause")		SetMousePress(Action::AppPause);
+	if (a == "stateremove")		SetMousePress(Action::StateRemove);
+	if (a == "statepause")		SetMousePress(Action::StatePause);
+	if (a == "stateresume")		SetMousePress(Action::StateResume);
+	if (a == "layerremove")		SetMousePress(Action::LayerRemove);
+	if (a == "entityremove")	SetMousePress(Action::EntityRemove);
 }

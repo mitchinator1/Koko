@@ -22,6 +22,8 @@ public:
 	bool OnMouseMovedEvent(EventEngine::MouseMovedEvent& e) override;
 	bool OnMouseButtonPressedEvent(EventEngine::MouseButtonPressedEvent& e) override;
 
+	Action GetMousePress() override;
+
 	void AddEntity(Entity* entity) override;
 
 	void SetDirection(Direction d);

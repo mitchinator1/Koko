@@ -1,8 +1,9 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 #include <memory>
-#include "../Layer/LayerStack.h"
 
+template <typename T> class Stack;
+class Layer;
 class Mesh;
 namespace Shader { class ShaderBase; }
 
@@ -15,7 +16,7 @@ public:
 	Renderer();
 	virtual ~Renderer();
 
-	void Render(LayerStack& layers);
+	void Render(Stack<Layer>& stack);
 
 private:
 	void RenderMesh(Mesh* mesh);
