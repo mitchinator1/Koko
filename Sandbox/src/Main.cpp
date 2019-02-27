@@ -4,7 +4,7 @@
 int main()
 {
 	auto Game = new Application;
-	Game->GetState().Push(new MenuState());
+	Game->GetState().Push(new Koko::MenuState());
 
 	Game->Run();
 

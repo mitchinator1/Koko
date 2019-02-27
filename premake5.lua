@@ -13,16 +13,16 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["GLFW"] = "Engine/vendor/GLFW/include"
-IncludeDir["Glad"] = "Engine/vendor/Glad/include"
-IncludeDir["GLM"] = "Engine/vendor/GLM"
+IncludeDir["GLFW"] = "Koko/vendor/GLFW/include"
+IncludeDir["Glad"] = "Koko/vendor/Glad/include"
+IncludeDir["GLM"] = "Koko/vendor/GLM"
 
-include "Engine/vendor/GLFW"
-include "Engine/vendor/Glad"
-include "Engine/vendor/GLM"
+include "Koko/vendor/GLFW"
+include "Koko/vendor/Glad"
+include "Koko/vendor/GLM"
 
-project "Engine"
-	location "Engine"
+project "Koko"
+	location "Koko"
 	kind "SharedLib"
 	language "C++"
 	staticruntime "off"
@@ -30,8 +30,8 @@ project "Engine"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-	pchheader "gepch.h"
-	pchsource "Engine/src/gepch.cpp"
+	pchheader "kkpch.h"
+	pchsource "Koko/src/kkpch.cpp"
 
 	files
 	{
@@ -62,8 +62,8 @@ project "Engine"
 
 		defines
 		{
-			"GAME_ENGINE_PLATFORM_WINDOWS",
-			"GAME_ENGINE_BUILD_DLL",
+			"KOKO_PLATFORM_WINDOWS",
+			"KOKO_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
 
@@ -73,17 +73,17 @@ project "Engine"
 		}
 
 	filter "configurations:Debug"
-		defines "GAME_ENGINE_DEBUG"
+		defines "KOKO_DEBUG"
 		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines "GAME_ENGINE_RELEASE"
+		defines "KOKO_RELEASE"
 		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines "GAME_ENGINE_DIST"
+		defines "KOKO_DIST"
 		runtime "Release"
 		optimize "On"
 
@@ -104,7 +104,7 @@ project "Sandbox"
 
 	includedirs
 	{
-		"Engine/src",
+		"Koko/src",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.GLM}"
 	}
@@ -112,7 +112,7 @@ project "Sandbox"
 	links
 	{
 		"Glad",
-		"Engine"
+		"Koko"
 	}
 
 	filter "system:windows"
@@ -121,20 +121,20 @@ project "Sandbox"
 
 		defines
 		{
-			"GAME_ENGINE_PLATFORM_WINDOWS"
+			"KOKO_PLATFORM_WINDOWS"
 		}
 
 	filter "configurations:Debug"
-		defines "GAME_ENGINE_DEBUG"
+		defines "KOKO_DEBUG"
 		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines "GAME_ENGINE_RELEASE"
+		defines "KOKO_RELEASE"
 		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines "GAME_ENGINE_DIST"
+		defines "KOKO_DIST"
 		runtime "Release"
 		optimize "On"
