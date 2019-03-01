@@ -4,38 +4,11 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Entity">
-      <UniqueIdentifier>{D9C2390E-C57A-7B5B-2E82-54B71A59164C}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Event">
-      <UniqueIdentifier>{3E1ADFB2-AA84-9329-F3C2-44CF5F6C717E}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Layer">
-      <UniqueIdentifier>{B99552B3-2500-072A-6E3E-B8CFDAE7E47E}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Mesh">
-      <UniqueIdentifier>{092522CF-F5F1-7CDA-1E0B-6B820A37B268}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Renderer">
-      <UniqueIdentifier>{73D1DFBF-5F34-6F64-08BA-A71AF4FB3AE7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Shader">
-      <UniqueIdentifier>{33E66A2E-1F9E-AC7B-88A5-85D7747C476C}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\State">
-      <UniqueIdentifier>{3D48DBB3-A9B2-8F2A-F2F0-40D05E9A6D7F}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\UI">
-      <UniqueIdentifier>{3A4B661C-26ED-90F2-0FA8-A446FBE81743}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Utility">
-      <UniqueIdentifier>{70464FB2-DCFB-C7A7-65F0-C17ED1A4BEAB}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -58,115 +31,40 @@
     <Filter Include="vendor\GLM\GLM\gtx">
       <UniqueIdentifier>{F3FD00C3-DFE1-C118-4842-BC6B3445AC9A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Koko">
+      <UniqueIdentifier>{c5ab0120-7644-4308-9870-19ca1e59709d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Koko\Mesh">
+      <UniqueIdentifier>{092522CF-F5F1-7CDA-1E0B-6B820A37B268}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Koko\Layer">
+      <UniqueIdentifier>{B99552B3-2500-072A-6E3E-B8CFDAE7E47E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Koko\Event">
+      <UniqueIdentifier>{3E1ADFB2-AA84-9329-F3C2-44CF5F6C717E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Koko\Entity">
+      <UniqueIdentifier>{D9C2390E-C57A-7B5B-2E82-54B71A59164C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Koko\Renderer">
+      <UniqueIdentifier>{73D1DFBF-5F34-6F64-08BA-A71AF4FB3AE7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Koko\Shader">
+      <UniqueIdentifier>{33E66A2E-1F9E-AC7B-88A5-85D7747C476C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Koko\State">
+      <UniqueIdentifier>{3D48DBB3-A9B2-8F2A-F2F0-40D05E9A6D7F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Koko\UI">
+      <UniqueIdentifier>{3A4B661C-26ED-90F2-0FA8-A446FBE81743}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Koko\Utility">
+      <UniqueIdentifier>{70464FB2-DCFB-C7A7-65F0-C17ED1A4BEAB}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Application.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Core.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\Entity.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\EntityComponent.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\EntityDirector.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Event\Action.h">
-      <Filter>src\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Event\ApplicationEvent.h">
-      <Filter>src\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Event\Event.h">
-      <Filter>src\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Event\KeyEvent.h">
-      <Filter>src\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Event\MouseEvent.h">
-      <Filter>src\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Layer\Layer.h">
-      <Filter>src\Layer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Layer\LayerBuilder.h">
-      <Filter>src\Layer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Layer\LayerDirector.h">
-      <Filter>src\Layer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Layer\UILayer.h">
-      <Filter>src\Layer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Layer\UILayerBuilder.h">
-      <Filter>src\Layer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Mesh\IndexBuffer.h">
-      <Filter>src\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Mesh\Mesh.h">
-      <Filter>src\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Mesh\Texture.h">
-      <Filter>src\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Mesh\VertexArray.h">
-      <Filter>src\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Mesh\VertexBuffer.h">
-      <Filter>src\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Mesh\VertexBufferLayout.h">
-      <Filter>src\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Mesh\stb_image.h">
-      <Filter>src\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\Window.h">
-      <Filter>src\Platform</Filter>
-    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>src\Platform\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Renderer\Renderer.h">
-      <Filter>src\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Shader\ShaderBase.h">
-      <Filter>src\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Shader\ShaderProgram.h">
-      <Filter>src\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="src\State\MenuState.h">
-      <Filter>src\State</Filter>
-    </ClInclude>
-    <ClInclude Include="src\State\State.h">
-      <Filter>src\State</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UI\UIDropdown.h">
-      <Filter>src\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UI\UIEntity.h">
-      <Filter>src\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utility\Builder.h">
-      <Filter>src\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utility\FileProgram.h">
-      <Filter>src\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utility\Node.h">
-      <Filter>src\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utility\Stack.h">
-      <Filter>src\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utility\XMLReader.h">
-      <Filter>src\Utility</Filter>
     </ClInclude>
     <ClInclude Include="src\kkpch.h">
       <Filter>src</Filter>
@@ -930,70 +828,181 @@
     <ClInclude Include="vendor\GLM\GLM\vector_relational.hpp">
       <Filter>vendor\GLM\GLM</Filter>
     </ClInclude>
+    <ClInclude Include="src\Koko.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Event\Action.h">
+      <Filter>src\Koko\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Event\ApplicationEvent.h">
+      <Filter>src\Koko\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Event\Event.h">
+      <Filter>src\Koko\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Event\KeyEvent.h">
+      <Filter>src\Koko\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Event\MouseEvent.h">
+      <Filter>src\Koko\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Entity\Entity.h">
+      <Filter>src\Koko\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Entity\EntityComponent.h">
+      <Filter>src\Koko\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Entity\EntityDirector.h">
+      <Filter>src\Koko\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Layer\Layer.h">
+      <Filter>src\Koko\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Layer\LayerBuilder.h">
+      <Filter>src\Koko\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Layer\LayerDirector.h">
+      <Filter>src\Koko\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Layer\UILayer.h">
+      <Filter>src\Koko\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Layer\UILayerBuilder.h">
+      <Filter>src\Koko\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Mesh\IndexBuffer.h">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Mesh\Mesh.h">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Mesh\stb_image.h">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Mesh\Texture.h">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Mesh\VertexArray.h">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Mesh\VertexBuffer.h">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Mesh\VertexBufferLayout.h">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Renderer\Renderer.h">
+      <Filter>src\Koko\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Shader\ShaderBase.h">
+      <Filter>src\Koko\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Shader\ShaderProgram.h">
+      <Filter>src\Koko\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\State\MenuState.h">
+      <Filter>src\Koko\State</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\State\State.h">
+      <Filter>src\Koko\State</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Utility\State\MenuState.h" />
+    <ClInclude Include="src\Koko\Utility\State\State.h" />
+    <ClInclude Include="src\Koko\Utility\Builder.h">
+      <Filter>src\Koko\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Utility\FileProgram.h">
+      <Filter>src\Koko\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Utility\Node.h">
+      <Filter>src\Koko\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Utility\Stack.h">
+      <Filter>src\Koko\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Utility\XMLReader.h">
+      <Filter>src\Koko\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\UI\UIDropdown.h">
+      <Filter>src\Koko\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\UI\UIEntity.h">
+      <Filter>src\Koko\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Application.h">
+      <Filter>src\Koko</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Core.h">
+      <Filter>src\Koko</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Window.h">
+      <Filter>src\Koko</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Application.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entity\EntityDirector.cpp">
-      <Filter>src\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Layer\LayerBuilder.cpp">
-      <Filter>src\Layer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Layer\LayerDirector.cpp">
-      <Filter>src\Layer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Layer\UILayer.cpp">
-      <Filter>src\Layer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Mesh\IndexBuffer.cpp">
-      <Filter>src\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Mesh\Mesh.cpp">
-      <Filter>src\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Mesh\Texture.cpp">
-      <Filter>src\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Mesh\VertexArray.cpp">
-      <Filter>src\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Mesh\VertexBuffer.cpp">
-      <Filter>src\Mesh</Filter>
-    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renderer\Renderer.cpp">
-      <Filter>src\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Shader\ShaderBase.cpp">
-      <Filter>src\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Shader\ShaderProgram.cpp">
-      <Filter>src\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="src\State\MenuState.cpp">
-      <Filter>src\State</Filter>
-    </ClCompile>
-    <ClCompile Include="src\UI\UIDropdown.cpp">
-      <Filter>src\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="src\UI\UIEntity.cpp">
-      <Filter>src\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Utility\FileProgram.cpp">
-      <Filter>src\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Utility\Node.cpp">
-      <Filter>src\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Utility\XMLReader.cpp">
-      <Filter>src\Utility</Filter>
-    </ClCompile>
     <ClCompile Include="src\kkpch.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Entity\EntityDirector.cpp">
+      <Filter>src\Koko\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Layer\LayerBuilder.cpp">
+      <Filter>src\Koko\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Layer\LayerDirector.cpp">
+      <Filter>src\Koko\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Layer\UILayer.cpp">
+      <Filter>src\Koko\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Mesh\IndexBuffer.cpp">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Mesh\Mesh.cpp">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Mesh\Texture.cpp">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Mesh\VertexArray.cpp">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Mesh\VertexBuffer.cpp">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Renderer\Renderer.cpp">
+      <Filter>src\Koko\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Shader\ShaderBase.cpp">
+      <Filter>src\Koko\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Shader\ShaderProgram.cpp">
+      <Filter>src\Koko\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\State\MenuState.cpp">
+      <Filter>src\Koko\State</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Utility\State\MenuState.cpp" />
+    <ClCompile Include="src\Koko\Utility\FileProgram.cpp">
+      <Filter>src\Koko\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Utility\Node.cpp">
+      <Filter>src\Koko\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Utility\XMLReader.cpp">
+      <Filter>src\Koko\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\UI\UIDropdown.cpp">
+      <Filter>src\Koko\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\UI\UIEntity.cpp">
+      <Filter>src\Koko\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Application.cpp">
+      <Filter>src\Koko</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

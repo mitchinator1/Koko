@@ -3,9 +3,9 @@
 
 #include "glad/glad.h"
 
-#include "../../Event/ApplicationEvent.h"
-#include "../../Event/KeyEvent.h"
-#include "../../Event/MouseEvent.h"
+#include "Koko/Event/ApplicationEvent.h"
+#include "Koko/Event/KeyEvent.h"
+#include "Koko/Event/MouseEvent.h"
 
 static bool s_GLFWInitialized = false;
 
