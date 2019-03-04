@@ -45,11 +45,6 @@ namespace Koko
 		m_Renderer->Render(m_LayerStack);
 	}
 
-	void MenuState::ChangeState(Application* app, State* state)
-	{
-		//app->GetState().ChangeState(state);
-	}
-
 	void MenuState::Notify(Stack<State>* stack)
 	{
 		//TODO: Change to action

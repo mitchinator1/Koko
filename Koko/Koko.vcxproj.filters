@@ -900,14 +900,9 @@
     <ClInclude Include="src\Koko\Shader\ShaderProgram.h">
       <Filter>src\Koko\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\State\MenuState.h">
-      <Filter>src\Koko\State</Filter>
-    </ClInclude>
     <ClInclude Include="src\Koko\State\State.h">
       <Filter>src\Koko\State</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Utility\State\MenuState.h" />
-    <ClInclude Include="src\Koko\Utility\State\State.h" />
     <ClInclude Include="src\Koko\Utility\Builder.h">
       <Filter>src\Koko\Utility</Filter>
     </ClInclude>
@@ -982,10 +977,6 @@
     <ClCompile Include="src\Koko\Shader\ShaderProgram.cpp">
       <Filter>src\Koko\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="src\Koko\State\MenuState.cpp">
-      <Filter>src\Koko\State</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Koko\Utility\State\MenuState.cpp" />
     <ClCompile Include="src\Koko\Utility\FileProgram.cpp">
       <Filter>src\Koko\Utility</Filter>
     </ClCompile>

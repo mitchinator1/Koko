@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\State\MenuState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Koko\vendor\Glad\Glad.vcxproj">
@@ -140,6 +141,9 @@
     <ProjectReference Include="..\Koko\Koko.vcxproj">
       <Project>{5916887C-454D-890D-EE39-6F10DA4F050F}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\State\MenuState.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

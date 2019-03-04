@@ -11,6 +11,8 @@
 
 #include "Koko/Layer/Layer.h"
 
+#include "Koko/Layer/LayerBuilder.h"
+
 namespace Koko
 {
 	class Application;
@@ -27,7 +29,11 @@ namespace Koko
 		Stack<Layer> m_LayerStack;
 
 	public:
-		State() : m_Renderer(std::make_unique<Renderer>()) {}
+		State(const std::string& fileName) : m_Renderer(std::make_unique<Renderer>()) 
+		{
+			LayerBuilder builder(fileName);
+			builder.Build(m_LayerStack);
+		}
 		virtual ~State() {}
 
 		virtual void Pause() {};
@@ -37,7 +43,7 @@ namespace Koko
 		virtual void OnUpdate(Event& e) = 0;
 		virtual void Render() = 0;
 
-		virtual void ChangeState(Application* app, State* state) = 0;
+		//virtual void ChangeState(Application* app, State* state) {};
 
 		virtual void Notify(Stack<State>* stack) = 0;
 		virtual void NotifyLayers() = 0;

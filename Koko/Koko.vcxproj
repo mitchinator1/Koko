@@ -177,7 +177,6 @@
     <ClInclude Include="src\Koko\Renderer\Renderer.h" />
     <ClInclude Include="src\Koko\Shader\ShaderBase.h" />
     <ClInclude Include="src\Koko\Shader\ShaderProgram.h" />
-    <ClInclude Include="src\Koko\State\MenuState.h" />
     <ClInclude Include="src\Koko\State\State.h" />
     <ClInclude Include="src\Koko\UI\UIDropdown.h" />
     <ClInclude Include="src\Koko\UI\UIEntity.h" />
@@ -185,8 +184,6 @@
     <ClInclude Include="src\Koko\Utility\FileProgram.h" />
     <ClInclude Include="src\Koko\Utility\Node.h" />
     <ClInclude Include="src\Koko\Utility\Stack.h" />
-    <ClInclude Include="src\Koko\Utility\State\MenuState.h" />
-    <ClInclude Include="src\Koko\Utility\State\State.h" />
     <ClInclude Include="src\Koko\Utility\XMLReader.h" />
     <ClInclude Include="src\kkpch.h" />
     <ClInclude Include="vendor\GLM\GLM\common.hpp" />
@@ -458,12 +455,10 @@
     <ClCompile Include="src\Koko\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Koko\Shader\ShaderBase.cpp" />
     <ClCompile Include="src\Koko\Shader\ShaderProgram.cpp" />
-    <ClCompile Include="src\Koko\State\MenuState.cpp" />
     <ClCompile Include="src\Koko\UI\UIDropdown.cpp" />
     <ClCompile Include="src\Koko\UI\UIEntity.cpp" />
     <ClCompile Include="src\Koko\Utility\FileProgram.cpp" />
     <ClCompile Include="src\Koko\Utility\Node.cpp" />
-    <ClCompile Include="src\Koko\Utility\State\MenuState.cpp" />
     <ClCompile Include="src\Koko\Utility\XMLReader.cpp" />
     <ClCompile Include="src\kkpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
