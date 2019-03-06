@@ -6,7 +6,7 @@
 class MenuState : public Koko::State
 {
 public:
-	MenuState(const std::string& fileName);
+	MenuState(const std::string& fileName = "Menu");
 	~MenuState();
 
 	bool OnEvent(Koko::Event& e)		override;

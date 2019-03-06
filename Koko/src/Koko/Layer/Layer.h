@@ -10,7 +10,7 @@ namespace Koko
 {
 	class State;
 
-	class KK_API Layer
+	class Layer
 	{
 	protected:
 		Mesh* m_Mesh;
@@ -20,8 +20,8 @@ namespace Koko
 		Entity::State updatestate = Entity::State::None;
 
 	public:
-		Layer() {}
-		virtual ~Layer()
+		KK_API Layer() {}
+		KK_API virtual ~Layer()
 		{
 			for (Entity* entity : m_Entities)
 			{
@@ -29,13 +29,13 @@ namespace Koko
 			}
 		}
 
-		virtual void OnAttach() { CalculateMesh(); }
-		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
-		virtual void OnEvent(Event& e) {}
+		KK_API virtual void OnAttach() { CalculateMesh(); }
+		KK_API virtual void OnDetach() {}
+		KK_API virtual void OnUpdate() {}
+		KK_API virtual void OnEvent(Event& e) {}
 
-		void PushEntity(Entity* entity) { m_Entities.emplace_back(entity); }
-		void PopEntity(Entity* entity)
+		KK_API void PushEntity(Entity* entity) { m_Entities.emplace_back(entity); }
+		KK_API void PopEntity(Entity* entity)
 		{
 			auto it = std::find(m_Entities.begin(), m_Entities.end(), entity);
 			if (it != m_Entities.end())
@@ -45,9 +45,9 @@ namespace Koko
 			}
 		}
 
-		virtual void Notify(State* state) {}
+		KK_API virtual void Notify(State* state) {}
 
-		void CalculateMesh()
+		KK_API void CalculateMesh()
 		{
 			std::vector<float> vertices;
 
@@ -60,8 +60,8 @@ namespace Koko
 			m_Mesh = new Mesh(vertices);
 		}
 
-		inline auto& GetMesh() { return m_Mesh; }
-		inline auto& GetEntities() { return m_Entities; }
+		KK_API inline auto& GetMesh() { return m_Mesh; }
+		KK_API inline auto& GetEntities() { return m_Entities; }
 	};
 
 }

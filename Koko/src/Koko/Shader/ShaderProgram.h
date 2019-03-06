@@ -12,7 +12,7 @@ namespace Shader
 		std::string fragmentSource;
 	};
 
-	class KK_API ShaderProgram
+	class ShaderProgram
 	{
 	private:
 		std::unordered_map<std::string, int> m_UniformLocationCache;
@@ -21,11 +21,11 @@ namespace Shader
 		int m_RendererID;
 
 	public:
-		ShaderProgram(const std::string& filepath = "Resources/Shader/Basic.shader") noexcept;
-		~ShaderProgram();
+		KK_API ShaderProgram(const std::string& filepath = "Resources/Shader/Basic.shader") noexcept;
+		KK_API ~ShaderProgram();
 
-		void Bind() const;
-		void Unbind() const;
+		KK_API void Bind() const;
+		KK_API void Unbind() const;
 
 	private:
 		ShaderProgramSource ParseShader(const std::string& filepath);

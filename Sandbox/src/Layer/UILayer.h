@@ -1,16 +1,18 @@
-#ifndef GAME_LAYER_H
-#define GAME_LAYER_H
-#include "Layer/Layer.h"
+#ifndef UI_LAYER_H
+#define UI_LAYER_H
+#include "Koko/Layer/Layer.h"
+#include "Koko/Event/MouseEvent.h"
+#include "Koko/Event/Action.h"
 
-class GameLayer : public Koko::Layer
+class UILayer : public Koko::Layer
 {
 private:
 	std::vector<Action> m_Actions;
 	Koko::Entity::State m_State = Koko::Entity::State::None;
 
 public:
-	GameLayer();
-	~GameLayer();
+	UILayer();
+	~UILayer();
 
 	void OnAttach() override;
 	void OnUpdate()	override;
@@ -21,6 +23,7 @@ public:
 private:
 	bool OnMouseMovedEvent(Koko::MouseMovedEvent& e);
 	bool OnMouseButtonPressedEvent(Koko::MouseButtonPressedEvent& e);
+
 };
 
 #endif

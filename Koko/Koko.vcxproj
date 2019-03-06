@@ -19,26 +19,26 @@
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Koko</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -172,8 +172,6 @@
     <ClInclude Include="src\Koko\Mesh\VertexBuffer.h" />
     <ClInclude Include="src\Koko\Mesh\VertexBufferLayout.h" />
     <ClInclude Include="src\Koko\Mesh\stb_image.h" />
-    <ClInclude Include="src\Koko\Window.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Koko\Renderer\Renderer.h" />
     <ClInclude Include="src\Koko\Shader\ShaderBase.h" />
     <ClInclude Include="src\Koko\Shader\ShaderProgram.h" />
@@ -185,6 +183,8 @@
     <ClInclude Include="src\Koko\Utility\Node.h" />
     <ClInclude Include="src\Koko\Utility\Stack.h" />
     <ClInclude Include="src\Koko\Utility\XMLReader.h" />
+    <ClInclude Include="src\Koko\Window.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\kkpch.h" />
     <ClInclude Include="vendor\GLM\GLM\common.hpp" />
     <ClInclude Include="vendor\GLM\GLM\detail\_features.hpp" />
@@ -451,7 +451,6 @@
     <ClCompile Include="src\Koko\Mesh\Texture.cpp" />
     <ClCompile Include="src\Koko\Mesh\VertexArray.cpp" />
     <ClCompile Include="src\Koko\Mesh\VertexBuffer.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Koko\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Koko\Shader\ShaderBase.cpp" />
     <ClCompile Include="src\Koko\Shader\ShaderProgram.cpp" />
@@ -460,6 +459,7 @@
     <ClCompile Include="src\Koko\Utility\FileProgram.cpp" />
     <ClCompile Include="src\Koko\Utility\Node.cpp" />
     <ClCompile Include="src\Koko\Utility\XMLReader.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\kkpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

@@ -1,6 +1,6 @@
 #ifndef STATE_BASE_H
 #define STATE_BASE_H
-#include <memory>
+#include "kkpch.h"
 #include "Koko/Core.h"
 
 #include "Koko/Renderer/Renderer.h"
@@ -17,7 +17,7 @@ namespace Koko
 {
 	class Application;
 
-	class KK_API State
+	class State
 	{
 	public:
 		bool remove = false;
@@ -29,25 +29,25 @@ namespace Koko
 		Stack<Layer> m_LayerStack;
 
 	public:
-		State(const std::string& fileName) : m_Renderer(std::make_unique<Renderer>()) 
+		KK_API State(const std::string& fileName) : m_Renderer(std::make_unique<Renderer>())
 		{
 			LayerBuilder builder(fileName);
 			builder.Build(m_LayerStack);
 		}
-		virtual ~State() {}
+		KK_API virtual ~State() {}
 
-		virtual void Pause() {};
-		virtual void Resume() {};
+		KK_API virtual void Pause() {};
+		KK_API virtual void Resume() {};
 
-		virtual bool OnEvent(Event& e) = 0;
-		virtual void OnUpdate(Event& e) = 0;
-		virtual void Render() = 0;
+		KK_API virtual bool OnEvent(Event& e) = 0;
+		KK_API virtual void OnUpdate(Event& e) = 0;
+		KK_API virtual void Render() = 0;
 
 		//virtual void ChangeState(Application* app, State* state) {};
 
-		virtual void Notify(Stack<State>* stack) = 0;
-		virtual void NotifyLayers() = 0;
-		virtual void ReceiveAction(Action action) = 0;
+		KK_API virtual void Notify(Stack<State>* stack) = 0;
+		KK_API virtual void NotifyLayers() = 0;
+		KK_API virtual void ReceiveAction(Action action) = 0;
 	};
 }
 

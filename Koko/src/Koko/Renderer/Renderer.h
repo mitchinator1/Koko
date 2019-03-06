@@ -11,16 +11,16 @@ namespace Koko
 {
 	class Layer;
 
-	class KK_API Renderer
+	class Renderer
 	{
 	private:
 		std::unique_ptr<Shader::ShaderBase> m_Shader;
 
 	public:
-		Renderer();
-		virtual ~Renderer();
+		KK_API Renderer();
+		KK_API virtual ~Renderer();
 
-		void Render(Stack<Layer>& stack);
+		KK_API void Render(Stack<Layer>& stack);
 
 	private:
 		void RenderMesh(Mesh* mesh);

@@ -1,35 +1,35 @@
-#include "GameLayer.h"
+#include "UILayer.h"
 
-#include "State/State.h"
+#include "Koko/State/State.h"
 
-GameLayer::GameLayer()
-	{
-
-	}
-
-GameLayer::~GameLayer()
+UILayer::UILayer()
 {
 
 }
 
-void GameLayer::OnAttach()
+UILayer::~UILayer()
 {
-	CalculateMesh();
+
 }
 
-void GameLayer::OnUpdate()
+void UILayer::OnAttach()
 {
 	CalculateMesh();
 }
 
-void GameLayer::OnEvent(Koko::Event& e)
+void UILayer::OnUpdate()
+{
+	CalculateMesh();
+}
+
+void UILayer::OnEvent(Koko::Event& e)
 {
 	Koko::EventDispatcher dispatcher(e);
-	dispatcher.Dispatch<Koko::MouseMovedEvent>(BIND_EVENT_FN(GameLayer::OnMouseMovedEvent));
-	dispatcher.Dispatch<Koko::MouseButtonPressedEvent>(BIND_EVENT_FN(GameLayer::OnMouseButtonPressedEvent));
+	dispatcher.Dispatch<Koko::MouseMovedEvent>(BIND_EVENT_FN(UILayer::OnMouseMovedEvent));
+	dispatcher.Dispatch<Koko::MouseButtonPressedEvent>(BIND_EVENT_FN(UILayer::OnMouseButtonPressedEvent));
 }
 
-void GameLayer::Notify(Koko::State* state)
+void UILayer::Notify(Koko::State* state)
 {
 	for (auto action : m_Actions)
 	{
@@ -44,7 +44,7 @@ void GameLayer::Notify(Koko::State* state)
 	m_Actions.clear();
 }
 
-bool GameLayer::OnMouseMovedEvent(Koko::MouseMovedEvent& e)
+bool UILayer::OnMouseMovedEvent(Koko::MouseMovedEvent& e)
 {
 	bool hit = false;
 
@@ -64,7 +64,7 @@ bool GameLayer::OnMouseMovedEvent(Koko::MouseMovedEvent& e)
 	return hit;
 }
 
-bool GameLayer::OnMouseButtonPressedEvent(Koko::MouseButtonPressedEvent& e)
+bool UILayer::OnMouseButtonPressedEvent(Koko::MouseButtonPressedEvent& e)
 {
 	bool hit = false;
 	//TODO: Pick left or right button

@@ -12,7 +12,7 @@
 
 namespace Koko
 {
-	class KK_API Application
+	class Application
 	{
 	public:
 		std::unique_ptr<Window> m_Window;
@@ -21,16 +21,16 @@ namespace Koko
 		bool m_Running;
 
 	public:
-		Application();
-		~Application();
+		KK_API Application();
+		KK_API ~Application();
 
-		void Run();
+		KK_API void Run();
 
-		void Render();
+		KK_API void Render();
 
-		void OnEvent(Event& e);
+		KK_API void OnEvent(Event& e);
 
-		auto& GetState() { return m_StateStack; }
+		KK_API auto& GetState() { return m_StateStack; }
 
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
