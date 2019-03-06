@@ -15,7 +15,7 @@ MenuState::~MenuState()
 
 bool MenuState::OnEvent(Koko::Event& e)
 {
-	for (int it = m_LayerStack.size() - 1; it >= 0; --it)
+	for (int it = (int)m_LayerStack.size() - 1; it >= 0; --it)
 	{
 		m_LayerStack[it]->OnEvent(e);
 		if (e.Handled)

@@ -18,6 +18,7 @@ private:
 
 public:
 	Stack() noexcept
+		: m_EntityCount(0)
 	{
 	}
 
@@ -35,6 +36,7 @@ public:
 	{
 		t->OnAttach();
 		m_Entities.insert(begin(), t);
+		++m_EntityCount;
 	}
 
 	template <typename T>
@@ -42,6 +44,7 @@ public:
 		Push(T* t)
 	{
 		m_Entities.insert(begin(), t);
+		++m_EntityCount;
 	}
 
 	template <typename T>
@@ -50,6 +53,7 @@ public:
 	{
 		t->OnAttach();
 		m_Entities.insert(end(), t);
+		++m_EntityCount;
 	}
 
 	template <typename T>
@@ -57,6 +61,7 @@ public:
 		PushBack(T* t)
 	{
 		m_Entities.insert(end(), t);
+		++m_EntityCount;
 	}
 	
 	template <typename T>
@@ -68,6 +73,7 @@ public:
 		{
 			t->OnDetach();
 			m_Entities.erase(it);
+			--m_EntityCount;
 		}
 	}
 
@@ -79,6 +85,7 @@ public:
 		if (it != end())
 		{
 			m_Entities.erase(it);
+			--m_EntityCount;
 		}
 	}
 
@@ -87,6 +94,7 @@ public:
 		if (size() > 0)
 		{
 			auto temp = m_Entities.erase(begin());
+			--m_EntityCount;
 		}
 	}
 
@@ -97,6 +105,7 @@ public:
 		if (size() > 0)
 		{
 			m_Entities.erase(begin());
+			--m_EntityCount;
 		}
 	}
 
@@ -105,6 +114,7 @@ public:
 		if (size() > 0)
 		{
 			m_Entities.erase(end() - 1);
+			--m_EntityCount;
 		}
 	}
 
