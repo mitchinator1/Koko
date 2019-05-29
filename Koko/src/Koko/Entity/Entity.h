@@ -47,6 +47,7 @@ namespace Koko
 		{
 			float x = position.x;
 			float y = 100.0f - position.y;
+			float z = position.z;
 			float w = x + size.width;
 			float h = y - size.height;
 
@@ -55,10 +56,10 @@ namespace Koko
 			std::vector<float> vertices;
 
 			vertices.insert(vertices.end(), {
-				x,		y,	0.0f,		colour.r, colour.g, colour.b, colour.a,
-				x,		h,	0.0f,		colour.r, colour.g, colour.b, colour.a,
-				w,		h,	0.0f,		colour.r, colour.g, colour.b, colour.a,
-				w,		y,	0.0f,		colour.r, colour.g, colour.b, colour.a
+				x,	y,	z,		colour.r, colour.g, colour.b, colour.a,
+				x,	h,	z,		colour.r, colour.g, colour.b, colour.a,
+				w,	h,	z,		colour.r, colour.g, colour.b, colour.a,
+				w,	y,	z,		colour.r, colour.g, colour.b, colour.a
 				});
 
 			return vertices;

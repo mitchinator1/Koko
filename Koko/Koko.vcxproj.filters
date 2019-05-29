@@ -96,6 +96,9 @@
     <ClInclude Include="src\Koko\Event\MouseEvent.h">
       <Filter>src\Koko\Event</Filter>
     </ClInclude>
+    <ClInclude Include="src\Koko\Input.h">
+      <Filter>src\Koko</Filter>
+    </ClInclude>
     <ClInclude Include="src\Koko\Layer\Layer.h">
       <Filter>src\Koko\Layer</Filter>
     </ClInclude>
@@ -103,9 +106,6 @@
       <Filter>src\Koko\Layer</Filter>
     </ClInclude>
     <ClInclude Include="src\Koko\Layer\LayerDirector.h">
-      <Filter>src\Koko\Layer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Koko\Layer\UILayer.h">
       <Filter>src\Koko\Layer</Filter>
     </ClInclude>
     <ClInclude Include="src\Koko\Layer\UILayerBuilder.h">
@@ -136,6 +136,9 @@
       <Filter>src\Koko\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Koko\Shader\ShaderBase.h">
+      <Filter>src\Koko\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Shader\ShaderManager.h">
       <Filter>src\Koko\Shader</Filter>
     </ClInclude>
     <ClInclude Include="src\Koko\Shader\ShaderProgram.h">
@@ -933,6 +936,20 @@
     <ClInclude Include="vendor\GLM\GLM\vector_relational.hpp">
       <Filter>vendor\GLM\GLM</Filter>
     </ClInclude>
+    <ClInclude Include="src\Koko\Layer\UILayer.h" />
+    <ClInclude Include="src\Koko\KeyCodes.h" />
+    <ClInclude Include="src\Koko\MouseButtonCodes.h" />
+    <ClInclude Include="src\Koko\EntryPoint.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Koko\Text\Character.h" />
+    <ClInclude Include="src\Koko\Text\Line.h" />
+    <ClInclude Include="src\Koko\Text\MetaFile.h" />
+    <ClInclude Include="src\Koko\Text\TextLoader.h" />
+    <ClInclude Include="src\Koko\Text\TextMeshCreator.h" />
+    <ClInclude Include="src\Koko\Text\Word.h" />
+    <ClInclude Include="src\Koko\Text.h" />
+    <ClInclude Include="src\Koko\Utility\FontReader.h" />
+    <ClInclude Include="src\Koko\Text\Font.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Koko\Application.cpp">
@@ -945,9 +962,6 @@
       <Filter>src\Koko\Layer</Filter>
     </ClCompile>
     <ClCompile Include="src\Koko\Layer\LayerDirector.cpp">
-      <Filter>src\Koko\Layer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Koko\Layer\UILayer.cpp">
       <Filter>src\Koko\Layer</Filter>
     </ClCompile>
     <ClCompile Include="src\Koko\Mesh\IndexBuffer.cpp">
@@ -969,6 +983,9 @@
       <Filter>src\Koko\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Koko\Shader\ShaderBase.cpp">
+      <Filter>src\Koko\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Shader\ShaderManager.cpp">
       <Filter>src\Koko\Shader</Filter>
     </ClCompile>
     <ClCompile Include="src\Koko\Shader\ShaderProgram.cpp">
@@ -995,5 +1012,15 @@
     <ClCompile Include="src\kkpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Koko\Layer\UILayer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
+    <ClCompile Include="src\Koko\Text\Line.cpp" />
+    <ClCompile Include="src\Koko\Text\MetaFile.cpp" />
+    <ClCompile Include="src\Koko\Text\TextLoader.cpp" />
+    <ClCompile Include="src\Koko\Text\TextMeshCreator.cpp" />
+    <ClCompile Include="src\Koko\Text\Word.cpp" />
+    <ClCompile Include="src\Koko\Utility\FontReader.cpp" />
+    <ClCompile Include="src\Koko\Text.cpp" />
+    <ClCompile Include="src\Koko\Text\Font.cpp" />
   </ItemGroup>
 </Project>

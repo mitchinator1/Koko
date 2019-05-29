@@ -4,8 +4,10 @@
 #include "Koko/Application.h"
 #include "Koko/Layer/Layer.h"
 
-//#include "Hazel/Input.h"
-//#include "Hazel/KeyCodes.h"
-//#include "Hazel/MouseButtonCodes.h"
+#include "Koko/Input.h"
+#include "Koko/KeyCodes.h"
+#include "Koko/MouseButtonCodes.h"
+
+#include "Koko/EntryPoint.h"
 
 #endif

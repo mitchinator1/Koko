@@ -28,7 +28,7 @@ namespace Koko
 		}
 
 		CLASS_TYPE(MouseMoved)
-		CLASS_CATEGORY(Mouse | Input)
+		CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	};
 
 	class KK_API MouseScrolledEvent : public Event
@@ -51,7 +51,7 @@ namespace Koko
 		}
 
 		CLASS_TYPE(MouseScrolled)
-		CLASS_CATEGORY(Mouse | Input)
+		CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
 	};
 
@@ -60,7 +60,7 @@ namespace Koko
 	public:
 		inline int GetMouseButton() const { return m_Button; }
 
-		CLASS_CATEGORY(Mouse | Input)
+		CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
 	protected:
 		MouseButtonEvent(int button)

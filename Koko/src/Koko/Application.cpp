@@ -1,14 +1,15 @@
 #include "kkpch.h"
 #include "Application.h"
-#include "Event/MouseEvent.h"
-
-#include "GLFW/glfw3.h"
 
 namespace Koko
 {
+	Application* Application::s_Instance = nullptr;
+
 	Application::Application()
 		: m_Running(true)
 	{
+		s_Instance = this;
+
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
 	}
@@ -58,12 +59,6 @@ namespace Koko
 
 	bool Application::OnKeyEvent(KeyPressedEvent& e)
 	{
-		if (e.GetKeyCode() == GLFW_KEY_ESCAPE)
-		{
-			m_Running = false;
-			return true;
-		}
-
 		return false;
 	}
 

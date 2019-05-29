@@ -1,17 +1,23 @@
 #include "Koko.h"
+
 #include "State/MenuState.h"
 
-#include <string>
-
-int main()
+class Sandbox : public Koko::Application
 {
-	//Include proper files in Koko.h
-	auto Game = new Koko::Application;
-	Game->GetState().Push(new MenuState("Menu"));
+public:
+	Sandbox()
+	{
+		GetState().Push(new MenuState("Menu"));
+	}
 
-	Game->Run();
+	~Sandbox()
+	{
 
-	delete Game;
+	}
 
-	return 0;
+};
+
+Koko::Application* Koko::CreateApplication()
+{
+	return new Sandbox();
 }

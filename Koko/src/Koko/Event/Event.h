@@ -15,14 +15,14 @@ namespace Koko
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
-	enum Category
+	enum EventCategory
 	{
 		None		= 0,
-		App			= BIT(0),
-		Input		= BIT(1),
-		Keyboard	= BIT(2),
-		Mouse		= BIT(3),
-		MouseButton	= BIT(4)
+		EventCategoryApp			= BIT(0),
+		EventCategoryInput			= BIT(1),
+		EventCategoryKeyboard		= BIT(2),
+		EventCategoryMouse			= BIT(3),
+		EventCategoryMouseButton	= BIT(4)
 	};
 
 #define CLASS_TYPE(type)	static Type GetStaticType() { return Type::##type; }\
@@ -44,7 +44,7 @@ namespace Koko
 		virtual int GetCategoryFlags() const = 0;
 		virtual std::string ToString() const { return GetName(); }
 
-		inline bool IsInCategory(Category category)	{ return GetCategoryFlags() & category;	}
+		inline bool IsInCategory(EventCategory category)	{ return GetCategoryFlags() & category;	}
 	};
 
 	class EventDispatcher

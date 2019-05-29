@@ -6,7 +6,6 @@
 
 namespace Koko
 {
-	//TODO: Application functions, Fix Input
 	Input* Input::s_Instance = new WindowsInput();
 
 	bool WindowsInput::IsKeyPressedImpl(int keycode)

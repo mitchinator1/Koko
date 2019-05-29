@@ -7,7 +7,7 @@ namespace Koko
 {
 	UILayer::UILayer()
 	{
-
+		std::cout << "UI Layer created\n";
 	}
 
 	UILayer::~UILayer()

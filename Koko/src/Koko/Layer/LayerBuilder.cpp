@@ -28,6 +28,19 @@ namespace Koko
 
 		auto node = GetNodes("UI");
 
+		for (auto& attrib : node.Attributes)
+		{
+			if (attrib.first == "shader")
+			{
+				ui->AddShaderName(attrib.second);
+				continue;
+			}
+			if (attrib.first == "shaderpath")
+			{
+				ui->AddShaderPath(attrib.second);
+			}
+		}
+
 		for (auto& n : node.ChildNodes)
 		{
 			if (n.Name == "Entity")
@@ -45,6 +58,19 @@ namespace Koko
 		UILayer* layer = new UILayer();
 
 		node = GetNodes("Foreground");
+
+		for (auto& attrib : node.Attributes)
+		{
+			if (attrib.first == "shader")
+			{
+				layer->AddShaderName(attrib.second);
+				continue;
+			}
+			if (attrib.first == "shaderpath")
+			{
+				layer->AddShaderPath(attrib.second);
+			}
+		}
 
 		for (auto& n : node.ChildNodes)
 		{

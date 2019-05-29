@@ -9,7 +9,7 @@ namespace Koko
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
 
-		CLASS_CATEGORY(Keyboard | Input)
+		CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
 		KeyEvent(int keycode)
 			: m_KeyCode(keycode) {}

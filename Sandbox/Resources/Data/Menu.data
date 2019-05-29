@@ -1,7 +1,6 @@
 <Layers>
-  <UI test="true">
-    <Dropdown expand="down" activate="hover" position="25, 0" size="20, 10" colour="80, 60, 70, 100">
-      <Text font="arial" size="12">Hello</Text>
+  <UI shader="Basic" shaderpath="Resources/Shader/Basic.shader">
+    <Dropdown id="0" expand="right" activate="hover" position="25, 0" size="20, 10" colour="80, 60, 70, 100">
       <Entity state="hidden" type="button" position="0, 0" size="20, 10" colour="90, 50, 85, 100">
         <MousePress>layerremove</MousePress>
       </Entity>
@@ -13,8 +12,8 @@
       <MousePress>stateremove</MousePress>
     </Entity>
   </UI>
-  <Foreground>
-    <Entity type="button" position="35, 5" size="15, 15" colour="60, 60, 60, 100">
+  <Foreground id="1" shader="Basic" shaderpath="Resources/Shader/Basic.shader">
+    <Entity type="button" position="40, 40" size="10, 15" colour="60, 60, 60, 100">
       <MousePress>layerremove</MousePress>
     </Entity>
   </Foreground>

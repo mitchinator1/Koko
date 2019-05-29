@@ -3,9 +3,10 @@
 #include "kkpch.h"
 #include "Koko/Core.h"
 
+#include "../Shader/ShaderManager.h"
+
 template <typename T> class Stack;
 class Mesh;
-namespace Shader { class ShaderBase; }
 
 namespace Koko
 {
@@ -14,13 +15,14 @@ namespace Koko
 	class Renderer
 	{
 	private:
-		std::unique_ptr<Shader::ShaderBase> m_Shader;
+		std::unique_ptr<ShaderManager> m_ShaderManager;
 
 	public:
 		KK_API Renderer();
 		KK_API virtual ~Renderer();
 
 		KK_API void Render(Stack<Layer>& stack);
+		KK_API void Render(Mesh* mesh);
 
 	private:
 		void RenderMesh(Mesh* mesh);

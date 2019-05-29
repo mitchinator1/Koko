@@ -5,6 +5,9 @@
 
 class MenuState : public Koko::State
 {
+private:
+	Mesh* m_TextMesh = nullptr;
+
 public:
 	MenuState(const std::string& fileName = "Menu");
 	~MenuState();

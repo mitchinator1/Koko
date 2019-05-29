@@ -75,7 +75,7 @@ namespace Shader
 		{
 			int length;
 			glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
-			char* message = (char*)alloca(length * sizeof(char));
+			char* message = (char*)_malloca(length * sizeof(char)); // Changed from alloca to _malloca
 			glGetShaderInfoLog(id, length, &length, message);
 			std::cout << "Failed to compile " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader." << std::endl;
 			std::cout << message << std::endl;

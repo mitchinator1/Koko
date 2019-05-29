@@ -1,5 +1,5 @@
-#ifndef GE_PCH_H
-#define GE_PCH_H
+#ifndef KK_PCH_H
+#define KK_PCH_H
 
 #include <iostream>
 #include <memory>

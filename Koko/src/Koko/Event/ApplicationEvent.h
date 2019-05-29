@@ -10,7 +10,7 @@ namespace Koko
 		WindowCloseEvent() {}
 
 		CLASS_TYPE(WindowClose)
-		CLASS_CATEGORY(App)
+		CLASS_CATEGORY(EventCategoryApp)
 	};
 
 	class KK_API WindowResizeEvent : public Event
@@ -33,7 +33,7 @@ namespace Koko
 		}
 
 		CLASS_TYPE(WindowResize)
-		CLASS_CATEGORY(App)		
+		CLASS_CATEGORY(EventCategoryApp)
 	};
 
 	class KK_API AppTickEvent : public Event
@@ -42,7 +42,7 @@ namespace Koko
 		AppTickEvent() {}
 
 		CLASS_TYPE(AppTick)
-		CLASS_CATEGORY(App)
+		CLASS_CATEGORY(EventCategoryApp)
 	};
 
 	class KK_API AppUpdateEvent : public Event
@@ -51,7 +51,7 @@ namespace Koko
 		AppUpdateEvent() {}
 
 		CLASS_TYPE(AppUpdate)
-		CLASS_CATEGORY(App)
+		CLASS_CATEGORY(EventCategoryApp)
 	};
 
 	class KK_API AppRenderEvent : public Event
@@ -60,7 +60,7 @@ namespace Koko
 		AppRenderEvent() {}
 
 		CLASS_TYPE(AppRender)
-		CLASS_CATEGORY(App)
+		CLASS_CATEGORY(EventCategoryApp)
 	};
 }
 

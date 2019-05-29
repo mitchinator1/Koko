@@ -11,8 +11,8 @@ static bool s_GLFWInitialized = false;
 
 static void GLFWErrorCallback(int error, const char* description)
 {
+	//TODO: Better error handling
 	std::cout << "GLFW Error\n";
-	//HZ_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
 }
 
 Window* Window::Create(const WindowProps& props)
@@ -39,7 +39,6 @@ void WindowsWindow::Init(const WindowProps& props)
 	if (!s_GLFWInitialized)
 	{
 		int success = glfwInit();
-		//HZ_CORE_ASSERT(success, "Could not intialize GLFW!");
 		glfwSetErrorCallback(GLFWErrorCallback);
 		s_GLFWInitialized = true;
 	}

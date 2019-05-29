@@ -2,6 +2,7 @@
 #define INPUT_H
 #include "kkpch.h"
 #include "Koko/Core.h"
+#include "Koko/KeyCodes.h"
 
 namespace Koko
 {

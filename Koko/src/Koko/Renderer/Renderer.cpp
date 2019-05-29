@@ -1,9 +1,7 @@
 #include "kkpch.h"
 #include "Renderer.h"
-#include "Koko/Window.h"
 
 #include "Koko/Mesh/Mesh.h"
-#include "Koko/Shader/ShaderBase.h"
 
 #include "Koko/Utility/Stack.h"
 #include "Koko/Layer/Layer.h"
@@ -11,14 +9,18 @@
 namespace Koko
 {
 	Renderer::Renderer()
-		: m_Shader(std::make_unique<Shader::ShaderBase>())
+		//: m_ShaderManager(std::make_unique<ShaderManager>())
+		: m_ShaderManager(nullptr)
 	{
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glEnable(GL_DEPTH);
+
+		//m_ShaderManager->CreateShader("Basic", "Resources/Shader/Basic.shader");
 	}
 
 	Renderer::~Renderer()
 	{
+
 	}
 
 	void Renderer::RenderMesh(Mesh* mesh)
@@ -45,9 +47,17 @@ namespace Koko
 		for (auto& layer : stack)
 		{
 			RenderMesh(layer->GetMesh());
+			RenderMesh(layer->GetTextMesh());
 		}
 
 		CleanUp();
+	}
+
+	void Renderer::Render(Mesh* mesh)
+	{
+		mesh->Bind();
+		glDrawElements(mesh->GetMode(), mesh->GetCount(), GL_UNSIGNED_INT, nullptr);
+		mesh->Unbind();
 	}
 
 	void Renderer::Clear() const
@@ -57,11 +67,11 @@ namespace Koko
 
 	void Renderer::Prepare() const
 	{
-		m_Shader->Bind();
+		//m_ShaderManager->GetShader("Basic")->Bind();
 	}
 
 	void Renderer::CleanUp() const
 	{
-		m_Shader->Unbind();
+		//m_ShaderManager->Unbind();
 	}
 }

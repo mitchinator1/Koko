@@ -12,31 +12,38 @@
 
 namespace Koko
 {
-	class Application
+	class KK_API Application
 	{
 	public:
 		std::unique_ptr<Window> m_Window;
 		Stack<Koko::State> m_StateStack;
 
-		bool m_Running;
+		bool m_Running = true;
+
+		static Application* s_Instance;
 
 	public:
-		KK_API Application();
-		KK_API ~Application();
+		Application();
+		~Application();
 
-		KK_API void Run();
+		void Run();
 
-		KK_API void Render();
+		void Render();
 
-		KK_API void OnEvent(Event& e);
+		void OnEvent(Event& e);
 
-		KK_API auto& GetState() { return m_StateStack; }
+		auto& GetState() { return m_StateStack; }
+
+		inline Window& GetWindow() { return *m_Window; }
+		inline static Application& Get() { return *s_Instance; }
 
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnKeyEvent(KeyPressedEvent& e);
 	};
 
+	// To be defined in CLIENT
+	Application* CreateApplication();
 }
 
 #endif

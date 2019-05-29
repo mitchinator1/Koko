@@ -1,7 +1,6 @@
 #ifndef VERTEX_ARRAY_H
 #define VERTEX_ARRAY_H
-#include <vector>
-#include <memory>
+#include "kkpch.h"
 #include "VertexBuffer.h"
 #include "VertexBufferLayout.h"
 #include "IndexBuffer.h"

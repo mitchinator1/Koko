@@ -1,0 +1,10 @@
+<Buttons>
+  <Text id="0">
+    <EN>English Words</EN>
+    <FR>Mots en Francais</FR>
+  </Text>
+  <Text id="1">
+    <EN>Second string</EN>
+    <FR>Deuxieme Mots</FR>
+  </Text>
+</Buttons>

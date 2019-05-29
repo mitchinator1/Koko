@@ -2,10 +2,14 @@
 #define CORE_H
 
 #ifdef KOKO_PLATFORM_WINDOWS
-	#ifdef KOKO_BUILD_DLL
-		#define KK_API __declspec(dllexport)
+	#if KOKO_DYNAMIC_LINK
+		#ifdef KOKO_BUILD_DLL
+			#define KK_API __declspec(dllexport)
+		#else
+			#define KK_API __declspec(dllimport)
+		#endif
 	#else
-		#define KK_API __declspec(dllimport)
+		#define KK_API
 	#endif
 #else
 	#error Koko only supports Windows!

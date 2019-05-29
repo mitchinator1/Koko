@@ -14,13 +14,18 @@ namespace Koko
 	{
 	protected:
 		Mesh* m_Mesh;
+		Mesh* m_TextMesh;
+
 		std::vector<Entity*> m_Entities;
+
+		std::string m_ShaderName = "";
+		std::string m_ShaderPath = "";
 
 	public:
 		Entity::State updatestate = Entity::State::None;
 
 	public:
-		KK_API Layer() {}
+		KK_API Layer() : m_Mesh(nullptr), m_TextMesh(nullptr) {}
 		KK_API virtual ~Layer()
 		{
 			for (Entity* entity : m_Entities)
@@ -45,6 +50,16 @@ namespace Koko
 			}
 		}
 
+		KK_API void AddShaderName(const std::string& name)
+		{
+			m_ShaderName = name;
+		}
+
+		KK_API void AddShaderPath(const std::string& path)
+		{
+			m_ShaderPath = path;
+		}
+
 		KK_API virtual void Notify(State* state) {}
 
 		KK_API void CalculateMesh()
@@ -62,6 +77,10 @@ namespace Koko
 
 		KK_API inline auto& GetMesh() { return m_Mesh; }
 		KK_API inline auto& GetEntities() { return m_Entities; }
+		KK_API inline auto& GetTextMesh() { return m_TextMesh; }
+
+		KK_API const inline auto& GetShaderName() { return m_ShaderName; }
+		KK_API const inline auto& GetShaderPath() { return m_ShaderPath; }
 	};
 
 }
