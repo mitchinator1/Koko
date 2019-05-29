@@ -2,6 +2,7 @@
 #include "WindowsWindow.h"
 
 #include "glad/glad.h"
+#include "GLFW/glfw3.h"
 
 #include "Koko/Event/ApplicationEvent.h"
 #include "Koko/Event/KeyEvent.h"

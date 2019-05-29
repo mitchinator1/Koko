@@ -1,13 +1,10 @@
 #include "kkpch.h"
 #include "ShaderProgram.h"
 
-#include <fstream>
-#include <sstream>
-
 #include "glad/glad.h"
 #include "GLM/gtc/type_ptr.hpp"
 
-namespace Shader
+namespace Koko
 {
 	ShaderProgram::ShaderProgram(const std::string& filepath) noexcept
 		:m_RendererID(0)
@@ -29,6 +26,15 @@ namespace Shader
 	void ShaderProgram::Unbind() const
 	{
 		glUseProgram(0);
+	}
+
+	bool ShaderProgram::IsValid() const
+	{
+		if (m_RendererID == 0)
+		{
+			return false;
+		}
+		return true;
 	}
 
 	ShaderProgramSource ShaderProgram::ParseShader(const std::string& filepath)
@@ -65,6 +71,14 @@ namespace Shader
 	unsigned int ShaderProgram::CompileShader(unsigned int type, const std::string& source)
 	{
 		unsigned int id = glCreateShader(type);
+
+		if (source.empty())
+		{
+			glDeleteShader(id);
+			id = 0;
+			return id;
+		}
+
 		const char* src = source.c_str();
 		glShaderSource(id, 1, &src, nullptr);
 		glCompileShader(id);
@@ -77,8 +91,8 @@ namespace Shader
 			glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
 			char* message = (char*)_malloca(length * sizeof(char)); // Changed from alloca to _malloca
 			glGetShaderInfoLog(id, length, &length, message);
-			std::cout << "Failed to compile " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader." << std::endl;
-			std::cout << message << std::endl;
+			std::cout << "Failed to compile " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader.\n";
+			std::cout << message << '\n';
 			glDeleteShader(id);
 			return 0;
 		}
@@ -91,6 +105,15 @@ namespace Shader
 		unsigned int program = glCreateProgram();
 		unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
 		unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
+
+		if (vs == 0 || fs == 0)
+		{
+			glDeleteShader(vs);
+			glDeleteShader(fs);
+			glDeleteProgram(program);
+			program = 0;
+			return program;
+		}
 
 		glAttachShader(program, vs);
 		glAttachShader(program, fs);

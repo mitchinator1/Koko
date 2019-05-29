@@ -3,57 +3,44 @@
 
 namespace Koko
 {
-	ShaderManager::ShaderManager()
+	ShaderManager* ShaderManager::s_Instance = new ShaderManager();
+	std::unordered_map<std::string, std::unique_ptr<ShaderBase>> ShaderManager::s_Shaders = {};
+
+	bool ShaderManager::CreateShader(const std::string& name, const std::string& filepath)
 	{
-
-	}
-
-	ShaderManager::~ShaderManager()
-	{
-
-	}
-
-	void ShaderManager::CreateShader(const std::string& name, const std::string& filepath)
-	{
-		if (m_Shaders.find(name) != m_Shaders.end())
+		if (s_Shaders.find(name) != s_Shaders.end())
 		{
-			return;
+			return true;
 		}
 
-		m_Shaders.emplace(name, std::make_unique<Shader::ShaderBase>(filepath));
+		s_Shaders.emplace(name, std::make_unique<ShaderBase>(filepath));
 
-		std::cout << "Shader '" << name << "' added from " << filepath << '\n';
-
-	}
-
-	ShaderManager* ShaderManager::GetShader(const std::string& name)
-	{
-		if (m_Shaders.find(name) != m_Shaders.end())
+		if (!s_Shaders[name]->IsValid())
 		{
-			m_ActiveShader = name;
+			std::cout << "Shader '" << name << "' at '" << filepath << "' not valid.\n";
+			s_Shaders.erase(name);
+			return false;
 		}
 
-		return this;
+		return true;
 	}
 
-	void ShaderManager::Bind()
+	ShaderBase* ShaderManager::GetShader(const std::string& name)
 	{
-		if (m_ActiveShader == "")
+		if (s_Shaders.find(name) != s_Shaders.end())
 		{
-			return;
+			return s_Shaders[name].get();
 		}
 
-		m_Shaders[m_ActiveShader]->Bind();
+		return s_Shaders["Basic"].get();
 	}
 
-	void ShaderManager::Unbind()
+	void ShaderManager::DeleteShader(const std::string& name)
 	{
-		if (m_ActiveShader == "")
+		if (s_Shaders.find(name) != s_Shaders.end())
 		{
-			return;
+			s_Shaders.erase(name);
 		}
-
-		m_Shaders[m_ActiveShader]->Unbind();
 	}
 
 }

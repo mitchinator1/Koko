@@ -4,7 +4,7 @@
 #include "Koko/Core.h"
 #include "GLM/glm.hpp"
 
-namespace Shader
+namespace Koko
 {
 	struct ShaderProgramSource
 	{
@@ -22,10 +22,12 @@ namespace Shader
 
 	public:
 		KK_API ShaderProgram(const std::string& filepath = "Resources/Shader/Basic.shader") noexcept;
-		KK_API ~ShaderProgram();
+		KK_API virtual ~ShaderProgram();
 
 		KK_API void Bind() const;
 		KK_API void Unbind() const;
+
+		KK_API bool IsValid() const;
 
 	private:
 		ShaderProgramSource ParseShader(const std::string& filepath);

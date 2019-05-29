@@ -2,7 +2,7 @@
 #include "ShaderBase.h"
 #include "glad/glad.h"
 
-namespace Shader
+namespace Koko
 {
 	ShaderBase::ShaderBase(const std::string& filepath) noexcept
 		: ShaderProgram(filepath)
@@ -62,7 +62,9 @@ namespace Shader
 
 		int location = glGetUniformLocation(m_RendererID, name.c_str());
 		if (location == -1)
-			std::cout << "Shader::Uniform '" << name << "' not found." << std::endl;
+		{
+			std::cout << "Shader::Uniform '" << name << "' not found.\n";
+		}
 		m_UniformLocationCache[name] = location;
 		return location;
 	}

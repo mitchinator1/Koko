@@ -4,6 +4,8 @@
 #include "Koko/Text.h"
 #include "Koko/Mesh/Texture.h"
 
+#include "Koko/Shader/ShaderManager.h"
+
 MenuState::MenuState(const std::string& fileName)
 	: Koko::State(fileName)
 {
@@ -51,18 +53,16 @@ void MenuState::OnUpdate(Koko::Event& e)
 
 void MenuState::Render()
 {
-	m_ShaderManager->GetShader("Basic")->Bind();
+	Koko::ShaderManager::GetShader("Basic")->Bind();
 	m_Renderer->Render(m_LayerStack);
-	m_ShaderManager->Unbind();
 
 	if (m_TextMesh)
 	{
-		m_ShaderManager->GetShader("Text")->Bind();
+		Koko::ShaderManager::GetShader("Text")->Bind();
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		m_Renderer->Render(m_TextMesh);
-		m_ShaderManager->Unbind();
 	}
 }
 

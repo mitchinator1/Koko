@@ -2,7 +2,7 @@
 #define WINDOWS_WINDOW_H
 #include "Koko/Window.h"
 
-#include "GLFW/glfw3.h"
+struct GLFWwindow;
 
 class WindowsWindow : public Window
 {

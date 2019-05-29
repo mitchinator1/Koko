@@ -2,7 +2,7 @@
 #define SHADER_BASE_H
 #include "ShaderProgram.h"
 
-namespace Shader
+namespace Koko
 {
 	class ShaderBase : public ShaderProgram
 	{
