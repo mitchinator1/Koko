@@ -1,5 +1,5 @@
 <Buttons>
-  <Text id="0">
+  <Text id="0" font="Arial" size="2">
     <EN>English Words</EN>
     <FR>Mots en Francais</FR>
   </Text>

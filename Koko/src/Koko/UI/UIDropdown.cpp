@@ -99,7 +99,14 @@ namespace Koko
 
 	void UIDropdown::AddEntity(Entity* entity)
 	{
-		UpdateChildPosition(entity);
+		if (m_Entities.size() == 0)
+		{
+			UpdateChildPosition(entity);
+		}
+		else
+		{
+			UpdateChildGroupPosition(entity);
+		}
 
 		m_Entities.emplace_back(entity);
 		state = State::Update;
@@ -116,6 +123,19 @@ namespace Koko
 		if (d == "right")	direction = Direction::Right;
 		if (d == "down")	direction = Direction::Down;
 		if (d == "left")	direction = Direction::Left;
+	}
+
+	void UIDropdown::SetGroupingDirection(Direction d)
+	{
+		this->groupingDirection = d;
+	}
+
+	void UIDropdown::SetGroupingDirection(const std::string& d)
+	{
+		if (d == "up")		groupingDirection = Direction::Up;
+		if (d == "right")	groupingDirection = Direction::Right;
+		if (d == "down")	groupingDirection = Direction::Down;
+		if (d == "left")	groupingDirection = Direction::Left;
 	}
 
 	bool UIDropdown::Reveal()
@@ -161,17 +181,44 @@ namespace Koko
 			entity->position.y += position.y;
 			entity->position.x = position.x + size.width;
 		}
-							   break;
+							 break;
 		case Direction::Down: {
 			entity->position.x += position.x;
 			entity->position.y = position.y + entity->position.y + size.height;
 		}
-							  break;
+							 break;
 		case Direction::Left: {
 			entity->position.y += position.y;
 			entity->position.x = position.x - entity->position.x - entity->size.width;
 		}
-							  break;
+							 break;
+		}
+	}
+
+	void UIDropdown::UpdateChildGroupPosition(Entity* entity)
+	{
+		switch (groupingDirection)
+		{
+		case Direction::Up: {
+			entity->position.x += m_Entities.back()->position.x;
+			entity->position.y = m_Entities.back()->position.y - entity->position.y - entity->size.height;
+		}
+							break;
+		case Direction::Right: {
+			entity->position.y = m_Entities.back()->position.y;
+			entity->position.x = m_Entities.back()->position.x + m_Entities.back()->size.width;
+		}
+							break;
+		case Direction::Down: {
+			entity->position.x = m_Entities.back()->position.x;
+			entity->position.y = m_Entities.back()->position.y + entity->position.y + size.height;
+		}
+							 break;
+		case Direction::Left: {
+			entity->position.y += m_Entities.back()->position.y;
+			entity->position.x = m_Entities.back()->position.x - entity->position.x - entity->size.width;
+		}
+							 break;
 		}
 	}
 

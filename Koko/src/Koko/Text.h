@@ -47,7 +47,7 @@ namespace Koko
 		Text(const TextData& data);
 		~Text() {};
 
-		void CreateMesh(std::shared_ptr<Font> font);
+		void CreateMesh(Font* font);
 
 		/*virtual void Update();
 		virtual bool Continue();

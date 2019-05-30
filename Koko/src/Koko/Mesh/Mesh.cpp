@@ -87,7 +87,7 @@ void Mesh::UpdateCount(unsigned int count)
 	m_VA->UpdateCount(count);
 }
 
-void Mesh::SetTexture(std::shared_ptr<Texture>& texture)
+void Mesh::SetTexture(Texture* texture)
 {
 	m_Texture = texture;
 }

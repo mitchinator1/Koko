@@ -36,38 +36,6 @@ namespace Koko
 
 		while (!m_File.Empty())
 		{
-			/*
-			Node childNode;
-
-			childNode.Name = GetName();
-			GetAttributes(childNode);
-
-			m_File.SetStart();
-			m_File.SetEndString("</" + childNode.Name + ">");
-			std::string contents = m_File.GetSetString();
-
-			while (!contents.empty())
-			{
-				Node n;
-				n.Name = GetName(contents);
-				GetAttributes(n, contents);
-
-				size_t start = 0;
-				size_t end = contents.find_first_of('<');
-
-				node.InnerText = contents.substr(start, end - start);
-				contents.erase(start, end);
-
-				end = contents.find_first_of('>') + 1;
-				contents.erase(start, end);
-
-				childNode.ChildNodes.emplace_back(n);
-			}
-			m_File.SetStart();
-			m_File.SetEnd(">", 1);
-			m_File.GetSetString();
-			*/
-
 			node.ChildNodes.emplace_back(GetNode());
 		}
 
@@ -89,21 +57,9 @@ namespace Koko
 
 		while (!contents.empty())
 		{
-			/*Node n;
-			n.Name = GetName(contents);
-			GetAttributes(n, contents);
-
-			size_t start = 0;
-			size_t end = contents.find_first_of('<');
-
-			node.InnerText = contents.substr(start, end - start);
-			contents.erase(start, end);
-
-			end = contents.find_first_of('>') + 1;
-			contents.erase(start, end);*/
-
 			node.ChildNodes.emplace_back(GetNode(contents));
 		}
+
 		m_File.SetStart();
 		m_File.SetEnd(">", 1);
 		m_File.GetSetString();
@@ -124,7 +80,7 @@ namespace Koko
 		node.InnerText = content.substr(start, end - start);
 		content.erase(start, end);
 
-		if (content.find("</") >= 2)
+		while (content.find("</") >= 2)
 		{
 			node.ChildNodes.emplace_back(GetNode(content));
 		}

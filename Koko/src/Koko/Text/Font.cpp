@@ -8,7 +8,7 @@ namespace Koko
 	Font::Font(const std::string& name, double width, double height) noexcept
 		: m_Name(name)
 		, m_Loader(std::make_unique<TextMeshCreator>("Resources/Font/" + name + ".fnt", width, height))
-		, m_Texture(std::make_shared<Texture>("Resources/Font/" + name + ".png"))
+		, m_Texture(new Texture("Resources/Font/" + name + ".png"))
 	{
 
 	}
@@ -23,7 +23,7 @@ namespace Koko
 		return m_Loader->CreateVertexData(data);
 	}
 
-	std::shared_ptr<Texture>& Font::GetTexture()
+	Texture* Font::GetTexture()
 	{
 		return m_Texture;
 	}

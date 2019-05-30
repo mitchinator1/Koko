@@ -17,7 +17,7 @@ namespace Koko
 
 	}
 
-	void Text::CreateMesh(std::shared_ptr<Font> font)
+	void Text::CreateMesh(Font* font)
 	{
 		LoadText();
 		m_Vertices = font->LoadText(m_Data);

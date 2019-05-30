@@ -5,6 +5,8 @@
 #include "Koko/UI/UIEntity.h"
 #include "Koko/UI/UIDropdown.h"
 
+#include "Koko/Text.h"
+
 namespace Koko
 {
 	void EntityDirector::SetBuilder(Builder* builder)
@@ -58,9 +60,27 @@ namespace Koko
 
 		for (auto& n : node.ChildNodes)
 		{
-			if (n.Name == "Entity")
+			if (n.Name == "Children")
 			{
-				dropdown->AddEntity(GetUIEntity(n));
+				dropdown->SetGroupingDirection(n.GetValue("grouping"));
+
+				for (auto& child : n.ChildNodes)
+				{ 
+					if (child.Name == "Entity")
+					{
+						dropdown->AddEntity(GetUIEntity(child));
+					}
+				}
+			}
+
+			if (n.Name == "Text")
+			{
+				std::cout << "Text found: ";
+				for (auto& a : n.Attributes)
+				{
+					std::cout << a.first << ": " << a.second << ", ";
+					std::cout << std::endl;
+				}
 			}
 		}
 

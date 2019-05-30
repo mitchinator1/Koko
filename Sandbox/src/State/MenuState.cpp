@@ -2,16 +2,15 @@
 #include "Koko/Input.h"
 
 #include "Koko/Text.h"
-#include "Koko/Mesh/Texture.h"
 
 #include "Koko/Shader/ShaderManager.h"
 
 MenuState::MenuState(const std::string& fileName)
 	: Koko::State(fileName)
 {
-	//TODO: Load text from file, creating all needed TextData. Merge Text vertices to create text mesh. Text Mesh will need differing Z Values
-	Koko::Text text({ "Arial", "Test string", 2.0f, { 30.0f, 40.0f, 0.0f }, { 1.0f, 1.0f, 0.8f, 1.0f } });
-	auto font = std::make_shared<Koko::Font>(text.GetData().Font, 1800.0, 1400.0);
+	//TODO: Creating all needed TextData from file. Merge Text vertices to create text mesh. Text Mesh will need differing Z Values
+	Koko::Text text({ "Arial", "Test string", 2.0f, { 30.0f, 40.0f, 0.0f }, { 0.6f, 0.3f, 0.8f, 1.0f } });
+	auto font = new Koko::Font(text.GetData().Font, 1800.0, 1400.0);
 	text.CreateMesh(font);
 
 	std::vector<unsigned int> strides = { 3, 2, 3 };

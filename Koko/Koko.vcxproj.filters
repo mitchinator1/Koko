@@ -108,9 +108,6 @@
     <ClInclude Include="src\Koko\Layer\LayerDirector.h">
       <Filter>src\Koko\Layer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Layer\UILayerBuilder.h">
-      <Filter>src\Koko\Layer</Filter>
-    </ClInclude>
     <ClInclude Include="src\Koko\Mesh\IndexBuffer.h">
       <Filter>src\Koko\Mesh</Filter>
     </ClInclude>

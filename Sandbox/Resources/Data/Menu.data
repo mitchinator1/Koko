@@ -1,18 +1,21 @@
 <Layers>
   <UI shader="Basic" shaderpath="Resources/Shader/Basic.shader">
-    <Dropdown id="0" expand="right" activate="hover" position="25, 0" size="20, 10" colour="80, 60, 70, 100">
-      <Entity state="hidden" type="button" position="0, 0" size="20, 10" colour="90, 50, 85, 100">
-        <MousePress>layerremove</MousePress>
-      </Entity>
-      <Entity state="hidden" type="button" position="0, 10" size="20, 10" colour="80, 80, 85, 100">
-        <MousePress>entityremove</MousePress>
-      </Entity>
+    <Dropdown expand="right" activate="hover" position="15, 0" size="15, 5" colour="80, 60, 70, 100">
+      <Text id="0" font="Arial" size="1" centered="true"></Text>
+      <Children grouping="down">
+        <Entity state="hidden" type="button" size="10, 5" colour="70, 50, 85, 100">
+          <MousePress>entityremove</MousePress>
+        </Entity>
+        <Entity state="hidden" type="button" size="10, 5" colour="70, 80, 85, 100">
+          <MousePress>entityremove</MousePress>
+        </Entity>
+      </Children>
     </Dropdown>
-    <Entity type="icon" position="0, 0" size="25, 10" colour="0, 50, 70, 100">
+    <Entity type="icon" position="0, 0" size="15, 10" colour="0, 50, 70, 100">
       <MousePress>stateremove</MousePress>
     </Entity>
   </UI>
-  <Foreground id="1" shader="Basic" shaderpath="Resources/Shader/Basic.shader">
+  <Foreground shader="Basic" shaderpath="Resources/Shader/Basic.shader">
     <Entity type="button" position="40, 40" size="10, 15" colour="60, 60, 60, 100">
       <MousePress>layerremove</MousePress>
     </Entity>

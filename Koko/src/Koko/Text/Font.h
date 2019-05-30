@@ -13,7 +13,7 @@ namespace Koko
 	private:
 		std::string m_Name;
 		std::unique_ptr<TextMeshCreator> m_Loader;
-		std::shared_ptr<Texture> m_Texture;
+		Texture* m_Texture;
 
 	public:
 		Font(const std::string& name = "Arial", double width = 1800.0, double height = 1400.0) noexcept;
@@ -21,7 +21,7 @@ namespace Koko
 
 		std::vector<float> LoadText(TextData& data)	const;
 
-		std::shared_ptr<Texture>& GetTexture();
+		Texture* GetTexture();
 		//const std::string& GetName()				const { return m_Name; }
 
 		bool operator==(const Font& rhs)			const

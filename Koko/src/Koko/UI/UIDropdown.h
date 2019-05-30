@@ -17,6 +17,7 @@ namespace Koko
 
 	private:
 		Direction direction = Direction::Up;
+		Direction groupingDirection = Direction::Down;
 
 	public:
 		~UIDropdown();
@@ -30,12 +31,16 @@ namespace Koko
 
 		void SetDirection(Direction d);
 		void SetDirection(const std::string& d);
+		void SetGroupingDirection(Direction d);
+		void SetGroupingDirection(const std::string& d);
+
 
 	private:
 		bool Reveal();
 		bool Hide();
 
 		void UpdateChildPosition(Entity* entity);
+		void UpdateChildGroupPosition(Entity* entity);
 
 	};
 }
