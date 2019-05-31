@@ -3,21 +3,10 @@
 
 #include "Koko/Text.h"
 
-#include "Koko/Shader/ShaderManager.h"
-
 MenuState::MenuState(const std::string& fileName)
 	: Koko::State(fileName)
 {
-	//TODO: Create all TextData from file. Merge Text vertices to create text mesh. Text Mesh will need differing Z Values
-	
-	Koko::Text text({ "Arial", "Test string", 2.0f, { 30.0f, 40.0f, 0.0f }, { 0.6f, 0.3f, 0.8f, 1.0f } });
-	auto font = new Koko::Font(text.GetData().Font, 1800.0, 1400.0);
-	text.CreateMesh(font);
 
-	std::vector<unsigned int> strides = { 3, 2, 3 };
-	m_TextMesh = new Mesh(text.GetVertices(), strides);
-
-	m_TextMesh->SetTexture(font->GetTexture());
 }
 
 MenuState::~MenuState()
@@ -53,14 +42,7 @@ void MenuState::OnUpdate(Koko::Event& e)
 
 void MenuState::Render()
 {
-	//Koko::ShaderManager::GetShader("Basic")->Bind();
 	m_Renderer->Render(m_LayerStack);
-
-	/*if (m_TextMesh)
-	{
-		Koko::ShaderManager::GetShader("Text")->Bind();
-		m_Renderer->Render(m_TextMesh);
-	}*/
 }
 
 void MenuState::Notify(Stack<State>* stack)

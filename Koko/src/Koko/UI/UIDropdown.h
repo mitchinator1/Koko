@@ -34,7 +34,6 @@ namespace Koko
 		void SetGroupingDirection(Direction d);
 		void SetGroupingDirection(const std::string& d);
 
-
 	private:
 		bool Reveal();
 		bool Hide();

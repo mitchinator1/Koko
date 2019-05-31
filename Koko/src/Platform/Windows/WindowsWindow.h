@@ -1,44 +1,48 @@
 #ifndef WINDOWS_WINDOW_H
 #define WINDOWS_WINDOW_H
 #include "Koko/Window.h"
+#include "Koko/Renderer/GraphicsContext.h"
 
-struct GLFWwindow;
+#include "GLFW/glfw3.h"
 
-class WindowsWindow : public Window
+namespace Koko
 {
-private:
-	GLFWwindow* m_Window;
-
-	struct WindowData
+	class WindowsWindow : public Window
 	{
-		std::string Title;
-		unsigned int Width, Height;
-		bool VSync;
+	private:
+		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
-		EventCallbackFn EventCallback;
+		struct WindowData
+		{
+			std::string Title;
+			unsigned int Width, Height;
+			bool VSync;
+
+			EventCallbackFn EventCallback;
+		};
+
+		WindowData m_Data;
+
+	public:
+		WindowsWindow(const WindowProps& props);
+		virtual ~WindowsWindow();
+
+		void OnUpdate() override;
+
+		inline unsigned int GetWidth() const override { return m_Data.Width; }
+		inline unsigned int GetHeight() const override { return m_Data.Height; }
+
+		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
+		void SetVSync(bool enabled) override;
+		bool IsVSync() const override;
+
+		inline virtual void* GetNativeWindow() const { return m_Window; }
+
+	private:
+		virtual void Init(const WindowProps& props);
+		virtual void Shutdown();
+
 	};
-
-	WindowData m_Data;
-
-public:
-	WindowsWindow(const WindowProps& props);
-	virtual ~WindowsWindow();
-
-	void OnUpdate() override;
-
-	inline unsigned int GetWidth() const override { return m_Data.Width; }
-	inline unsigned int GetHeight() const override { return m_Data.Height; }
-
-	inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
-	void SetVSync(bool enabled) override;
-	bool IsVSync() const override;
-
-	inline virtual void* GetNativeWindow() const { return m_Window; }
-
-private:
-	virtual void Init(const WindowProps& props);
-	virtual void Shutdown();
-
-};
-
+}
 #endif

@@ -87,8 +87,8 @@ namespace Koko
 				data.ID = std::stoi(n.GetValue("id"), &sz);
 
 				data.X = dropdown->position.x;
-				data.Y = dropdown->position.y + (dropdown->size.height / 4.0f);
-				data.Z = dropdown->position.z - 10;
+				data.Y = dropdown->position.y + (data.Size * 2.0f);
+				data.Z = dropdown->position.z;
 
 				dropdown->SetText(new Text(data));
 

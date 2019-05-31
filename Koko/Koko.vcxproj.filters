@@ -947,6 +947,8 @@
     <ClInclude Include="src\Koko\Text.h" />
     <ClInclude Include="src\Koko\Utility\FontReader.h" />
     <ClInclude Include="src\Koko\Text\Font.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Koko\Renderer\GraphicsContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Koko\Application.cpp">
@@ -1019,5 +1021,6 @@
     <ClCompile Include="src\Koko\Utility\FontReader.cpp" />
     <ClCompile Include="src\Koko\Text.cpp" />
     <ClCompile Include="src\Koko\Text\Font.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGlContext.cpp" />
   </ItemGroup>
 </Project>
