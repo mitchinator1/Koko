@@ -75,12 +75,23 @@ namespace Koko
 
 			if (n.Name == "Text")
 			{
-				std::cout << "Text found: ";
-				for (auto& a : n.Attributes)
+				TextData data;
+				data.Font = n.GetValue("font");
+				if (n.GetValue("centered") == "true")
 				{
-					std::cout << a.first << ": " << a.second << ", ";
-					std::cout << std::endl;
+					data.Centered = true;
 				}
+
+				std::string::size_type sz;
+				data.Size = std::stof(n.GetValue("size"), &sz);
+				data.ID = std::stoi(n.GetValue("id"), &sz);
+
+				data.X = dropdown->position.x;
+				data.Y = dropdown->position.y + (dropdown->size.height / 4.0f);
+				data.Z = dropdown->position.z - 10;
+
+				dropdown->SetText(new Text(data));
+
 			}
 		}
 

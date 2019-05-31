@@ -1,6 +1,7 @@
 #ifndef SHADER_BASE_H
 #define SHADER_BASE_H
 #include "ShaderProgram.h"
+#include "GLM/glm.hpp"
 
 namespace Koko
 {

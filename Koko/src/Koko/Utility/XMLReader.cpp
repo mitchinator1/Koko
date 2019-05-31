@@ -27,42 +27,29 @@ namespace Koko
 		m_File.Load(name, name);
 		if (m_File.Empty())
 		{
+			m_Error = Error(ErrorCode::FileNotFound, name);
 			return node;
 		}
 
-		node.Name = GetName();
+		m_File.SetStart();
+		m_File.SetEndString("</" + name + ">");
+		std::string content = m_File.GetSetString();
 
-		GetAttributes(node);
+		node.Name = GetName(content);
+		GetAttributes(node, content);
 
-		while (!m_File.Empty())
+		size_t start = 0;
+		size_t end = content.find_first_of('<');
+
+		node.InnerText = content.substr(start, end - start);
+		content.erase(start, end);
+
+		while (!content.empty())
 		{
-			node.ChildNodes.emplace_back(GetNode());
+			node.ChildNodes.emplace_back(GetNode(content));
 		}
 
 		m_File.Close();
-
-		return node;
-	}
-
-	Node Reader::GetNode()
-	{
-		Node node;
-
-		node.Name = GetName();
-		GetAttributes(node);
-
-		m_File.SetStart();
-		m_File.SetEndString("</" + node.Name + ">");
-		std::string contents = m_File.GetSetString();
-
-		while (!contents.empty())
-		{
-			node.ChildNodes.emplace_back(GetNode(contents));
-		}
-
-		m_File.SetStart();
-		m_File.SetEnd(">", 1);
-		m_File.GetSetString();
 
 		return node;
 	}
@@ -91,32 +78,6 @@ namespace Koko
 		return node;
 	}
 
-	void Reader::GetAttributes(Node& node)
-	{
-		m_File.SetStart(0);
-		m_File.SetEnd(">", 1);
-
-		std::stringstream line(m_File.GetSetString());
-
-		while (line)
-		{
-			std::string name;
-			std::getline(line, name, ' ');
-			std::getline(line, name, '=');
-
-			if (name == ">")
-			{
-				break;
-			}
-
-			std::string value;
-			std::getline(line, value, '"');
-			std::getline(line, value, '"');
-
-			node.Attributes.emplace(std::pair(name, value));
-		}
-	}
-
 	void Reader::GetAttributes(Node& node, std::string& content)
 	{
 		size_t start = 0;
@@ -142,18 +103,6 @@ namespace Koko
 
 			node.Attributes.emplace(std::pair(name, value));
 		}
-	}
-
-	std::string Reader::GetName()
-	{
-		m_File.SetStart(0);
-		m_File.SetEnd("<", 1);
-		m_File.GetSetString();
-
-		m_File.SetStart(0);
-		m_File.SetEnd("> ");
-		
-		return m_File.GetSetString();
 	}
 
 	std::string Reader::GetName(std::string& content)

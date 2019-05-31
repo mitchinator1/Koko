@@ -11,8 +11,8 @@ namespace Koko
 	struct TextData
 	{
 	public:
-		std::string Font = "";
-		std::string TextString = "";
+		std::string Font;
+		std::string TextString;
 
 		unsigned int ID;
 
@@ -21,8 +21,8 @@ namespace Koko
 
 		bool Centered, Wrap;
 
-		TextData(const std::string& font, const std::string& text, float size = 1.0f,
-			const Position& position = { 0.0f, 0.0f, 0.0f }, const Colour& colour = { 0.0f, 0.0f, 0.0f, 1.0f },
+		TextData(const std::string& font = "", const std::string& text = "", float size = 1.0f,
+			const Position& position = { 0.0f, 0.0f, 0.0f }, const Colour& colour = { 1.0f, 1.0f, 1.0f, 1.0f },
 			unsigned int id = 0,
 			float xMax = 100.0f, float xIndent = 0.0f, float yIndent = 0.0f,
 			bool centered = false, bool wrap = false)

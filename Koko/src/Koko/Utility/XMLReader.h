@@ -49,13 +49,8 @@ namespace Koko
 		Node ReadNodes(const std::string& name);
 
 	private:
-		Node GetNode();
 		Node GetNode(std::string& content);
-
-		void GetAttributes(Node& node);
 		void GetAttributes(Node& node, std::string& content);
-
-		std::string GetName();
 		std::string GetName(std::string& content);
 	};
 }

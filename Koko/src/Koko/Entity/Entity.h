@@ -6,6 +6,8 @@
 
 #include "EntityComponent.h"
 
+#include "Koko/Text.h"
+
 namespace Koko
 {
 	class MouseMovedEvent;
@@ -33,6 +35,9 @@ namespace Koko
 
 		//Todo: Make vertices seperate class with vertices data, stride, and count.
 		//include with mesh, can pass vertices class to mesh
+
+	private:
+		Text* m_Text = nullptr;
 
 	public:
 		virtual ~Entity() {}
@@ -80,6 +85,9 @@ namespace Koko
 		}
 
 		virtual Action GetMousePress() { return mousePress; }
+
+		virtual void SetText(Text* text) { m_Text = text; }
+		virtual Text* GetText() { return m_Text; }
 
 	protected:
 		std::vector<float> ToViewportSpace(std::vector<float> vertices)

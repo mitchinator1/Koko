@@ -2,7 +2,6 @@
 #define SHADER_PROGRAM_H
 #include "kkpch.h"
 #include "Koko/Core.h"
-#include "GLM/glm.hpp"
 
 namespace Koko
 {

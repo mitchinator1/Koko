@@ -6,6 +6,8 @@
 #include "Koko/Utility/Stack.h"
 #include "Koko/Layer/Layer.h"
 
+#include "Koko/Shader/ShaderManager.h"
+
 namespace Koko
 {
 	Renderer::Renderer()
@@ -14,8 +16,6 @@ namespace Koko
 	{
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glEnable(GL_DEPTH);
-
-		//m_ShaderManager->CreateShader("Basic", "Resources/Shader/Basic.shader");
 	}
 
 	Renderer::~Renderer()
@@ -46,7 +46,13 @@ namespace Koko
 		//TODO: Probably rendering backwards
 		for (auto& layer : stack)
 		{
+			ShaderManager::GetShader("Basic")->Bind();
 			RenderMesh(layer->GetMesh());
+
+			ShaderManager::GetShader("Text")->Bind();
+			//glEnable(GL_DEPTH_TEST);
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			RenderMesh(layer->GetTextMesh());
 		}
 
@@ -56,6 +62,9 @@ namespace Koko
 	void Renderer::Render(Mesh* mesh)
 	{
 		mesh->Bind();
+		glEnable(GL_DEPTH_TEST);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glDrawElements(mesh->GetMode(), mesh->GetCount(), GL_UNSIGNED_INT, nullptr);
 		mesh->Unbind();
 	}

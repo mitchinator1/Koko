@@ -73,6 +73,22 @@ namespace Koko
 			}
 
 			m_Mesh = new Mesh(vertices);
+
+			//TODO: Fix, quick hack to see if text was loading/rendering
+			// Currently, only last text is shown, although all are loaded.
+			for (auto& entity : m_Entities)
+			{
+				if (entity->GetText())
+				{
+					auto font = new Koko::Font(entity->GetText()->GetData().Font, 1800.0, 1400.0);
+					entity->GetText()->CreateMesh(font);
+					std::vector<unsigned int> strides = { 3, 2, 3 };
+					m_TextMesh = new Mesh(entity->GetText()->GetVertices(), strides);
+					m_TextMesh->SetTexture(font->GetTexture());
+				}
+
+			}
+
 		}
 
 		KK_API inline auto& GetMesh() { return m_Mesh; }
