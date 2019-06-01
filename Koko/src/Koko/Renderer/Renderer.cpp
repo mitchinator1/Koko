@@ -11,8 +11,6 @@
 namespace Koko
 {
 	Renderer::Renderer()
-		//: m_ShaderManager(std::make_unique<ShaderManager>())
-		: m_ShaderManager(nullptr)
 	{
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glEnable(GL_DEPTH);
@@ -55,8 +53,6 @@ namespace Koko
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			RenderMesh(layer->GetTextMesh());
 		}
-
-		CleanUp();
 	}
 
 	void Renderer::Render(Mesh* mesh)
@@ -74,10 +70,5 @@ namespace Koko
 	void Renderer::Prepare() const
 	{
 		//m_ShaderManager->GetShader("Basic")->Bind();
-	}
-
-	void Renderer::CleanUp() const
-	{
-		//m_ShaderManager->Unbind();
 	}
 }

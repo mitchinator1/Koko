@@ -13,8 +13,7 @@ namespace Koko
 		Entity::State m_State = Entity::State::None;
 
 	public:
-		UILayer();
-		~UILayer();
+		~UILayer() override {};
 
 		void OnAttach() override;
 		void OnUpdate()	override;

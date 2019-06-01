@@ -26,18 +26,27 @@ bool MenuState::OnEvent(Koko::Event& e)
 		m_LayerStack[it]->OnEvent(e);
 		if (e.Handled)
 		{
+			m_State = Koko::Entity::State::Update;
 			return true;
 		}
 	}
 
 	NotifyLayers();
 
+	m_State = Koko::Entity::State::None;
 	return false;
 }
 
-void MenuState::OnUpdate(Koko::Event& e)
+void MenuState::OnUpdate()
 {
-
+	if (m_State == Koko::Entity::State::Update)
+	{
+		for (auto& layer : m_LayerStack)
+		{
+			layer->OnUpdate();
+		}
+		m_State = Koko::Entity::State::None;
+	}
 }
 
 void MenuState::Render()

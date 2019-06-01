@@ -3,8 +3,6 @@
 #include "kkpch.h"
 #include "Koko/Core.h"
 
-#include "../Shader/ShaderManager.h"
-
 template <typename T> class Stack;
 class Mesh;
 
@@ -14,9 +12,6 @@ namespace Koko
 
 	class Renderer
 	{
-	private:
-		std::unique_ptr<ShaderManager> m_ShaderManager;
-
 	public:
 		KK_API Renderer();
 		KK_API virtual ~Renderer();
@@ -29,7 +24,6 @@ namespace Koko
 
 		void Clear()	const;
 		void Prepare()	const;
-		void CleanUp()	const;
 	};
 }
 

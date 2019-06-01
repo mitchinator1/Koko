@@ -35,11 +35,6 @@ namespace Koko
 			LayerBuilder builder(fileName);
 			builder.Build(m_LayerStack);
 
-			for (auto& layer : m_LayerStack)
-			{
-				ShaderManager::CreateShader(layer->GetShaderName(), layer->GetShaderPath());
-			}
-
 			ShaderManager::CreateShader("Text", "Resources/Shader/Text.Shader");
 		}
 		virtual ~State() {}
@@ -48,7 +43,7 @@ namespace Koko
 		virtual void Resume() {};
 
 		virtual bool OnEvent(Event& e)	= 0;
-		virtual void OnUpdate(Event& e) = 0;
+		virtual void OnUpdate()			= 0;
 		virtual void Render()			= 0;
 
 		//virtual void ChangeState(Application* app, State* state) {};

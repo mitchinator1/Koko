@@ -6,6 +6,8 @@
 #include "Koko/Entity/Entity.h"
 #include "Koko/Event/Action.h"
 
+#include "Koko/Text/TextManager.h"
+
 namespace Koko
 {
 	class State;
@@ -17,9 +19,6 @@ namespace Koko
 		Mesh* m_TextMesh;
 
 		std::vector<Entity*> m_Entities;
-
-		std::string m_ShaderName = "";
-		std::string m_ShaderPath = "";
 
 	public:
 		Entity::State updatestate = Entity::State::None;
@@ -50,16 +49,6 @@ namespace Koko
 			}
 		}
 
-		KK_API void AddShaderName(const std::string& name)
-		{
-			m_ShaderName = name;
-		}
-
-		KK_API void AddShaderPath(const std::string& path)
-		{
-			m_ShaderPath = path;
-		}
-
 		KK_API virtual void Notify(State* state) {}
 
 		KK_API void CalculateMesh()
@@ -80,11 +69,12 @@ namespace Koko
 			{
 				if (entity->GetText())
 				{
-					auto font = new Koko::Font(entity->GetText()->GetData().Font, 1800.0, 1400.0);
-					entity->GetText()->CreateMesh(font);
+					//TextManager::AddFont(entity->GetText()->GetData().Font);
+					//auto font = new Koko::Font(entity->GetText()->GetData().Font, 1800.0, 1400.0);
+					entity->GetText()->CreateMesh(TextManager::GetFont(entity->GetText()->GetData().Font));
 					std::vector<unsigned int> strides = { 3, 2, 3 };
 					m_TextMesh = new Mesh(entity->GetText()->GetVertices(), strides);
-					m_TextMesh->SetTexture(font->GetTexture());
+					m_TextMesh->SetTexture(TextManager::GetFont(entity->GetText()->GetData().Font)->GetTexture());
 				}
 
 			}
@@ -94,9 +84,6 @@ namespace Koko
 		KK_API inline auto& GetMesh() { return m_Mesh; }
 		KK_API inline auto& GetEntities() { return m_Entities; }
 		KK_API inline auto& GetTextMesh() { return m_TextMesh; }
-
-		KK_API const inline auto& GetShaderName() { return m_ShaderName; }
-		KK_API const inline auto& GetShaderPath() { return m_ShaderPath; }
 	};
 
 }

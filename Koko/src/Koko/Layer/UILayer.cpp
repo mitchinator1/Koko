@@ -5,16 +5,6 @@
 
 namespace Koko
 {
-	UILayer::UILayer()
-	{
-		std::cout << "UI Layer created\n";
-	}
-
-	UILayer::~UILayer()
-	{
-
-	}
-
 	void UILayer::OnAttach()
 	{
 		CalculateMesh();
@@ -22,7 +12,11 @@ namespace Koko
 
 	void UILayer::OnUpdate()
 	{
-		CalculateMesh();
+		if (m_State == Entity::State::Update)
+		{
+			CalculateMesh();
+			m_State = Entity::State::None;
+		}
 	}
 
 	void UILayer::OnEvent(Event& e)
@@ -30,6 +24,10 @@ namespace Koko
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<MouseMovedEvent>(BIND_EVENT_FN(UILayer::OnMouseMovedEvent));
 		dispatcher.Dispatch<MouseButtonPressedEvent>(BIND_EVENT_FN(UILayer::OnMouseButtonPressedEvent));
+		if (e.Handled)
+		{
+			m_State = Entity::State::Update;
+		}
 	}
 
 	void UILayer::Notify(State* state)

@@ -949,6 +949,7 @@
     <ClInclude Include="src\Koko\Text\Font.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Koko\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Koko\Text\TextManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Koko\Application.cpp">
@@ -1022,5 +1023,6 @@
     <ClCompile Include="src\Koko\Text.cpp" />
     <ClCompile Include="src\Koko\Text\Font.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGlContext.cpp" />
+    <ClCompile Include="src\Koko\Text\TextManager.cpp" />
   </ItemGroup>
 </Project>

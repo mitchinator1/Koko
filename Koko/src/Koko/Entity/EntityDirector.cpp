@@ -6,6 +6,7 @@
 #include "Koko/UI/UIDropdown.h"
 
 #include "Koko/Text.h"
+#include "Koko/Text/TextManager.h"
 
 namespace Koko
 {
@@ -76,6 +77,7 @@ namespace Koko
 			if (n.Name == "Text")
 			{
 				TextData data;
+				TextManager::AddFont(n.GetValue("font"));
 				data.Font = n.GetValue("font");
 				if (n.GetValue("centered") == "true")
 				{

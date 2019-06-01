@@ -6,6 +6,8 @@
 
 #include "Koko/Utility/Stack.h"
 
+#include "Koko/Shader/ShaderManager.h"
+
 namespace Koko
 {
 	LayerBuilder::LayerBuilder(const std::string& name)
@@ -28,17 +30,27 @@ namespace Koko
 
 		auto node = GetNodes("UI");
 
+		std::string shader;
+		std::string shaderPath;
+
 		for (auto& attrib : node.Attributes)
 		{
 			if (attrib.first == "shader")
 			{
-				ui->AddShaderName(attrib.second);
+				shader = attrib.second;
 				continue;
 			}
 			if (attrib.first == "shaderpath")
 			{
-				ui->AddShaderPath(attrib.second);
+				shaderPath = attrib.second;
 			}
+		}
+
+		if (!shader.empty() & !shaderPath.empty())
+		{
+			ShaderManager::CreateShader(shader, shaderPath);
+			shader.clear();
+			shaderPath.clear();
 		}
 
 		for (auto& n : node.ChildNodes)
@@ -63,13 +75,20 @@ namespace Koko
 		{
 			if (attrib.first == "shader")
 			{
-				layer->AddShaderName(attrib.second);
+				shader = attrib.second;
 				continue;
 			}
 			if (attrib.first == "shaderpath")
 			{
-				layer->AddShaderPath(attrib.second);
+				shaderPath = attrib.second;
 			}
+		}
+
+		if (!shader.empty() & !shaderPath.empty())
+		{
+			ShaderManager::CreateShader(shader, shaderPath);
+			shader.clear();
+			shaderPath.clear();
 		}
 
 		for (auto& n : node.ChildNodes)

@@ -23,8 +23,10 @@ namespace Koko
 	{
 		while (m_Running)
 		{
-			m_Window->OnUpdate();
+			m_StateStack.back()->OnUpdate();
+
 			Render();
+			m_Window->OnUpdate();
 		}
 	}
 

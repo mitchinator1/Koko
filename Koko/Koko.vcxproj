@@ -178,6 +178,7 @@
     <ClInclude Include="src\Koko\Text\Line.h" />
     <ClInclude Include="src\Koko\Text\MetaFile.h" />
     <ClInclude Include="src\Koko\Text\TextLoader.h" />
+    <ClInclude Include="src\Koko\Text\TextManager.h" />
     <ClInclude Include="src\Koko\Text\TextMeshCreator.h" />
     <ClInclude Include="src\Koko\Text\Word.h" />
     <ClInclude Include="src\Koko\UI\UIDropdown.h" />
@@ -467,6 +468,7 @@
     <ClCompile Include="src\Koko\Text\Line.cpp" />
     <ClCompile Include="src\Koko\Text\MetaFile.cpp" />
     <ClCompile Include="src\Koko\Text\TextLoader.cpp" />
+    <ClCompile Include="src\Koko\Text\TextManager.cpp" />
     <ClCompile Include="src\Koko\Text\TextMeshCreator.cpp" />
     <ClCompile Include="src\Koko\Text\Word.cpp" />
     <ClCompile Include="src\Koko\UI\UIDropdown.cpp" />
