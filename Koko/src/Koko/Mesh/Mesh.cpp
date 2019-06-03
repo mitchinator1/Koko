@@ -50,7 +50,7 @@ Mesh::Mesh(const std::vector<float>& vertices, const std::vector<unsigned int> s
 
 Mesh::~Mesh()
 {
-	
+
 }
 
 void Mesh::Bind() const

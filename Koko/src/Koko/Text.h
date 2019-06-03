@@ -42,12 +42,14 @@ namespace Koko
 		TextData m_Data;
 		std::vector<float> m_Vertices;
 
+		bool m_Created;
+
 	public:
 		Text() noexcept;
 		Text(const TextData& data);
 		~Text() {};
 
-		void CreateMesh(Font* font);
+		void CreateMesh();
 
 		/*virtual void Update();
 		virtual bool Continue();
@@ -65,6 +67,7 @@ namespace Koko
 
 		inline auto GetVertices()			{ return m_Vertices; }
 		inline auto GetData()				{ return m_Data; }
+		inline auto IsCreated()				{ return m_Created; }
 
 	};
 }

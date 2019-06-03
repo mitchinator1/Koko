@@ -17,9 +17,6 @@ namespace Koko
 			auto v = entity->CalculateVertices();
 			vertices.insert(vertices.end(), v.begin(), v.end());
 		}
-
-		state = State::None;
-
 		return ToViewportSpace(vertices);
 	}
 

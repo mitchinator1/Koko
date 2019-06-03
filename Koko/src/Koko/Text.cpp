@@ -1,27 +1,32 @@
 #include "kkpch.h"
 #include "Text.h"
 #include "Text/TextLoader.h"
+
+#include "Text/TextManager.h"
 //#include "GLFW/glfw3.h" // Switch to chrono
 
 namespace Koko
 {
 	Text::Text() noexcept
-		: m_Data("Arial", "Blank Text")
+		: m_Data("Arial", "Blank Text"), m_Created(false)
 	{
-		
+
 	}
 
 	Text::Text(const TextData& data)
-		: m_Data(data)
+		: m_Data(data), m_Created(false)
 	{
 
 	}
 
-	void Text::CreateMesh(Font* font)
+	void Text::CreateMesh()
 	{
-		LoadText();
-		m_Vertices = font->LoadText(m_Data);
-		//m_Created = true;
+		if (!m_Created)
+		{
+			LoadText();
+			m_Vertices = TextManager::GetFont(m_Data.Font)->LoadText(m_Data);
+			m_Created = true;
+		}
 	}
 
 	void Text::LoadText()

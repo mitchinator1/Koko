@@ -40,6 +40,7 @@ namespace Koko
 		Text* m_Text = nullptr;
 
 	public:
+		Entity() { state = State::Update; }
 		virtual ~Entity() {}
 
 		virtual std::vector<float> GetVertices()
@@ -87,10 +88,23 @@ namespace Koko
 		virtual Action GetMousePress() { return mousePress; }
 
 		virtual void SetText(Text* text) { m_Text = text; }
-		virtual Text* GetText() { return m_Text; }
+		virtual Text* GetText() 
+		{
+			if (!m_Text)
+			{
+				return m_Text;
+			}
+
+			if (!m_Text->IsCreated())
+			{
+				m_Text->CreateMesh();
+			}
+
+			return m_Text;
+		}
 
 	protected:
-		std::vector<float> ToViewportSpace(std::vector<float> vertices)
+		std::vector<float> ToViewportSpace(std::vector<float>& vertices)
 		{
 			for (auto& point : vertices)
 			{

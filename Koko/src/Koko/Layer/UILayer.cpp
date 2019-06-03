@@ -69,7 +69,7 @@ namespace Koko
 	{
 		bool hit = false;
 		//TODO: Pick left or right button
-		for (auto entity : m_Entities)
+		for (auto& entity : m_Entities)
 		{
 			if (entity->OnMouseButtonPressedEvent(e))
 			{

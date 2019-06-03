@@ -4,7 +4,7 @@
       <MousePress>stateremove</MousePress>
     </Entity>
     <Dropdown expand="down" activate="hover" position="15, 0" size="10, 5" colour="80, 40, 60, 100">
-      <Text id="1" font="Arial" size="2" centered="false"></Text>
+      <Text id="1" font="Arial" size="1" centered="false"></Text>
       <Children grouping="down">
         <Entity state="hidden" type="button" size="10, 5" colour="70, 50, 85, 100">
           <MousePress>entityremove</MousePress>

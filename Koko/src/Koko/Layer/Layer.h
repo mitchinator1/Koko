@@ -24,7 +24,7 @@ namespace Koko
 		Entity::State updatestate = Entity::State::None;
 
 	public:
-		KK_API Layer() : m_Mesh(nullptr), m_TextMesh(nullptr) {}
+		KK_API Layer() : m_Mesh(nullptr), m_TextMesh(nullptr) { }
 		KK_API virtual ~Layer()
 		{
 			for (Entity* entity : m_Entities)
@@ -53,32 +53,59 @@ namespace Koko
 
 		KK_API void CalculateMesh()
 		{
+			bool updateNeeded = false;
+
+			for (auto& e : m_Entities)
+			{
+				if (e->state == Entity::State::Update)
+				{
+					updateNeeded = true;
+					break;
+				}
+			}
+
+			if (!updateNeeded)
+			{
+				return;
+			}
+
 			std::vector<float> vertices;
 
-			for (auto entity : m_Entities)
+			for (auto& entity : m_Entities)
 			{
-				auto v = entity->GetVertices();
+				auto& v = entity->GetVertices();
 				vertices.insert(vertices.end(), v.begin(), v.end());
 			}
 
-			m_Mesh = new Mesh(vertices);
+			if (!m_Mesh)
+			{
+				m_Mesh = new Mesh(vertices);
+			} 
+			else
+			{
+				m_Mesh->UpdateVertices(vertices);
+			}
+			vertices.clear();
 
-			//TODO: Fix, quick hack to see if text was loading/rendering
-			// Currently, only last text is shown, although all are loaded.
 			for (auto& entity : m_Entities)
 			{
 				if (entity->GetText())
 				{
-					//TextManager::AddFont(entity->GetText()->GetData().Font);
-					//auto font = new Koko::Font(entity->GetText()->GetData().Font, 1800.0, 1400.0);
-					entity->GetText()->CreateMesh(TextManager::GetFont(entity->GetText()->GetData().Font));
-					std::vector<unsigned int> strides = { 3, 2, 3 };
-					m_TextMesh = new Mesh(entity->GetText()->GetVertices(), strides);
-					m_TextMesh->SetTexture(TextManager::GetFont(entity->GetText()->GetData().Font)->GetTexture());
+					auto& v = entity->GetText()->GetVertices();
+					vertices.insert(vertices.end(), v.begin(), v.end());
 				}
-
 			}
-
+			
+			if (!m_TextMesh)
+			{
+				std::vector<unsigned int> strides = { 3, 2, 3 };
+				m_TextMesh = new Mesh(vertices, strides);
+			}
+			else
+			{
+				m_TextMesh->UpdateVertices(vertices);
+			}
+			m_TextMesh->SetTexture(TextManager::GetFont("Arial")->GetTexture()); // Temporary (Arial set to default)
 		}
 
 		KK_API inline auto& GetMesh() { return m_Mesh; }
