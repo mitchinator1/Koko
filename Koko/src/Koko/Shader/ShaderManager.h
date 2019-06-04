@@ -1,8 +1,6 @@
 #ifndef SHADER_MANAGER_H
 #define SHADER_MANAGER_H
-#include "kkpch.h"
 #include "Koko/Core.h"
-
 #include "ShaderBase.h"
 
 namespace Koko

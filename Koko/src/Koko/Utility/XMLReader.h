@@ -1,6 +1,5 @@
 #ifndef XML_READER_H
 #define XML_READER_H
-#include <string>
 #include "FileProgram.h"
 
 namespace Koko

@@ -1,6 +1,5 @@
 #ifndef RENDERER_H
 #define RENDERER_H
-#include "kkpch.h"
 #include "Koko/Core.h"
 
 template <typename T> class Stack;

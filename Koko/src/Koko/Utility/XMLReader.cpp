@@ -1,6 +1,5 @@
 #include "kkpch.h"
 #include "XMLReader.h"
-#include "FileProgram.h"
 #include "Node.h"
 
 namespace Koko

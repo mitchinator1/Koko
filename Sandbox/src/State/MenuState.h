@@ -4,10 +4,12 @@
 #include "Koko/State/State.h"
 #include "Koko/Entity/Entity.h"
 
+#include "Koko/UI/Canvas.h"
+
 class MenuState : public Koko::State
 {
 private:
-	Mesh* m_TextMesh = nullptr;
+	std::unique_ptr<Koko::Canvas> m_Canvas;
 	Koko::Entity::State m_State = Koko::Entity::State::None;
 
 public:

@@ -1,6 +1,8 @@
 #include "kkpch.h"
 #include "UILayer.h"
 
+#include "Koko/Event/MouseEvent.h"
+
 #include "Koko/State/State.h"
 
 namespace Koko
@@ -12,6 +14,11 @@ namespace Koko
 
 	void UILayer::OnUpdate()
 	{
+		for (auto& e : m_Entities)
+		{
+			e->OnUpdate();
+		}
+
 		if (m_State == Entity::State::Update)
 		{
 			CalculateMesh();

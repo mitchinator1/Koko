@@ -105,9 +105,6 @@
     <ClInclude Include="src\Koko\Layer\LayerBuilder.h">
       <Filter>src\Koko\Layer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Layer\LayerDirector.h">
-      <Filter>src\Koko\Layer</Filter>
-    </ClInclude>
     <ClInclude Include="src\Koko\Mesh\IndexBuffer.h">
       <Filter>src\Koko\Mesh</Filter>
     </ClInclude>
@@ -950,6 +947,9 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Koko\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Koko\Text\TextManager.h" />
+    <ClInclude Include="src\Koko\UI\Canvas.h" />
+    <ClInclude Include="src\Koko\UI\Element.h" />
+    <ClInclude Include="src\Koko\UI\DropdownElement.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Koko\Application.cpp">
@@ -959,9 +959,6 @@
       <Filter>src\Koko\Entity</Filter>
     </ClCompile>
     <ClCompile Include="src\Koko\Layer\LayerBuilder.cpp">
-      <Filter>src\Koko\Layer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Koko\Layer\LayerDirector.cpp">
       <Filter>src\Koko\Layer</Filter>
     </ClCompile>
     <ClCompile Include="src\Koko\Mesh\IndexBuffer.cpp">
@@ -1024,5 +1021,8 @@
     <ClCompile Include="src\Koko\Text\Font.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGlContext.cpp" />
     <ClCompile Include="src\Koko\Text\TextManager.cpp" />
+    <ClCompile Include="src\Koko\UI\Canvas.cpp" />
+    <ClCompile Include="src\Koko\UI\Element.cpp" />
+    <ClCompile Include="src\Koko\UI\DropdownElement.cpp" />
   </ItemGroup>
 </Project>

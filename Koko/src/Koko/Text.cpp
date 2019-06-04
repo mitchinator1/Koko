@@ -1,7 +1,6 @@
 #include "kkpch.h"
 #include "Text.h"
 #include "Text/TextLoader.h"
-
 #include "Text/TextManager.h"
 //#include "GLFW/glfw3.h" // Switch to chrono
 
@@ -31,7 +30,7 @@ namespace Koko
 
 	void Text::LoadText()
 	{
-		m_Data.TextString = LoadString(std::to_string(m_Data.ID));
+		m_Data.TextString = LoadTextString(std::to_string(m_Data.ID));
 	}
 
 	/*void Text::HandleInput(const std::string& input)
@@ -81,73 +80,43 @@ namespace Koko
 		return true;
 	}*/
 
-	//void Text::LoadText()
-	//{
-	//	//m_Created = false;
-	//	//m_UpdateNeeded = true;
+	/*if (m_KeyString == "EditorMenuLoadSlot")
+		{
+			//std::fstream fs("Resources/Data/Level" + std::to_string(m_KeyNumber) + ".xml");
+			if (fs.good())
+			{
+				std::string line;
+				while (line != "/Name")
+				{
+					std::getline(fs, line, '<');
+					std::getline(fs, line, '>');
+					if (line.find("Name") != std::string::npos)
+					{
+						std::string text;
+						std::getline(fs, text, '<');
+						m_TextString = text;
+						return;
+					}
+				}
+			}
+		}
+	
+		if (m_KeyString.empty())
+		{
+			return;
+		}
+	
+		//m_TextString = LoadString(GetKey());
+	
+	}*/
 
-	//	if (m_KeyString == "EditorMenuLoadSlot")
-	//	{
-	//		//std::fstream fs("Resources/Data/Level" + std::to_string(m_KeyNumber) + ".xml");
-	//		if (fs.good())
-	//		{
-	//			std::string line;
-	//			while (line != "/Name")
-	//			{
-	//				std::getline(fs, line, '<');
-	//				std::getline(fs, line, '>');
-	//				if (line.find("Name") != std::string::npos)
-	//				{
-	//					std::string text;
-	//					std::getline(fs, text, '<');
-	//					m_TextString = text;
-	//					return;
-	//				}
-	//			}
-	//		}
-	//	}
-
-	//	if (m_KeyString.empty())
-	//	{
-	//		return;
-	//	}
-	//
-	//	//m_TextString = LoadString(GetKey());
-	//
-	//}
-
-	/*Text* Text::SetPosition(float x, float y)
-	{
-		position.x = x + xIndent;
-		position.y = y + yIndent;
-		m_Created = false;
-		return this;
-	}
-
-	Text* Text::SetSize(float size)
-	{
-		m_FontSize = size;
-		return this;
-	}
-
+	/*
 	Text* Text::SetLineSize(float size)
 	{
 		m_LineMaxSize = size / 100.0f;
 		return this;
 	}
-
-	Text* Text::SetColour(float r, float g, float b)
-	{
-		colour = { r, g, b, 1.0f };
-		return this;
-	}
-	
-	Text* Text::SetFont(const std::string& font)
-	{
-		m_Font = font;
-		return this;
-	}
-	
+		
 	Text* Text::SetKey(const std::string& key)
 	{
 		m_KeyString = key;
@@ -190,12 +159,6 @@ namespace Koko
 		m_TargetTime = (float)glfwGetTime() + time;
 		m_UpdateNeeded = true;
 
-		return this;
-	}
-
-	Text* Text::SetCenter(bool centered)
-	{
-		m_CenterText = centered;
 		return this;
 	}*/
 

@@ -4,6 +4,8 @@
 #include "Line.h"
 #include "MetaFile.h"
 
+#include "GLM/vec3.hpp"
+
 namespace Koko
 {
 	TextMeshCreator::TextMeshCreator(const std::string& filepath, double width, double height) noexcept
@@ -64,7 +66,7 @@ namespace Koko
 	std::vector<float> TextMeshCreator::CreateQuadVertices(TextData& data, std::vector<Line>& lines)
 	{
 		glm::vec3 cursor = { data.X / 100.0f, data.Y / 100.0f, data.Z / 100.0f };
-		glm::vec4 colour = { data.R, data.G, data.B, data.A };
+		glm::vec3 colour = { data.R, data.G, data.B };
 		std::vector<float> vertices;
 		for (Line& line : lines)
 		{

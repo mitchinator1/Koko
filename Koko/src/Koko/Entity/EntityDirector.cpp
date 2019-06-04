@@ -43,6 +43,10 @@ namespace Koko
 			{
 				uiEntity->SetMousePress(child.InnerText);
 			}
+			if (child.Name == "Text")
+			{
+				uiEntity->SetText(new Text(GetTextData(child)));
+			}
 		}
 
 		return uiEntity;
@@ -63,41 +67,48 @@ namespace Koko
 		{
 			if (n.Name == "Children")
 			{
-				dropdown->SetGroupingDirection(n.GetValue("grouping"));
-
-				for (auto& child : n.ChildNodes)
-				{ 
-					if (child.Name == "Entity")
-					{
-						dropdown->AddEntity(GetUIEntity(child));
-					}
-				}
+				AddDropdownChildren(dropdown, n);
 			}
 
 			if (n.Name == "Text")
 			{
-				TextData data;
-				TextManager::AddFont(n.GetValue("font"));
-				data.Font = n.GetValue("font");
-				if (n.GetValue("centered") == "true")
-				{
-					data.Centered = true;
-				}
-
-				std::string::size_type sz;
-				data.Size = std::stof(n.GetValue("size"), &sz);
-				data.ID = std::stoi(n.GetValue("id"), &sz);
-
-				data.X = dropdown->position.x;
-				data.Y = dropdown->position.y + (data.Size * 2.0f);
-				data.Z = dropdown->position.z;
-
-				dropdown->SetText(new Text(data));
-
+				dropdown->SetText(new Text(GetTextData(n)));
 			}
 		}
 
 		return dropdown;
+	}
+
+	TextData EntityDirector::GetTextData(Node& node)
+	{
+		TextData data;
+
+		data.Font = node.GetValue("font");
+		if (node.GetValue("centered") == "true")
+		{
+			data.Centered = true;
+		}
+
+		std::string::size_type sz;
+		data.Size = std::stof(node.GetValue("size"), &sz);
+		data.ID = std::stoi(node.GetValue("id"), &sz);
+
+		TextManager::AddFont(data.Font);
+
+		return data;
+	}
+
+	void EntityDirector::AddDropdownChildren(UIDropdown* dropdown, Node& node)
+	{
+		dropdown->SetGroupingDirection(node.GetValue("grouping"));
+
+		for (auto& n : node.ChildNodes)
+		{
+			if (n.Name == "Entity")
+			{
+				dropdown->AddEntity(GetUIEntity(n));
+			}
+		}
 	}
 
 }

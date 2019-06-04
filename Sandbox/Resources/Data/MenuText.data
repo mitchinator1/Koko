@@ -1,10 +1,16 @@
-<Buttons>
-  <Text id="0" font="Arial" size="2">
-    <EN>English Words</EN>
-    <FR>Mots en Francais</FR>
-  </Text>
-  <Text id="1">
-    <EN>Second string</EN>
-    <FR>Deuxieme Mots</FR>
-  </Text>
-</Buttons>
+<UI>
+  <Buttons>
+    <Text id="0">
+      <EN>English Words</EN>
+      <FR>Mots en Francais</FR>
+    </Text>
+    <Text id="1">
+      <EN>Second string</EN>
+      <FR>Deuxieme Mots</FR>
+    </Text>
+    <Text id="2">
+      <EN>Dropdown</EN>
+      <FR>Menu Deroulant</FR>
+    </Text>
+  </Buttons>
+</UI>

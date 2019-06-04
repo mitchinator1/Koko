@@ -1,17 +1,16 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 #include "Core.h"
-
-#include "Event/ApplicationEvent.h"
-#include "Event/KeyEvent.h"
-
 #include "Window.h"
 
-#include "Utility/Stack.h"
-#include "State/State.h"
+#include "Koko/Utility/Stack.h"
+#include "Koko/State/State.h"
 
 namespace Koko
 {
+	class WindowCloseEvent;
+	class KeyPressedEvent;
+
 	class KK_API Application
 	{
 	public:

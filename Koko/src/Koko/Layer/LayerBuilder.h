@@ -1,6 +1,5 @@
 #ifndef LAYER_BUILDER_H
 #define LAYER_BUILDER_H
-#include <string>
 #include "Koko/Utility/Builder.h"
 
 template <typename T> class Stack;

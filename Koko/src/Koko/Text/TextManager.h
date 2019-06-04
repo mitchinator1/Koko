@@ -1,6 +1,5 @@
 #ifndef TEXT_MANAGER
 #define TEXT_MANAGER
-#include "kkpch.h"
 #include "Koko/Core.h"
 #include "Font.h"
 

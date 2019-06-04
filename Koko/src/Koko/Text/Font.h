@@ -1,6 +1,5 @@
 #ifndef FONT_TYPE_H
 #define FONT_TYPE_H
-#include "kkpch.h"
 
 class Texture;
 

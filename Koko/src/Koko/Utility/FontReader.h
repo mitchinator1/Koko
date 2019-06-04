@@ -1,8 +1,5 @@
 #ifndef FONT_READER_H
 #define FONT_READER_H
-#include <string>
-#include <unordered_map>
-#include <fstream>
 
 namespace Koko
 {

@@ -6,6 +6,8 @@
 namespace Koko
 {
 	struct Node;
+	struct TextData;
+	class UIDropdown;
 
 	class EntityDirector
 	{
@@ -19,6 +21,9 @@ namespace Koko
 		Entity* GetUIEntity(Node& node);
 		Entity* GetUIDropdown(Node& node);
 
+	private:
+		TextData GetTextData(Node& node);
+		void AddDropdownChildren(UIDropdown* dropdown, Node& node);
 	};
 
 }

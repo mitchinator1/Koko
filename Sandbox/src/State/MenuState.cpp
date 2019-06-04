@@ -3,10 +3,23 @@
 
 #include "Koko/Text.h"
 
-MenuState::MenuState(const std::string& fileName)
-	: Koko::State(fileName)
-{
+#include "Koko/UI/DropdownElement.h"
 
+MenuState::MenuState(const std::string& fileName)
+	: Koko::State(fileName), m_Canvas(std::make_unique<Koko::Canvas>(0.0f, 0.0f, 100.0f, 100.0f))
+{
+	Koko::Dropdown* dropdown = new Koko::Dropdown();
+	dropdown->X = 0.0f;
+	dropdown->Y = 20.0f;
+	dropdown->Z = 0.0f;
+	dropdown->Width = 15.0f;
+	dropdown->Height = 15.0f;
+	dropdown->R = 90.0f;
+	dropdown->G = 30.0f;
+	dropdown->B = 18.0f;
+	dropdown->A = 100.0f;
+
+	m_Canvas->AddElement(dropdown);
 }
 
 MenuState::~MenuState()
@@ -20,6 +33,8 @@ bool MenuState::OnEvent(Koko::Event& e)
 	{
 		remove = true;
 	}
+
+	m_Canvas->OnEvent(e);
 
 	for (int it = (int)m_LayerStack.size() - 1; it >= 0; --it)
 	{
@@ -41,6 +56,8 @@ void MenuState::OnUpdate()
 {
 	if (m_State == Koko::Entity::State::Update)
 	{
+		m_Canvas->OnUpdate();
+
 		for (auto& layer : m_LayerStack)
 		{
 			layer->OnUpdate();
@@ -52,6 +69,7 @@ void MenuState::OnUpdate()
 void MenuState::Render()
 {
 	m_Renderer->Render(m_LayerStack);
+	m_Renderer->Render(m_Canvas->GetMesh());
 }
 
 void MenuState::Notify(Stack<State>* stack)

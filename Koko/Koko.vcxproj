@@ -156,7 +156,6 @@
     <ClInclude Include="src\Koko\KeyCodes.h" />
     <ClInclude Include="src\Koko\Layer\Layer.h" />
     <ClInclude Include="src\Koko\Layer\LayerBuilder.h" />
-    <ClInclude Include="src\Koko\Layer\LayerDirector.h" />
     <ClInclude Include="src\Koko\Layer\UILayer.h" />
     <ClInclude Include="src\Koko\Mesh\IndexBuffer.h" />
     <ClInclude Include="src\Koko\Mesh\Mesh.h" />
@@ -181,6 +180,9 @@
     <ClInclude Include="src\Koko\Text\TextManager.h" />
     <ClInclude Include="src\Koko\Text\TextMeshCreator.h" />
     <ClInclude Include="src\Koko\Text\Word.h" />
+    <ClInclude Include="src\Koko\UI\Canvas.h" />
+    <ClInclude Include="src\Koko\UI\DropdownElement.h" />
+    <ClInclude Include="src\Koko\UI\Element.h" />
     <ClInclude Include="src\Koko\UI\UIDropdown.h" />
     <ClInclude Include="src\Koko\UI\UIEntity.h" />
     <ClInclude Include="src\Koko\Utility\Builder.h" />
@@ -452,7 +454,6 @@
     <ClCompile Include="src\Koko\Application.cpp" />
     <ClCompile Include="src\Koko\Entity\EntityDirector.cpp" />
     <ClCompile Include="src\Koko\Layer\LayerBuilder.cpp" />
-    <ClCompile Include="src\Koko\Layer\LayerDirector.cpp" />
     <ClCompile Include="src\Koko\Layer\UILayer.cpp" />
     <ClCompile Include="src\Koko\Mesh\IndexBuffer.cpp" />
     <ClCompile Include="src\Koko\Mesh\Mesh.cpp" />
@@ -471,6 +472,9 @@
     <ClCompile Include="src\Koko\Text\TextManager.cpp" />
     <ClCompile Include="src\Koko\Text\TextMeshCreator.cpp" />
     <ClCompile Include="src\Koko\Text\Word.cpp" />
+    <ClCompile Include="src\Koko\UI\Canvas.cpp" />
+    <ClCompile Include="src\Koko\UI\DropdownElement.cpp" />
+    <ClCompile Include="src\Koko\UI\Element.cpp" />
     <ClCompile Include="src\Koko\UI\UIDropdown.cpp" />
     <ClCompile Include="src\Koko\UI\UIEntity.cpp" />
     <ClCompile Include="src\Koko\Utility\FileProgram.cpp" />

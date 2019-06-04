@@ -1,9 +1,5 @@
 #ifndef NODE_H
 #define NODE_H
-#include <string>
-#include <vector>
-#include <unordered_map>
-
 #include "GLM/vec2.hpp"
 #include "GLM/vec3.hpp"
 #include "GLM/vec4.hpp"

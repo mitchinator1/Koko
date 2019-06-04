@@ -1,13 +1,11 @@
 #ifndef META_FILE_H
 #define META_FILE_H
-#include "kkpch.h"
 #include "Character.h"
-//#include "Koko/Utility/FileProgram.h"
 #include "Koko/Utility/FontReader.h"
 
 namespace Koko
 {
-	class MetaFile// : public FileProgram
+	class MetaFile
 	{
 	private:
 		const int PAD_TOP		= 0;

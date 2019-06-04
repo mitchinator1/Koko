@@ -1,6 +1,5 @@
 #include "kkpch.h"
 #include "MetaFile.h"
-#include <fstream>
 
 namespace Koko
 {

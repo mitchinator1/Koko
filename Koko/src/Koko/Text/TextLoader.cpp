@@ -4,26 +4,7 @@
 
 namespace Koko
 {
-	/*TextData LoadTextData(const std::string& fileName, const std::string& id)
-	{
-		Builder builder(fileName);
-
-		auto nodes = builder.GetNodes("Buttons");
-
-		for (auto& node : nodes.ChildNodes)
-		{
-			for (auto& attrib : node.Attributes)
-			{
-				if (attrib.second == id)
-				{
-
-				}
-			}
-		}
-
-	}*/
-
-	std::string LoadString(const std::string& key, const std::string& lang)
+	std::string LoadTextString(const std::string& key, const std::string& lang)
 	{
 		Builder builder("MenuText");
 		

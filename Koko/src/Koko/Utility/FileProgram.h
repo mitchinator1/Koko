@@ -1,7 +1,5 @@
 #ifndef FILE_PROGRAM_H
 #define FILE_PROGRAM_H
-#include <string>
-#include <fstream>
 
 class FileProgram
 {

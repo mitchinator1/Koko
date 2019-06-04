@@ -1,6 +1,5 @@
 #ifndef MESH_H
 #define MESH_H
-#include <memory>
 #include "GLM/glm.hpp"
 #include "VertexArray.h"
 

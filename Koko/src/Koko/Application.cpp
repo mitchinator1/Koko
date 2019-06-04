@@ -1,6 +1,9 @@
 #include "kkpch.h"
 #include "Application.h"
 
+#include "Event/ApplicationEvent.h"
+#include "Event/KeyEvent.h"
+
 namespace Koko
 {
 	Application* Application::s_Instance = nullptr;

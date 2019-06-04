@@ -16,6 +16,7 @@ namespace Koko
 	class KK_API Entity
 	{
 	public:
+		//TODO: Fix horrible name
 		enum class State
 		{
 			None = 0,
@@ -57,19 +58,15 @@ namespace Koko
 			float w = x + size.width;
 			float h = y - size.height;
 
-			float flipY = 100.0f - y;
-
-			std::vector<float> vertices;
-
-			vertices.insert(vertices.end(), {
+			return std::vector<float>({
 				x,	y,	z,		colour.r, colour.g, colour.b, colour.a,
 				x,	h,	z,		colour.r, colour.g, colour.b, colour.a,
 				w,	h,	z,		colour.r, colour.g, colour.b, colour.a,
 				w,	y,	z,		colour.r, colour.g, colour.b, colour.a
 				});
-
-			return vertices;
 		}
+
+		virtual void OnUpdate() {}
 
 		virtual bool OnMouseMovedEvent(MouseMovedEvent& e) { return false; }
 		virtual bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& e) { return false; }
@@ -87,7 +84,14 @@ namespace Koko
 
 		virtual Action GetMousePress() { return mousePress; }
 
-		virtual void SetText(Text* text) { m_Text = text; }
+		virtual void SetText(Text* text) 
+		{
+			auto& data = text->GetData();
+			data.X = position.x;
+			data.Y = position.y + (data.Size * 2.0f);
+			data.Z = position.z;
+			m_Text = text;
+		}
 		virtual Text* GetText() 
 		{
 			if (!m_Text)

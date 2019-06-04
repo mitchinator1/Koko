@@ -1,6 +1,5 @@
 #ifndef TEXT_MESH_CREATOR_H
 #define TEXT_MESH_CREATOR_H
-#include "kkpch.h"
 
 namespace Koko
 {

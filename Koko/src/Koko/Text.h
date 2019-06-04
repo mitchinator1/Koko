@@ -1,10 +1,5 @@
 #ifndef TEXT_H
 #define TEXT_H
-#include "kkpch.h"
-#include "Koko/Core.h"
-#include "Koko/Entity/EntityComponent.h"
-
-#include "Text/Font.h"
 
 namespace Koko
 {
@@ -16,20 +11,19 @@ namespace Koko
 
 		unsigned int ID;
 
-		float X, Y, Z, R, G, B, A;
-		float Size, XMax, XIndent, YIndent;
+		float X, Y, Z, R, G, B;
+		float Size, XMax; //TODO: Remove XMAX
+		//Alignment (Left, Right, Center)
+		//Anchor (point for rotation)
 
 		bool Centered, Wrap;
 
 		TextData(const std::string& font = "", const std::string& text = "", float size = 1.0f,
-			const Position& position = { 0.0f, 0.0f, 0.0f }, const Colour& colour = { 1.0f, 1.0f, 1.0f, 1.0f },
-			unsigned int id = 0,
-			float xMax = 100.0f, float xIndent = 0.0f, float yIndent = 0.0f,
-			bool centered = false, bool wrap = false)
-			: Font(font), TextString(text)
-			, ID(id)
-			, X(position.x), Y(position.y), Z(position.z), R(colour.r), G(colour.g), B(colour.b), A(colour.a)
-			, Size(size), XMax(xMax / 100.0f), XIndent(xIndent), YIndent(yIndent)
+			float x = 0.0f, float y = 0.0f, float z = 0.0f, float r = 1.0f, float g = 1.0f, float b = 1.0f,
+			unsigned int id = 0, float xMax = 100.0f, bool centered = false, bool wrap = false)
+			: Font(font), TextString(text), Size(size)
+			, X(x), Y(y), Z(z), R(r), G(g), B(b)
+			, ID(id), XMax(xMax / 100.0f)
 			, Centered(centered), Wrap(wrap)
 		{
 
@@ -54,22 +48,18 @@ namespace Koko
 		/*virtual void Update();
 		virtual bool Continue();
 
-		Text* SetPosition(float x, float y);
-		Text* SetSize(float size);
 		Text* SetLineSize(float size);
-		Text* SetColour(float r, float g, float b);
-		Text* SetFont(const std::string& font);
 		Text* AddLetter(const std::string& letter);
-		Text* RemoveLetter();
-		Text* SetCenter(bool centered = true);*/
+		Text* RemoveLetter();*/
 
-		void LoadText();
-
-		inline auto GetVertices()			{ return m_Vertices; }
-		inline auto GetData()				{ return m_Data; }
+		inline auto& GetVertices()			{ return m_Vertices; }
+		inline auto& GetData()				{ return m_Data; }
 		inline auto IsCreated()				{ return m_Created; }
 
+	private:
+		void LoadText();
 	};
+
 }
 
 #endif

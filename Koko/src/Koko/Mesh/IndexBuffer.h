@@ -1,6 +1,5 @@
 #ifndef INDEX_BUFFER_H
 #define INDEX_BUFFER_H
-#include <vector>
 
 class IndexBuffer
 {

@@ -1,6 +1,5 @@
 #ifndef WORD_H
 #define WORD_H
-#include "kkpch.h"
 #include "Character.h"
 
 namespace Koko

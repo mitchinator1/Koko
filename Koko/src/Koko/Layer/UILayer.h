@@ -1,11 +1,13 @@
 #ifndef UI_LAYER_H
 #define UI_LAYER_H
 #include "Layer.h"
-#include "Koko/Event/MouseEvent.h"
 #include "Koko/Event/Action.h"
 
 namespace Koko
 {
+	class MouseMovedEvent;
+	class MouseButtonPressedEvent;
+
 	class UILayer : public Layer
 	{
 	private:
