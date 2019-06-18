@@ -5,23 +5,22 @@ namespace Koko
 {
 	Dropdown::Dropdown()
 	{
-		Koko::Element element;
-		element.X = 0.0f;
-		element.Y = 15.0f;
-		element.Z = 0.0f;
-		element.Width = 15.0f;
-		element.Height = 15.0f;
-		element.R = 19.0f;
-		element.G = 13.0f;
-		element.B = 85.0f;
-		element.A = 100.0f;
+		m_Flag.Enable(KK_UPDATENEEDED);
+	}
 
-		AddElement(element);
+	Dropdown::~Dropdown()
+	{
+
 	}
 
 	void Koko::Dropdown::OnUpdate()
 	{
+		for (auto& element : m_Elements)
+		{
+			element->GetState().Disable(KK_UPDATENEEDED);
+		}
 
+		m_Flag.Disable(KK_UPDATENEEDED);
 	}
 
 	std::vector<float> Dropdown::CalculateVertices()
@@ -39,11 +38,13 @@ namespace Koko
 
 		for (auto& e : m_Elements)
 		{
-			if (!e.IsHidden())
+			if (e->GetState().Check(KK_HIDDEN))
 			{
-				auto& v = e.GetVertices();
-				vertices.insert(vertices.end(), v.begin(), v.end());
+				continue;
 			}
+
+			auto& v = e->GetVertices();
+			vertices.insert(vertices.end(), v.begin(), v.end());
 		}
 		return vertices;
 	}
@@ -56,36 +57,60 @@ namespace Koko
 
 		for (auto& e : m_Elements)
 		{
-			e.ToParentPosition(X, Y, Z);
+			e->ToParentPosition(X, Y, Z);
 		}
 	}
 	
-	void Dropdown::AddElement(Element& e)
+	void Dropdown::AddElement(Element* e)
 	{
 		m_Elements.emplace_back(e);
 	}
 
 	bool Dropdown::InHitbox(float x, float y)
 	{
-		if (x >= X && x <= X + Width &&
-			y >= Y && y <= Y + Height)
+		//Check if Parent is selected
+		if (x >= X && x <= X + Width && y >= Y && y <= Y + Height)
 		{
+			if (!m_Flag.Check(KK_SELECTED))
+			{
+				m_Flag.Enable(KK_SELECTED | KK_UPDATENEEDED);
+			}
+
+			for (auto& element : m_Elements)
+			{
+				if (element->GetState().Check(KK_HIDDEN))
+				{
+					element->GetState().Disable(KK_HIDDEN);
+				}
+			}
 			return true;
 		}
 
+		//If parent isn't selected, children might be
 		for (auto& element : m_Elements)
 		{
-			if (element.IsHidden())
+			if (element->InHitbox(x, y))
 			{
-				continue;
-			}
-
-			if (element.InHitbox(x, y))
-			{
+				if (!element->GetState().Check(KK_SELECTED))
+				{
+					element->GetState().Enable(KK_SELECTED | KK_UPDATENEEDED);
+				}
 				return true;
 			}
 		}
 
+		//Nothing selected
+		for (auto& element : m_Elements)
+		{
+			element->GetState().Enable(KK_HIDDEN);
+			element->GetState().Disable(KK_SELECTED);
+		}
+
+		if (m_Flag.Check(KK_SELECTED))
+		{
+			m_Flag.Enable(KK_UPDATENEEDED);
+			m_Flag.Disable(KK_SELECTED);
+		}
 		return false;
 	}
 }

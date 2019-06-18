@@ -1,19 +1,21 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
+#include "Koko/Entity/Flag.h"
 
 namespace Koko
 {
 	class Element
 	{
 	public:
-		float X, Y, Z;
-		float Width, Height;
-		float R, G, B, A;
+		float X = 0.0f, Y = 0.0f, Z = 0.0f;
+		float Width = 0.0f, Height = 0.0f;
+		float R = 0.0f, G = 0.0f, B = 0.0f, A = 0.0f;
 
-	private:
-		bool m_Hidden = false;
+	protected:
+		Flag m_Flag;
 
 	public:
+		virtual ~Element() {}
 		virtual void OnUpdate();
 
 		virtual std::vector<float> CalculateVertices();
@@ -23,18 +25,10 @@ namespace Koko
 
 		virtual bool InHitbox(float x, float y);
 
-		virtual bool IsHidden() { return m_Hidden; }
-
+		inline auto& GetState() { return m_Flag; }
+		
 	};
 
-	inline bool operator==(const Element& lhs, const Element& rhs)
-	{
-		return true;
-	}
-	inline bool operator!=(const Element& lhs, const Element& rhs)
-	{
-		return !(lhs == rhs);
-	}
 }
 
 #endif

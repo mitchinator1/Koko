@@ -1,5 +1,4 @@
 #include "Koko.h"
-
 #include "State/MenuState.h"
 
 class Sandbox : public Koko::Application
@@ -7,7 +6,7 @@ class Sandbox : public Koko::Application
 public:
 	Sandbox()
 	{
-		GetState().Push(new MenuState("Menu"));
+		PushState(new MenuState("Menu"));
 	}
 
 	~Sandbox()

@@ -5,6 +5,7 @@
 #include "Koko/Event/Action.h"
 
 #include "EntityComponent.h"
+#include "Flag.h"
 
 #include "Koko/Text.h"
 
@@ -30,6 +31,7 @@ namespace Koko
 		Size size;
 		Colour colour;
 		State state = State::None;
+		Flag m_Flag;
 
 		Action action = Action::None;
 		Action mousePress = Action::None;
@@ -41,7 +43,7 @@ namespace Koko
 		Text* m_Text = nullptr;
 
 	public:
-		Entity() { state = State::Update; }
+		Entity() { m_Flag.Enable(KK_UPDATENEEDED); }
 		virtual ~Entity() {}
 
 		virtual std::vector<float> GetVertices()
@@ -73,7 +75,7 @@ namespace Koko
 
 		virtual bool InHitbox(float x, float y)
 		{
-			if (state == State::Hidden)
+			if (m_Flag.Check(KK_HIDDEN))
 			{
 				return false;
 			}

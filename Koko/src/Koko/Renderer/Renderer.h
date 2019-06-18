@@ -1,6 +1,5 @@
 #ifndef RENDERER_H
 #define RENDERER_H
-#include "Koko/Core.h"
 
 template <typename T> class Stack;
 class Mesh;
@@ -12,11 +11,11 @@ namespace Koko
 	class Renderer
 	{
 	public:
-		KK_API Renderer();
-		KK_API virtual ~Renderer();
+		Renderer();
+		virtual ~Renderer();
 
-		KK_API void Render(Stack<Layer>& stack);
-		KK_API void Render(Mesh* mesh);
+		void Render(Stack<Layer>& stack);
+		void Render(Mesh* mesh);
 
 	private:
 		void RenderMesh(Mesh* mesh);

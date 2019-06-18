@@ -4,6 +4,8 @@
 #include "Event/ApplicationEvent.h"
 #include "Event/KeyEvent.h"
 
+#include "Koko/State.h"
+
 namespace Koko
 {
 	Application* Application::s_Instance = nullptr;
@@ -26,45 +28,43 @@ namespace Koko
 	{
 		while (m_Running)
 		{
-			m_StateStack.back()->OnUpdate();
+			m_States.back()->OnUpdate();
+			//m_StateStack.back()->OnUpdate();
 
 			Render();
 			m_Window->OnUpdate();
 		}
 	}
 
-	void Application::Render()
-	{
-		if (!m_StateStack.empty())
-		{
-			m_StateStack.back()->Render();
-		}
-	}
-
 	void Application::OnEvent(Koko::Event& e)
 	{
-		m_StateStack.back()->OnEvent(e);
-		m_StateStack.Notify();
+		m_States.back()->OnEvent(e);
+		//m_StateStack.back()->OnEvent(e);
+		//m_StateStack.Notify();
 
-		if (m_StateStack.empty())
+		//if (m_StateStack.empty())
+		if (m_States.empty())
 		{
 			m_Running = false;
 		}
 
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
-		dispatcher.Dispatch<KeyPressedEvent>(BIND_EVENT_FN(Application::OnKeyEvent));
+	}
+
+	void Application::Render()
+	{
+		m_States.back()->Render();
+		/*if (!m_StateStack.empty())
+		{
+			m_StateStack.back()->Render();
+		}*/
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)
 	{
 		m_Running = false;
 		return true;
-	}
-
-	bool Application::OnKeyEvent(KeyPressedEvent& e)
-	{
-		return false;
 	}
 
 }

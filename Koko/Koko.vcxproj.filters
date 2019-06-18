@@ -138,15 +138,6 @@
     <ClInclude Include="src\Koko\Shader\ShaderProgram.h">
       <Filter>src\Koko\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\State\State.h">
-      <Filter>src\Koko\State</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Koko\UI\UIDropdown.h">
-      <Filter>src\Koko\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Koko\UI\UIEntity.h">
-      <Filter>src\Koko\UI</Filter>
-    </ClInclude>
     <ClInclude Include="src\Koko\Utility\Builder.h">
       <Filter>src\Koko\Utility</Filter>
     </ClInclude>
@@ -930,7 +921,6 @@
     <ClInclude Include="vendor\GLM\GLM\vector_relational.hpp">
       <Filter>vendor\GLM\GLM</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Layer\UILayer.h" />
     <ClInclude Include="src\Koko\KeyCodes.h" />
     <ClInclude Include="src\Koko\MouseButtonCodes.h" />
     <ClInclude Include="src\Koko\EntryPoint.h" />
@@ -950,6 +940,11 @@
     <ClInclude Include="src\Koko\UI\Canvas.h" />
     <ClInclude Include="src\Koko\UI\Element.h" />
     <ClInclude Include="src\Koko\UI\DropdownElement.h" />
+    <ClInclude Include="src\Koko\State.h" />
+    <ClInclude Include="src\Koko\Entity\Flag.h" />
+    <ClInclude Include="src\Koko\UI\UIDropdown.h" />
+    <ClInclude Include="src\Koko\UI\UIEntity.h" />
+    <ClInclude Include="src\Koko\Layer\UILayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Koko\Application.cpp">
@@ -988,12 +983,6 @@
     <ClCompile Include="src\Koko\Shader\ShaderProgram.cpp">
       <Filter>src\Koko\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="src\Koko\UI\UIDropdown.cpp">
-      <Filter>src\Koko\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Koko\UI\UIEntity.cpp">
-      <Filter>src\Koko\UI</Filter>
-    </ClCompile>
     <ClCompile Include="src\Koko\Utility\FileProgram.cpp">
       <Filter>src\Koko\Utility</Filter>
     </ClCompile>
@@ -1009,7 +998,6 @@
     <ClCompile Include="src\kkpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Koko\Layer\UILayer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Koko\Text\Line.cpp" />
     <ClCompile Include="src\Koko\Text\MetaFile.cpp" />
@@ -1024,5 +1012,8 @@
     <ClCompile Include="src\Koko\UI\Canvas.cpp" />
     <ClCompile Include="src\Koko\UI\Element.cpp" />
     <ClCompile Include="src\Koko\UI\DropdownElement.cpp" />
+    <ClCompile Include="src\Koko\UI\UIDropdown.cpp" />
+    <ClCompile Include="src\Koko\UI\UIEntity.cpp" />
+    <ClCompile Include="src\Koko\Layer\UILayer.cpp" />
   </ItemGroup>
 </Project>

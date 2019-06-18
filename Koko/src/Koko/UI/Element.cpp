@@ -5,7 +5,7 @@ namespace Koko
 {
 	void Element::OnUpdate()
 	{
-
+		m_Flag.Disable(KK_UPDATENEEDED);
 	}
 
 	std::vector<float> Element::CalculateVertices()
@@ -31,13 +31,11 @@ namespace Koko
 
 	bool Element::InHitbox(float x, float y)
 	{
-		if (m_Hidden)
+		if (m_Flag.Check(KK_HIDDEN))
 		{
 			return false;
 		}
 
-		return (x >= X && x <= X + Width &&
-			y >= Y && y <= Y + Height);
+		return (x >= X && x <= X + Width &&	y >= Y && y <= Y + Height);
 	}
-
 }

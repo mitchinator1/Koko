@@ -57,6 +57,8 @@ namespace Koko
 
 	void Renderer::Render(Mesh* mesh)
 	{
+		Clear();
+
 		mesh->Bind();
 		ShaderManager::GetShader("Basic")->Bind();
 		glDrawElements(mesh->GetMode(), mesh->GetCount(), GL_UNSIGNED_INT, nullptr);

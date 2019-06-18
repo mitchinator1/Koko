@@ -7,6 +7,7 @@ template <typename T> class Stack;
 namespace Koko
 {
 	class Layer;
+	class Canvas;
 
 	class LayerBuilder : public Builder
 	{
@@ -17,6 +18,7 @@ namespace Koko
 		~LayerBuilder();
 
 		void Build(Stack<Layer>& stack);
+		void Build(Canvas* canvas);
 	};
 }
 

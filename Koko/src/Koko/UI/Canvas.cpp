@@ -9,7 +9,7 @@ namespace Koko
 {
 	Canvas::Canvas(float x, float y, float width, float height)
 		: m_Mesh(nullptr)
-		, X(x), Y(y), Width(100.0f), Height(100.0f)
+		, X(x), Y(y), Width(width), Height(height)
 	{
 
 	}
@@ -18,9 +18,14 @@ namespace Koko
 	{
 		for (auto& e : m_Elements)
 		{
-			e->OnUpdate();
+			if (e->GetState().Check(KK_UPDATENEEDED))
+			{
+				e->OnUpdate();
+			}
 		}
+
 		CreateMesh();
+		m_Flag.Disable(KK_UPDATENEEDED);
 	}
 
 	void Canvas::OnEvent(Event& e)
@@ -57,7 +62,7 @@ namespace Koko
 		std::vector<float> vertices;
 		for (auto& e : m_Elements)
 		{
-			if (e->IsHidden())
+			if (e->GetState().Check(KK_HIDDEN))
 			{
 				continue;
 			}
@@ -81,7 +86,7 @@ namespace Koko
 
 		for (auto element : m_Elements)
 		{
-			if (element->IsHidden())
+			if (element->GetState().Check(KK_HIDDEN))
 			{
 				continue;
 			}
@@ -89,7 +94,12 @@ namespace Koko
 			if (element->InHitbox(e.GetX(), e.GetY()))
 			{
 				hit = true;
-				std::cout << "Hit Detected.\n";
+				CreateMesh();
+			}
+
+			if (element->GetState().Check(KK_UPDATENEEDED))
+			{
+				m_Flag.Enable(KK_UPDATENEEDED);
 			}
 		}
 
@@ -98,6 +108,13 @@ namespace Koko
 
 	bool Canvas::OnMouseButtonPressedEvent(MouseButtonPressedEvent& e)
 	{
+		for (auto& element : m_Elements)
+		{
+			if (element->GetState().Check(KK_SELECTED))
+			{
+				return true;
+			}
+		}
 		return false;
 	}
 }

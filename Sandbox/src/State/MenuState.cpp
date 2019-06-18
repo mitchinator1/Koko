@@ -1,25 +1,23 @@
 #include "MenuState.h"
 #include "Koko/Input.h"
 
-#include "Koko/Text.h"
+#include "Koko/Renderer/Renderer.h"
 
-#include "Koko/UI/DropdownElement.h"
+#include "Koko/Application.h"
+#include "Koko/UI/Canvas.h"
+
+//#include "Koko/Shader/ShaderManager.h"
+#include "Koko/Layer/LayerBuilder.h"
 
 MenuState::MenuState(const std::string& fileName)
-	: Koko::State(fileName), m_Canvas(std::make_unique<Koko::Canvas>(0.0f, 0.0f, 100.0f, 100.0f))
+	: m_Renderer(std::make_unique<Koko::Renderer>())
+	, m_Canvas(std::make_unique<Koko::Canvas>())
 {
-	Koko::Dropdown* dropdown = new Koko::Dropdown();
-	dropdown->X = 0.0f;
-	dropdown->Y = 20.0f;
-	dropdown->Z = 0.0f;
-	dropdown->Width = 15.0f;
-	dropdown->Height = 15.0f;
-	dropdown->R = 90.0f;
-	dropdown->G = 30.0f;
-	dropdown->B = 18.0f;
-	dropdown->A = 100.0f;
+	Koko::LayerBuilder builder(fileName);
+	builder.Build(m_Canvas.get());
 
-	m_Canvas->AddElement(dropdown);
+	//Koko::ShaderManager::CreateShader("Text", "Resources/Shader/Text.Shader");
+	//Koko::ShaderManager::CreateShader("Basic", "Resources/Shader/Basic.Shader");
 }
 
 MenuState::~MenuState()
@@ -31,79 +29,70 @@ bool MenuState::OnEvent(Koko::Event& e)
 {
 	if (Koko::Input::IsKeyPressed(KK_KEY_ESCAPE))
 	{
-		remove = true;
+		Koko::Application::Get().Quit();
 	}
 
 	m_Canvas->OnEvent(e);
-
-	for (int it = (int)m_LayerStack.size() - 1; it >= 0; --it)
+	if (m_Canvas->GetState().Check(KK_UPDATENEEDED))
 	{
-		m_LayerStack[it]->OnEvent(e);
-		if (e.Handled)
-		{
-			m_State = Koko::Entity::State::Update;
-			return true;
-		}
+		m_Flag.Enable(KK_UPDATENEEDED);
+		return true;
 	}
+	
+	//NotifyLayers();
 
-	NotifyLayers();
-
-	m_State = Koko::Entity::State::None;
+	m_Flag.Disable(KK_UPDATENEEDED);
 	return false;
 }
 
 void MenuState::OnUpdate()
 {
-	if (m_State == Koko::Entity::State::Update)
+	if (m_Flag.Check(KK_UPDATENEEDED))
 	{
 		m_Canvas->OnUpdate();
 
-		for (auto& layer : m_LayerStack)
-		{
-			layer->OnUpdate();
-		}
-		m_State = Koko::Entity::State::None;
+		m_Flag.Disable(KK_UPDATENEEDED);
 	}
 }
 
 void MenuState::Render()
 {
-	m_Renderer->Render(m_LayerStack);
+	//m_Renderer->Render(m_LayerStack);
 	m_Renderer->Render(m_Canvas->GetMesh());
 }
 
-void MenuState::Notify(Stack<State>* stack)
-{
-	//TODO: Change to action
-	if (remove)
-	{
-		stack->Listen(Action::StateRemove);
-		//stack->PopState();
-	}
-}
-
-void MenuState::NotifyLayers()
-{
-	for (int i = 0; i < m_LayerStack.size(); ++i)
-	{
-		m_LayerStack[i]->Notify(this);
-		if (m_LayerStack[i]->updatestate == Koko::Entity::State::Remove)
-		{
-			m_LayerStack.Pop(m_LayerStack[i]);
-			--i;
-		}
-	}
-}
-
-void MenuState::ReceiveAction(Action action)
-{
-	if (action == Action::StateRemove)
-	{
-		remove = true;
-	}
-
-	if (action == Action::LayerRemove)
-	{
-		m_LayerStack.Pop();
-	}
-}
+//void MenuState::Notify(Stack<State>* stack)
+//{
+//	//TODO: Change to action
+//	if (remove)
+//	{
+//		stack->Listen(Action::StateRemove);
+//		//stack->PopState();
+//	}
+//}
+//
+//void MenuState::NotifyLayers()
+//{
+//	for (int i = 0; i < m_LayerStack.size(); ++i)
+//	{
+//		m_LayerStack[i]->Notify(this);
+//		if (m_LayerStack[i]->updatestate == Koko::Entity::State::Remove)
+//		{
+//			m_LayerStack.Pop(m_LayerStack[i]);
+//			--i;
+//		}
+//	}
+//}
+//
+//void MenuState::ReceiveAction(Action action)
+//{
+//	if (action == Action::StateRemove)
+//	{
+//		remove = true;
+//	}
+//
+//	if (action == Action::LayerRemove)
+//	{
+//		m_LayerStack.Pop();
+//	}
+//}

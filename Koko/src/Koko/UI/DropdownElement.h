@@ -7,19 +7,19 @@ namespace Koko
 	class Dropdown : public Element
 	{
 	private:
-		std::vector<Element> m_Elements;
+		std::vector<Element*> m_Elements;
 
 	public:
 		Dropdown();
+		virtual ~Dropdown();
+
 		void OnUpdate() override;
 
-		std::vector<float> CalculateVertices()		override;
-		virtual std::vector<float> GetVertices()	override { return CalculateVertices(); }
-		virtual void ToParentPosition(float x, float y, float z = 0.0f);
+		virtual std::vector<float> CalculateVertices()					override;
+		virtual void ToParentPosition(float x, float y, float z = 0.0f) override;
+		virtual bool InHitbox(float x, float y)							override;
 
-		void AddElement(Element& e);
-
-		bool InHitbox(float x, float y) override;
+		void AddElement(Element* e);
 	};
 }
 

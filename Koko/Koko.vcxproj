@@ -146,6 +146,7 @@
     <ClInclude Include="src\Koko\Entity\Entity.h" />
     <ClInclude Include="src\Koko\Entity\EntityComponent.h" />
     <ClInclude Include="src\Koko\Entity\EntityDirector.h" />
+    <ClInclude Include="src\Koko\Entity\Flag.h" />
     <ClInclude Include="src\Koko\EntryPoint.h" />
     <ClInclude Include="src\Koko\Event\Action.h" />
     <ClInclude Include="src\Koko\Event\ApplicationEvent.h" />
@@ -170,7 +171,7 @@
     <ClInclude Include="src\Koko\Shader\ShaderBase.h" />
     <ClInclude Include="src\Koko\Shader\ShaderManager.h" />
     <ClInclude Include="src\Koko\Shader\ShaderProgram.h" />
-    <ClInclude Include="src\Koko\State\State.h" />
+    <ClInclude Include="src\Koko\State.h" />
     <ClInclude Include="src\Koko\Text.h" />
     <ClInclude Include="src\Koko\Text\Character.h" />
     <ClInclude Include="src\Koko\Text\Font.h" />

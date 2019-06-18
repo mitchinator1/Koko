@@ -3,7 +3,7 @@
 
 #include "Koko/Event/MouseEvent.h"
 
-#include "Koko/State/State.h"
+#include "Koko/State.h"
 
 namespace Koko
 {
@@ -46,7 +46,7 @@ namespace Koko
 				updatestate = Entity::State::Remove;
 				continue;
 			}
-			state->ReceiveAction(action);
+			//state->ReceiveAction(action);
 		}
 
 		m_Actions.clear();

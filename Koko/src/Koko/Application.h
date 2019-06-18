@@ -2,20 +2,19 @@
 #define APPLICATION_H
 #include "Core.h"
 #include "Window.h"
-
-#include "Koko/Utility/Stack.h"
-#include "Koko/State/State.h"
+#include "Koko/State.h"
 
 namespace Koko
 {
+	class State;
 	class WindowCloseEvent;
-	class KeyPressedEvent;
 
 	class KK_API Application
 	{
 	public:
 		std::unique_ptr<Window> m_Window;
-		Stack<Koko::State> m_StateStack;
+
+		std::vector<State*> m_States;
 
 		bool m_Running = true;
 
@@ -27,18 +26,19 @@ namespace Koko
 
 		void Run();
 
+		void OnEvent(Event& e);
 		void Render();
 
-		void OnEvent(Event& e);
-
-		auto& GetState() { return m_StateStack; }
+		void PushState(State* state) { m_States.emplace_back(state); }
 
 		inline Window& GetWindow() { return *m_Window; }
 		inline static Application& Get() { return *s_Instance; }
 
+		inline static void Quit() { s_Instance->m_Running = false; }
+
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-		bool OnKeyEvent(KeyPressedEvent& e);
+
 	};
 
 	// To be defined in CLIENT

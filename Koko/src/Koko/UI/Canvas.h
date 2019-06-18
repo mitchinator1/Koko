@@ -19,8 +19,10 @@ namespace Koko
 		std::unique_ptr<Mesh> m_Mesh;
 		std::vector<Element*> m_Elements;
 
+		Flag m_Flag;
+
 	public:
-		Canvas(float x, float y, float width, float height);
+		Canvas(float x = 0.0f, float y = 0.0f, float width = 100.0f, float height = 100.0f);
 
 		void OnUpdate();
 		void OnEvent(Event& e);
@@ -29,6 +31,7 @@ namespace Koko
 		void RemoveElement(Element* e);
 
 		inline auto GetMesh() { return m_Mesh.get(); }
+		inline auto& GetState() { return m_Flag; }
 
 	private:
 		std::vector<float> ToScreenSpace(std::vector<float>& vertices);
