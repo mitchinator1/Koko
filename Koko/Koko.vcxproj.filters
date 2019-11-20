@@ -7,11 +7,17 @@
     <Filter Include="src\Koko">
       <UniqueIdentifier>{D03521CF-BC02-7CDA-E51B-6A82D147B168}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Koko\Component">
+      <UniqueIdentifier>{32922CF8-1E76-ED4D-87D6-E7A073D9D7CF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Koko\Core">
+      <UniqueIdentifier>{287CD4F5-943C-502C-5D77-99A9C9F69408}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Koko\Entity">
       <UniqueIdentifier>{1C987DC1-8823-EB85-9134-6E7AFD3E4786}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Koko\Event">
-      <UniqueIdentifier>{21D38BB0-0DA1-7FB6-F634-F0DCE2A15B1B}</UniqueIdentifier>
+    <Filter Include="src\Koko\Events">
+      <UniqueIdentifier>{B43706C2-20C3-7386-29D4-F67A95DECF86}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Koko\Layer">
       <UniqueIdentifier>{9C4EFFB0-881C-F3B6-71B0-63DD5D1DCF1B}</UniqueIdentifier>
@@ -25,8 +31,8 @@
     <Filter Include="src\Koko\Shader">
       <UniqueIdentifier>{76BBAEE1-E246-1CA6-EB57-9F9A576278A6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Koko\State">
-      <UniqueIdentifier>{200188B1-0CCF-7BB7-F562-ECDDE1CF571C}</UniqueIdentifier>
+    <Filter Include="src\Koko\Text">
+      <UniqueIdentifier>{E4A4DDF5-5065-592C-19A0-A2A9851F9E08}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Koko\UI">
       <UniqueIdentifier>{FDF603A5-69AC-7C9A-F2A0-76715E55739E}</UniqueIdentifier>
@@ -36,6 +42,9 @@
     </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
@@ -61,82 +70,91 @@
     <Filter Include="vendor\GLM\GLM\gtx">
       <UniqueIdentifier>{F3FD00C3-DFE1-C118-4842-BC6B3445AC9A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Koko.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Application.h">
-      <Filter>src\Koko</Filter>
+    <ClInclude Include="src\Koko\Core\Application.h">
+      <Filter>src\Koko\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Core.h">
-      <Filter>src\Koko</Filter>
+    <ClInclude Include="src\Koko\Core\Core.h">
+      <Filter>src\Koko\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Entity\Entity.h">
-      <Filter>src\Koko\Entity</Filter>
+    <ClInclude Include="src\Koko\Core\EntryPoint.h">
+      <Filter>src\Koko\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Entity\EntityComponent.h">
-      <Filter>src\Koko\Entity</Filter>
+    <ClInclude Include="src\Koko\Core\Input.h">
+      <Filter>src\Koko\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Entity\EntityDirector.h">
-      <Filter>src\Koko\Entity</Filter>
+    <ClInclude Include="src\Koko\Core\KeyCodes.h">
+      <Filter>src\Koko\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Event\Action.h">
-      <Filter>src\Koko\Event</Filter>
+    <ClInclude Include="src\Koko\Core\Layer.h">
+      <Filter>src\Koko\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Event\ApplicationEvent.h">
-      <Filter>src\Koko\Event</Filter>
+    <ClInclude Include="src\Koko\Core\LayerStack.h">
+      <Filter>src\Koko\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Event\Event.h">
-      <Filter>src\Koko\Event</Filter>
+    <ClInclude Include="src\Koko\Core\MouseButtonCodes.h">
+      <Filter>src\Koko\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Event\KeyEvent.h">
-      <Filter>src\Koko\Event</Filter>
+    <ClInclude Include="src\Koko\Core\Timestep.h">
+      <Filter>src\Koko\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Event\MouseEvent.h">
-      <Filter>src\Koko\Event</Filter>
+    <ClInclude Include="src\Koko\Core\Window.h">
+      <Filter>src\Koko\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Input.h">
-      <Filter>src\Koko</Filter>
+    <ClInclude Include="src\Koko\Events\Action.h">
+      <Filter>src\Koko\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Layer\Layer.h">
-      <Filter>src\Koko\Layer</Filter>
+    <ClInclude Include="src\Koko\Events\ApplicationEvent.h">
+      <Filter>src\Koko\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Layer\LayerBuilder.h">
-      <Filter>src\Koko\Layer</Filter>
+    <ClInclude Include="src\Koko\Events\Event.h">
+      <Filter>src\Koko\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Mesh\IndexBuffer.h">
-      <Filter>src\Koko\Mesh</Filter>
+    <ClInclude Include="src\Koko\Events\KeyEvent.h">
+      <Filter>src\Koko\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Mesh\Mesh.h">
-      <Filter>src\Koko\Mesh</Filter>
+    <ClInclude Include="src\Koko\Events\MouseEvent.h">
+      <Filter>src\Koko\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Mesh\Texture.h">
-      <Filter>src\Koko\Mesh</Filter>
+    <ClInclude Include="src\Koko\Renderer\Buffer.h">
+      <Filter>src\Koko\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Mesh\VertexArray.h">
-      <Filter>src\Koko\Mesh</Filter>
+    <ClInclude Include="src\Koko\Renderer\GraphicsContext.h">
+      <Filter>src\Koko\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Mesh\VertexBuffer.h">
-      <Filter>src\Koko\Mesh</Filter>
+    <ClInclude Include="src\Koko\Renderer\OrthographicCamera.h">
+      <Filter>src\Koko\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Mesh\VertexBufferLayout.h">
-      <Filter>src\Koko\Mesh</Filter>
+    <ClInclude Include="src\Koko\Renderer\OrthographicCameraController.h">
+      <Filter>src\Koko\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Mesh\stb_image.h">
-      <Filter>src\Koko\Mesh</Filter>
+    <ClInclude Include="src\Koko\Renderer\RenderCommand.h">
+      <Filter>src\Koko\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Koko\Renderer\Renderer.h">
       <Filter>src\Koko\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Shader\ShaderBase.h">
-      <Filter>src\Koko\Shader</Filter>
+    <ClInclude Include="src\Koko\Renderer\Renderer2D.h">
+      <Filter>src\Koko\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Shader\ShaderManager.h">
-      <Filter>src\Koko\Shader</Filter>
+    <ClInclude Include="src\Koko\Renderer\RendererAPI.h">
+      <Filter>src\Koko\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Shader\ShaderProgram.h">
-      <Filter>src\Koko\Shader</Filter>
+    <ClInclude Include="src\Koko\Renderer\Shader.h">
+      <Filter>src\Koko\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Renderer\Texture.h">
+      <Filter>src\Koko\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Renderer\VertexArray.h">
+      <Filter>src\Koko\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Koko\Utility\Builder.h">
       <Filter>src\Koko\Utility</Filter>
@@ -144,17 +162,35 @@
     <ClInclude Include="src\Koko\Utility\FileProgram.h">
       <Filter>src\Koko\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Utility\Node.h">
+    <ClInclude Include="src\Koko\Utility\FontReader.h">
       <Filter>src\Koko\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Utility\Stack.h">
+    <ClInclude Include="src\Koko\Utility\Node.h">
       <Filter>src\Koko\Utility</Filter>
     </ClInclude>
     <ClInclude Include="src\Koko\Utility\XMLReader.h">
       <Filter>src\Koko\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Window.h">
-      <Filter>src\Koko</Filter>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>src\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>src\Platform\Windows</Filter>
@@ -921,69 +957,57 @@
     <ClInclude Include="vendor\GLM\GLM\vector_relational.hpp">
       <Filter>vendor\GLM\GLM</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\KeyCodes.h" />
-    <ClInclude Include="src\Koko\MouseButtonCodes.h" />
-    <ClInclude Include="src\Koko\EntryPoint.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
-    <ClInclude Include="src\Koko\Text\Character.h" />
-    <ClInclude Include="src\Koko\Text\Line.h" />
-    <ClInclude Include="src\Koko\Text\MetaFile.h" />
-    <ClInclude Include="src\Koko\Text\TextLoader.h" />
-    <ClInclude Include="src\Koko\Text\TextMeshCreator.h" />
-    <ClInclude Include="src\Koko\Text\Word.h" />
-    <ClInclude Include="src\Koko\Text.h" />
-    <ClInclude Include="src\Koko\Utility\FontReader.h" />
-    <ClInclude Include="src\Koko\Text\Font.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\Koko\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Koko\Text\TextManager.h" />
-    <ClInclude Include="src\Koko\UI\Canvas.h" />
-    <ClInclude Include="src\Koko\UI\Element.h" />
-    <ClInclude Include="src\Koko\UI\DropdownElement.h" />
-    <ClInclude Include="src\Koko\State.h" />
-    <ClInclude Include="src\Koko\Entity\Flag.h" />
-    <ClInclude Include="src\Koko\UI\UIDropdown.h" />
-    <ClInclude Include="src\Koko\UI\UIEntity.h" />
-    <ClInclude Include="src\Koko\Layer\UILayer.h" />
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Koko\Application.cpp">
-      <Filter>src\Koko</Filter>
+    <ClCompile Include="src\Koko\Core\Application.cpp">
+      <Filter>src\Koko\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Koko\Entity\EntityDirector.cpp">
-      <Filter>src\Koko\Entity</Filter>
+    <ClCompile Include="src\Koko\Core\Layer.cpp">
+      <Filter>src\Koko\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Koko\Layer\LayerBuilder.cpp">
-      <Filter>src\Koko\Layer</Filter>
+    <ClCompile Include="src\Koko\Core\LayerStack.cpp">
+      <Filter>src\Koko\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Koko\Mesh\IndexBuffer.cpp">
-      <Filter>src\Koko\Mesh</Filter>
+    <ClCompile Include="src\Koko\Renderer\Buffer.cpp">
+      <Filter>src\Koko\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Koko\Mesh\Mesh.cpp">
-      <Filter>src\Koko\Mesh</Filter>
+    <ClCompile Include="src\Koko\Renderer\GraphicsContext.cpp">
+      <Filter>src\Koko\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Koko\Mesh\Texture.cpp">
-      <Filter>src\Koko\Mesh</Filter>
+    <ClCompile Include="src\Koko\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Koko\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Koko\Mesh\VertexArray.cpp">
-      <Filter>src\Koko\Mesh</Filter>
+    <ClCompile Include="src\Koko\Renderer\OrthographicCameraController.cpp">
+      <Filter>src\Koko\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Koko\Mesh\VertexBuffer.cpp">
-      <Filter>src\Koko\Mesh</Filter>
+    <ClCompile Include="src\Koko\Renderer\RenderCommand.cpp">
+      <Filter>src\Koko\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Koko\Renderer\Renderer.cpp">
       <Filter>src\Koko\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Koko\Shader\ShaderBase.cpp">
-      <Filter>src\Koko\Shader</Filter>
+    <ClCompile Include="src\Koko\Renderer\Renderer2D.cpp">
+      <Filter>src\Koko\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Koko\Shader\ShaderManager.cpp">
-      <Filter>src\Koko\Shader</Filter>
+    <ClCompile Include="src\Koko\Renderer\RendererAPI.cpp">
+      <Filter>src\Koko\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Koko\Shader\ShaderProgram.cpp">
-      <Filter>src\Koko\Shader</Filter>
+    <ClCompile Include="src\Koko\Renderer\Shader.cpp">
+      <Filter>src\Koko\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Renderer\Texture.cpp">
+      <Filter>src\Koko\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Renderer\VertexArray.cpp">
+      <Filter>src\Koko\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Koko\Utility\FileProgram.cpp">
+      <Filter>src\Koko\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Utility\FontReader.cpp">
       <Filter>src\Koko\Utility</Filter>
     </ClCompile>
     <ClCompile Include="src\Koko\Utility\Node.cpp">
@@ -992,28 +1016,35 @@
     <ClCompile Include="src\Koko\Utility\XMLReader.cpp">
       <Filter>src\Koko\Utility</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGlContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>src\Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\kkpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
-    <ClCompile Include="src\Koko\Text\Line.cpp" />
-    <ClCompile Include="src\Koko\Text\MetaFile.cpp" />
-    <ClCompile Include="src\Koko\Text\TextLoader.cpp" />
-    <ClCompile Include="src\Koko\Text\TextMeshCreator.cpp" />
-    <ClCompile Include="src\Koko\Text\Word.cpp" />
-    <ClCompile Include="src\Koko\Utility\FontReader.cpp" />
-    <ClCompile Include="src\Koko\Text.cpp" />
-    <ClCompile Include="src\Koko\Text\Font.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGlContext.cpp" />
-    <ClCompile Include="src\Koko\Text\TextManager.cpp" />
-    <ClCompile Include="src\Koko\UI\Canvas.cpp" />
-    <ClCompile Include="src\Koko\UI\Element.cpp" />
-    <ClCompile Include="src\Koko\UI\DropdownElement.cpp" />
-    <ClCompile Include="src\Koko\UI\UIDropdown.cpp" />
-    <ClCompile Include="src\Koko\UI\UIEntity.cpp" />
-    <ClCompile Include="src\Koko\Layer\UILayer.cpp" />
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

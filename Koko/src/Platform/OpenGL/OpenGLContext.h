@@ -4,7 +4,8 @@
 
 struct GLFWwindow;
 
-namespace Koko {
+namespace Koko
+{
 
 	class OpenGLContext : public GraphicsContext
 	{
@@ -13,8 +14,10 @@ namespace Koko {
 
 		virtual void Init() override;
 		virtual void SwapBuffers() override;
+
 	private:
 		GLFWwindow* m_WindowHandle;
+
 	};
 
 }

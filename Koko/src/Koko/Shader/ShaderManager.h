@@ -1,6 +1,6 @@
 #ifndef SHADER_MANAGER_H
 #define SHADER_MANAGER_H
-#include "Koko/Core.h"
+#include "Koko/Core/Core.h"
 #include "ShaderBase.h"
 
 namespace Koko
@@ -12,10 +12,10 @@ namespace Koko
 		static std::unordered_map<std::string, std::unique_ptr<ShaderBase>> s_Shaders;
 
 	public:
-		KK_API static bool CreateShader(const std::string& name, const std::string& filepath);
-		KK_API static ShaderBase* GetShader(const std::string& name);
+		static bool CreateShader(const std::string& name, const std::string& filepath);
+		static ShaderBase* GetShader(const std::string& name);
 
-		KK_API static void DeleteShader(const std::string& name);
+		static void DeleteShader(const std::string& name);
 	};
 }
 

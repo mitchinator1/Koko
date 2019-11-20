@@ -1,6 +1,6 @@
 #ifndef TEXT_MANAGER
 #define TEXT_MANAGER
-#include "Koko/Core.h"
+#include "Koko/Core/Core.h"
 #include "Font.h"
 
 namespace Koko
@@ -14,8 +14,8 @@ namespace Koko
 		TextManager() {};
 		
 	public:
-		KK_API static bool AddFont(const std::string& name);
-		KK_API static Font* GetFont(const std::string& name);
+		static bool AddFont(const std::string& name);
+		static Font* GetFont(const std::string& name);
 
 	};
 }

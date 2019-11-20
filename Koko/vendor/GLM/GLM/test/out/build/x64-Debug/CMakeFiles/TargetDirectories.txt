@@ -1,0 +1,12 @@
+C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test/out/build/x64-Debug/bug/CMakeFiles/edit_cache.dir
+C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test/out/build/x64-Debug/bug/CMakeFiles/rebuild_cache.dir
+C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test/out/build/x64-Debug/core/CMakeFiles/edit_cache.dir
+C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test/out/build/x64-Debug/core/CMakeFiles/rebuild_cache.dir
+C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test/out/build/x64-Debug/ext/CMakeFiles/edit_cache.dir
+C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test/out/build/x64-Debug/ext/CMakeFiles/rebuild_cache.dir
+C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test/out/build/x64-Debug/gtc/CMakeFiles/edit_cache.dir
+C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test/out/build/x64-Debug/gtc/CMakeFiles/rebuild_cache.dir
+C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test/out/build/x64-Debug/gtx/CMakeFiles/edit_cache.dir
+C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test/out/build/x64-Debug/gtx/CMakeFiles/rebuild_cache.dir

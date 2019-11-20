@@ -1,6 +1,6 @@
 #ifndef WINDOWS_INPUT_H
 #define WINDOWS_INPUT_H
-#include "Koko/Input.h"
+#include "Koko/Core/Input.h"
 
 namespace Koko
 {

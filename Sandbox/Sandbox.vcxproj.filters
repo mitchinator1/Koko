@@ -9,17 +9,14 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\State\MenuState.h">
-      <Filter>State</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\State\MenuState.cpp">
-      <Filter>State</Filter>
-    </ClCompile>
+    <ClCompile Include="src\Sandbox2D.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="Resources\Data\MenuText.data" />
+    <ClInclude Include="src\Sandbox2D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\shaders\Texture.glsl" />
+    <None Include="assets\shaders\FlatColor.glsl" />
   </ItemGroup>
 </Project>

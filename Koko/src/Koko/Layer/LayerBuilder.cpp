@@ -1,7 +1,6 @@
 #include "kkpch.h"
 #include "LayerBuilder.h"
 
-#include "UILayer.h"
 #include "Koko/Entity/EntityDirector.h"
 
 #include "Koko/Utility/Stack.h"
@@ -59,11 +58,11 @@ namespace Koko
 		{
 			if (n.Name == "Entity")
 			{
-				ui->PushEntity(director.GetUIEntity(n));
+				//ui->PushEntity(director.GetUIEntity(n));
 			}
 			if (n.Name == "Dropdown")
 			{
-				ui->PushEntity(director.GetUIDropdown(n));
+				//ui->PushEntity(director.GetUIDropdown(n));
 			}
 		}
 
@@ -97,7 +96,7 @@ namespace Koko
 		{
 			if (n.Name == "Entity")
 			{
-				layer->PushEntity(director.GetUIEntity(n));
+				//layer->PushEntity(director.GetUIEntity(n));
 			}
 		}
 

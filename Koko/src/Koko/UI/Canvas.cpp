@@ -1,9 +1,9 @@
 #include "kkpch.h"
-#include "Koko/Core.h"
+#include "Koko/Core/Core.h"
 #include "Canvas.h"
 
-#include "Koko/Event/Event.h"
-#include "Koko/Event/MouseEvent.h"
+#include "Koko/Events/Event.h"
+#include "Koko/Events/MouseEvent.h"
 
 namespace Koko
 {
@@ -31,8 +31,8 @@ namespace Koko
 	void Canvas::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<MouseMovedEvent>(BIND_EVENT_FN(Canvas::OnMouseMovedEvent));
-		dispatcher.Dispatch<MouseButtonPressedEvent>(BIND_EVENT_FN(Canvas::OnMouseButtonPressedEvent));
+		dispatcher.Dispatch<MouseMovedEvent>(KK_BIND_EVENT_FN(Canvas::OnMouseMovedEvent));
+		dispatcher.Dispatch<MouseButtonPressedEvent>(KK_BIND_EVENT_FN(Canvas::OnMouseButtonPressedEvent));
 	}
 
 	void Canvas::AddElement(Element* e)

@@ -1,77 +1,45 @@
 #include "kkpch.h"
-#include "Renderer.h"
-
-#include "Koko/Mesh/Mesh.h"
-
-#include "Koko/Utility/Stack.h"
-#include "Koko/Layer/Layer.h"
-
-#include "Koko/Shader/ShaderManager.h"
+#include "Koko/Renderer/Renderer.h"
+#include "Koko/Renderer/Renderer2D.h"
 
 namespace Koko
 {
-	Renderer::Renderer()
+
+	Scope<Renderer::SceneData> Renderer::s_SceneData = CreateScope<Renderer::SceneData>();
+
+	void Renderer::Init()
 	{
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		glEnable(GL_DEPTH);
+		RenderCommand::Init();
+		Renderer2D::Init();
 	}
 
-	Renderer::~Renderer()
+	void Renderer::Shutdown()
 	{
-
+		Renderer2D::Shutdown();
 	}
 
-	void Renderer::RenderMesh(Mesh* mesh)
+	void Renderer::OnWindowResize(uint32_t width, uint32_t height)
 	{
-		if (!mesh)
-		{
-			return;
-		}
-
-		mesh->Bind();
-
-		glDrawElements(mesh->GetMode(), mesh->GetCount(), GL_UNSIGNED_INT, nullptr);
-
-		mesh->Unbind();
+		RenderCommand::SetViewport(0, 0, width, height);
 	}
 
-	void Renderer::Render(Stack<Layer>& stack)
+	void Renderer::BeginScene(OrthographicCamera& camera)
 	{
-		Clear();
-
-		Prepare();
-
-		//TODO: Probably rendering backwards
-		for (auto& layer : stack)
-		{
-			ShaderManager::GetShader("Basic")->Bind();
-			RenderMesh(layer->GetMesh());
-
-			ShaderManager::GetShader("Text")->Bind();
-			//glEnable(GL_DEPTH_TEST);
-			glEnable(GL_BLEND);
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-			RenderMesh(layer->GetTextMesh());
-		}
+		s_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
 	}
 
-	void Renderer::Render(Mesh* mesh)
+	void Renderer::EndScene()
 	{
-		Clear();
-
-		mesh->Bind();
-		ShaderManager::GetShader("Basic")->Bind();
-		glDrawElements(mesh->GetMode(), mesh->GetCount(), GL_UNSIGNED_INT, nullptr);
-		mesh->Unbind();
 	}
 
-	void Renderer::Clear() const
+	void Renderer::Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4& transform)
 	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		shader->Bind();
+		shader->SetMat4("u_ViewProjection", s_SceneData->ViewProjectionMatrix);
+		shader->SetMat4("u_Transform", transform);
+
+		vertexArray->Bind();
+		RenderCommand::DrawIndexed(vertexArray);
 	}
 
-	void Renderer::Prepare() const
-	{
-		//m_ShaderManager->GetShader("Basic")->Bind();
-	}
 }

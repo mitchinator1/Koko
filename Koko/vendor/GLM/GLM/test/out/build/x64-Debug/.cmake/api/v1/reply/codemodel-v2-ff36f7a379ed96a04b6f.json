@@ -1,0 +1,81 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5
+					],
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "bug",
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "bug"
+				},
+				{
+					"build" : "core",
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "core"
+				},
+				{
+					"build" : "ext",
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ext"
+				},
+				{
+					"build" : "gtc",
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "gtc"
+				},
+				{
+					"build" : "gtx",
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "gtx"
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					],
+					"name" : "Project"
+				}
+			],
+			"targets" : []
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test/out/build/x64-Debug",
+		"source" : "C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

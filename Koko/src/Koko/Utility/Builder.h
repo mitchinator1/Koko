@@ -4,11 +4,11 @@
 #include "Koko/Utility/XMLReader.h"
 #include "Koko/Utility/Node.h"
 
-#include "Koko/Core.h"
+#include "Koko/Core/Core.h"
 
 namespace Koko
 {
-	class KK_API Builder
+	class Builder
 	{
 	protected:
 		Reader m_Reader;

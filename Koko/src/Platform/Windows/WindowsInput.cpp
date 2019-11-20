@@ -1,12 +1,13 @@
 #include "kkpch.h"
-#include "WindowsInput.h"
+#include "Platform/Windows/WindowsInput.h"
 
-#include "Koko/Application.h"
+#include "Koko/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace Koko
 {
-	Input* Input::s_Instance = new WindowsInput();
+
+	Scope<Input> Input::s_Instance = CreateScope<WindowsInput>();
 
 	bool WindowsInput::IsKeyPressedImpl(int keycode)
 	{
@@ -33,13 +34,13 @@ namespace Koko
 
 	float WindowsInput::GetMouseXImpl()
 	{
-		auto[x, y] = GetMousePositionImpl();
+		auto [x, y] = GetMousePositionImpl();
 		return x;
 	}
 
 	float WindowsInput::GetMouseYImpl()
 	{
-		auto[x, y] = GetMousePositionImpl();
+		auto [x, y] = GetMousePositionImpl();
 		return y;
 	}
 

@@ -16,10 +16,12 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Koko/vendor/GLFW/include"
 IncludeDir["Glad"] = "Koko/vendor/Glad/include"
 IncludeDir["GLM"] = "Koko/vendor/GLM"
+IncludeDir["stb_image"] = "Hazel/vendor/stb_image"
 
-include "Koko/vendor/GLFW"
-include "Koko/vendor/Glad"
-include "Koko/vendor/GLM"
+group "Dependencies"
+	include "Koko/vendor/GLFW"
+	include "Koko/vendor/Glad"
+	include "Koko/vendor/GLM"
 
 project "Koko"
 	location "Koko"
@@ -38,8 +40,15 @@ project "Koko"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/GLM/GLM/**.hpp",
 		"%{prj.name}/vendor/GLM/GLM/**.inl",
+	}
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs
@@ -48,6 +57,7 @@ project "Koko"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.GLM}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links 
@@ -62,7 +72,6 @@ project "Koko"
 
 		defines
 		{
-			"KOKO_PLATFORM_WINDOWS",
 			"KOKO_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
@@ -114,11 +123,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		systemversion "latest"
-
-		defines
-		{
-			"KOKO_PLATFORM_WINDOWS"
-		}
 
 	filter "configurations:Debug"
 		defines "KOKO_DEBUG"

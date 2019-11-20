@@ -1,6 +1,6 @@
 #ifndef STATE_BASE_H
 #define STATE_BASE_H
-#include "Koko/Event/Event.h"
+#include "Koko/Events/Event.h"
 
 namespace Koko
 {

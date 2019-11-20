@@ -1,6 +1,6 @@
 #ifndef SHADER_PROGRAM_H
 #define SHADER_PROGRAM_H
-#include "Koko/Core.h"
+#include "Koko/Core/Core.h"
 
 namespace Koko
 {
@@ -19,13 +19,13 @@ namespace Koko
 		int m_RendererID;
 
 	public:
-		KK_API ShaderProgram(const std::string& filepath = "Resources/Shader/Basic.shader") noexcept;
-		KK_API virtual ~ShaderProgram();
+		ShaderProgram(const std::string& filepath = "Resources/Shader/Basic.shader") noexcept;
+		virtual ~ShaderProgram();
 
-		KK_API void Bind() const;
-		KK_API void Unbind() const;
+		void Bind() const;
+		void Unbind() const;
 
-		KK_API bool IsValid() const;
+		bool IsValid() const;
 
 	private:
 		ShaderProgramSource ParseShader(const std::string& filepath);
