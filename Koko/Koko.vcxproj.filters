@@ -7,14 +7,8 @@
     <Filter Include="src\Koko">
       <UniqueIdentifier>{D03521CF-BC02-7CDA-E51B-6A82D147B168}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Koko\Component">
-      <UniqueIdentifier>{32922CF8-1E76-ED4D-87D6-E7A073D9D7CF}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Koko\Core">
       <UniqueIdentifier>{287CD4F5-943C-502C-5D77-99A9C9F69408}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Koko\Entity">
-      <UniqueIdentifier>{1C987DC1-8823-EB85-9134-6E7AFD3E4786}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Koko\Events">
       <UniqueIdentifier>{B43706C2-20C3-7386-29D4-F67A95DECF86}</UniqueIdentifier>
@@ -73,6 +67,9 @@
     <Filter Include="vendor\stb_image">
       <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Koko\Entity">
+      <UniqueIdentifier>{d3bf2e02-9f94-4a63-bf0d-71652ddcea7d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Koko.h">
@@ -123,6 +120,27 @@
     <ClInclude Include="src\Koko\Events\MouseEvent.h">
       <Filter>src\Koko\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Koko\Layer\LayerBuilder.h">
+      <Filter>src\Koko\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Mesh\IndexBuffer.h">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Mesh\Mesh.h">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Mesh\Texture.h">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Mesh\VertexArray.h">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Mesh\VertexBuffer.h">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Mesh\VertexBufferLayout.h">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClInclude>
     <ClInclude Include="src\Koko\Renderer\Buffer.h">
       <Filter>src\Koko\Renderer</Filter>
     </ClInclude>
@@ -155,6 +173,54 @@
     </ClInclude>
     <ClInclude Include="src\Koko\Renderer\VertexArray.h">
       <Filter>src\Koko\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Shader\ShaderBase.h">
+      <Filter>src\Koko\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Shader\ShaderManager.h">
+      <Filter>src\Koko\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Shader\ShaderProgram.h">
+      <Filter>src\Koko\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\State.h">
+      <Filter>src\Koko</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Text.h">
+      <Filter>src\Koko</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Text\Character.h">
+      <Filter>src\Koko\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Text\Font.h">
+      <Filter>src\Koko\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Text\Line.h">
+      <Filter>src\Koko\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Text\MetaFile.h">
+      <Filter>src\Koko\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Text\TextLoader.h">
+      <Filter>src\Koko\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Text\TextManager.h">
+      <Filter>src\Koko\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Text\TextMeshCreator.h">
+      <Filter>src\Koko\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Text\Word.h">
+      <Filter>src\Koko\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\UI\Canvas.h">
+      <Filter>src\Koko\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\UI\DropdownElement.h">
+      <Filter>src\Koko\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\UI\UIDropdown.h">
+      <Filter>src\Koko\UI</Filter>
     </ClInclude>
     <ClInclude Include="src\Koko\Utility\Builder.h">
       <Filter>src\Koko\Utility</Filter>
@@ -960,6 +1026,19 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Koko\UI\Element.h">
+      <Filter>src\Koko\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Entity\Flag.h">
+      <Filter>src\Koko\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Koko\Entity\EntityDirector.h" />
+    <ClInclude Include="src\Koko\Entity\Entity.h" />
+    <ClInclude Include="src\Koko\Entity\EntityComponent.h" />
+    <ClInclude Include="src\Koko\Core.h" />
+    <ClInclude Include="src\Koko\Layer\UILayer.h" />
+    <ClInclude Include="src\Koko\Layer\Layer.h" />
+    <ClInclude Include="src\Koko\Utility\Stack.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Koko\Core\Application.cpp">
@@ -970,6 +1049,24 @@
     </ClCompile>
     <ClCompile Include="src\Koko\Core\LayerStack.cpp">
       <Filter>src\Koko\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Layer\LayerBuilder.cpp">
+      <Filter>src\Koko\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Mesh\IndexBuffer.cpp">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Mesh\Mesh.cpp">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Mesh\Texture.cpp">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Mesh\VertexArray.cpp">
+      <Filter>src\Koko\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Mesh\VertexBuffer.cpp">
+      <Filter>src\Koko\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="src\Koko\Renderer\Buffer.cpp">
       <Filter>src\Koko\Renderer</Filter>
@@ -1003,6 +1100,48 @@
     </ClCompile>
     <ClCompile Include="src\Koko\Renderer\VertexArray.cpp">
       <Filter>src\Koko\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Shader\ShaderBase.cpp">
+      <Filter>src\Koko\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Shader\ShaderManager.cpp">
+      <Filter>src\Koko\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Shader\ShaderProgram.cpp">
+      <Filter>src\Koko\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Text.cpp">
+      <Filter>src\Koko</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Text\Font.cpp">
+      <Filter>src\Koko\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Text\Line.cpp">
+      <Filter>src\Koko\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Text\MetaFile.cpp">
+      <Filter>src\Koko\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Text\TextLoader.cpp">
+      <Filter>src\Koko\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Text\TextManager.cpp">
+      <Filter>src\Koko\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Text\TextMeshCreator.cpp">
+      <Filter>src\Koko\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Text\Word.cpp">
+      <Filter>src\Koko\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\UI\Canvas.cpp">
+      <Filter>src\Koko\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\UI\DropdownElement.cpp">
+      <Filter>src\Koko\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\UI\UIDropdown.cpp">
+      <Filter>src\Koko\UI</Filter>
     </ClCompile>
     <ClCompile Include="src\Koko\Utility\FileProgram.cpp">
       <Filter>src\Koko\Utility</Filter>
@@ -1046,5 +1185,10 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\Koko\UI\Element.cpp">
+      <Filter>src\Koko\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Koko\Entity\EntityDirector.cpp" />
+    <ClCompile Include="src\Koko\Layer\UILayer.cpp" />
   </ItemGroup>
 </Project>

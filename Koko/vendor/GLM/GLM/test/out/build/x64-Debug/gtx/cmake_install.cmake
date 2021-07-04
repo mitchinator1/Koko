@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test/gtx
+# Install script for directory: C:/Users/zozo2/source/repos/mitchinator1/Picross/Koko/vendor/GLM/GLM/test/gtx
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "c:/users/mitch/source/repos/gameengine/koko/vendor/glm/glm/test/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "C:/Users/zozo2/Source/Repos/mitchinator1/Picross/Koko/vendor/GLM/GLM/test/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

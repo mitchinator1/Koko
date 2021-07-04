@@ -19,26 +19,27 @@
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Koko</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <LatestTargetPlatformVersion>$([Microsoft.Build.Utilities.ToolLocationHelper]::GetLatestSDKTargetPlatformVersion('Windows', '10.0'))</LatestTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -140,6 +141,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Koko\Core.h" />
+    <ClInclude Include="src\Koko\Entity\Entity.h" />
+    <ClInclude Include="src\Koko\Entity\EntityComponent.h" />
+    <ClInclude Include="src\Koko\Entity\Flag.h" />
     <ClInclude Include="src\Koko.h" />
     <ClInclude Include="src\Koko\Core\Application.h" />
     <ClInclude Include="src\Koko\Core\Core.h" />
@@ -151,11 +156,21 @@
     <ClInclude Include="src\Koko\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Koko\Core\Timestep.h" />
     <ClInclude Include="src\Koko\Core\Window.h" />
+    <ClInclude Include="src\Koko\Entity\EntityDirector.h" />
     <ClInclude Include="src\Koko\Events\Action.h" />
     <ClInclude Include="src\Koko\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Koko\Events\Event.h" />
     <ClInclude Include="src\Koko\Events\KeyEvent.h" />
     <ClInclude Include="src\Koko\Events\MouseEvent.h" />
+    <ClInclude Include="src\Koko\Layer\Layer.h" />
+    <ClInclude Include="src\Koko\Layer\LayerBuilder.h" />
+    <ClInclude Include="src\Koko\Layer\UILayer.h" />
+    <ClInclude Include="src\Koko\Mesh\IndexBuffer.h" />
+    <ClInclude Include="src\Koko\Mesh\Mesh.h" />
+    <ClInclude Include="src\Koko\Mesh\Texture.h" />
+    <ClInclude Include="src\Koko\Mesh\VertexArray.h" />
+    <ClInclude Include="src\Koko\Mesh\VertexBuffer.h" />
+    <ClInclude Include="src\Koko\Mesh\VertexBufferLayout.h" />
     <ClInclude Include="src\Koko\Renderer\Buffer.h" />
     <ClInclude Include="src\Koko\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Koko\Renderer\OrthographicCamera.h" />
@@ -167,10 +182,28 @@
     <ClInclude Include="src\Koko\Renderer\Shader.h" />
     <ClInclude Include="src\Koko\Renderer\Texture.h" />
     <ClInclude Include="src\Koko\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Koko\Shader\ShaderBase.h" />
+    <ClInclude Include="src\Koko\Shader\ShaderManager.h" />
+    <ClInclude Include="src\Koko\Shader\ShaderProgram.h" />
+    <ClInclude Include="src\Koko\State.h" />
+    <ClInclude Include="src\Koko\Text.h" />
+    <ClInclude Include="src\Koko\Text\Character.h" />
+    <ClInclude Include="src\Koko\Text\Font.h" />
+    <ClInclude Include="src\Koko\Text\Line.h" />
+    <ClInclude Include="src\Koko\Text\MetaFile.h" />
+    <ClInclude Include="src\Koko\Text\TextLoader.h" />
+    <ClInclude Include="src\Koko\Text\TextManager.h" />
+    <ClInclude Include="src\Koko\Text\TextMeshCreator.h" />
+    <ClInclude Include="src\Koko\Text\Word.h" />
+    <ClInclude Include="src\Koko\UI\Canvas.h" />
+    <ClInclude Include="src\Koko\UI\DropdownElement.h" />
+    <ClInclude Include="src\Koko\UI\Element.h" />
+    <ClInclude Include="src\Koko\UI\UIDropdown.h" />
     <ClInclude Include="src\Koko\Utility\Builder.h" />
     <ClInclude Include="src\Koko\Utility\FileProgram.h" />
     <ClInclude Include="src\Koko\Utility\FontReader.h" />
     <ClInclude Include="src\Koko\Utility\Node.h" />
+    <ClInclude Include="src\Koko\Utility\Stack.h" />
     <ClInclude Include="src\Koko\Utility\XMLReader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
@@ -440,6 +473,14 @@
     <ClCompile Include="src\Koko\Core\Application.cpp" />
     <ClCompile Include="src\Koko\Core\Layer.cpp" />
     <ClCompile Include="src\Koko\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Koko\Entity\EntityDirector.cpp" />
+    <ClCompile Include="src\Koko\Layer\LayerBuilder.cpp" />
+    <ClCompile Include="src\Koko\Layer\UILayer.cpp" />
+    <ClCompile Include="src\Koko\Mesh\IndexBuffer.cpp" />
+    <ClCompile Include="src\Koko\Mesh\Mesh.cpp" />
+    <ClCompile Include="src\Koko\Mesh\Texture.cpp" />
+    <ClCompile Include="src\Koko\Mesh\VertexArray.cpp" />
+    <ClCompile Include="src\Koko\Mesh\VertexBuffer.cpp" />
     <ClCompile Include="src\Koko\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Koko\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Koko\Renderer\OrthographicCamera.cpp" />
@@ -455,6 +496,21 @@
     <ClCompile Include="src\Koko\Renderer\VertexArray.cpp">
       <ObjectFileName>$(IntDir)\VertexArray1.obj</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="src\Koko\Shader\ShaderBase.cpp" />
+    <ClCompile Include="src\Koko\Shader\ShaderManager.cpp" />
+    <ClCompile Include="src\Koko\Shader\ShaderProgram.cpp" />
+    <ClCompile Include="src\Koko\Text.cpp" />
+    <ClCompile Include="src\Koko\Text\Font.cpp" />
+    <ClCompile Include="src\Koko\Text\Line.cpp" />
+    <ClCompile Include="src\Koko\Text\MetaFile.cpp" />
+    <ClCompile Include="src\Koko\Text\TextLoader.cpp" />
+    <ClCompile Include="src\Koko\Text\TextManager.cpp" />
+    <ClCompile Include="src\Koko\Text\TextMeshCreator.cpp" />
+    <ClCompile Include="src\Koko\Text\Word.cpp" />
+    <ClCompile Include="src\Koko\UI\Canvas.cpp" />
+    <ClCompile Include="src\Koko\UI\DropdownElement.cpp" />
+    <ClCompile Include="src\Koko\UI\Element.cpp" />
+    <ClCompile Include="src\Koko\UI\UIDropdown.cpp" />
     <ClCompile Include="src\Koko\Utility\FileProgram.cpp" />
     <ClCompile Include="src\Koko\Utility\FontReader.cpp" />
     <ClCompile Include="src\Koko\Utility\Node.cpp" />

@@ -1,5 +1,6 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
+
 #include "Koko/Entity/Flag.h"
 
 namespace Koko

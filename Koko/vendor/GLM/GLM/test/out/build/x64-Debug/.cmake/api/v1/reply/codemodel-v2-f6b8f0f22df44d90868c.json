@@ -70,12 +70,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test/out/build/x64-Debug",
-		"source" : "C:/Users/mitch/source/repos/GameEngine/Koko/vendor/GLM/GLM/test"
+		"build" : "C:/Users/zozo2/source/repos/mitchinator1/Picross/Koko/vendor/GLM/GLM/test/out/build/x64-Debug",
+		"source" : "C:/Users/zozo2/source/repos/mitchinator1/Picross/Koko/vendor/GLM/GLM/test"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 0
+		"minor" : 2
 	}
 }
