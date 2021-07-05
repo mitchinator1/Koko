@@ -129,9 +129,6 @@
     <ClInclude Include="src\Koko\Mesh\Mesh.h">
       <Filter>src\Koko\Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="src\Koko\Mesh\Texture.h">
-      <Filter>src\Koko\Mesh</Filter>
-    </ClInclude>
     <ClInclude Include="src\Koko\Mesh\VertexArray.h">
       <Filter>src\Koko\Mesh</Filter>
     </ClInclude>
@@ -1057,9 +1054,6 @@
       <Filter>src\Koko\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="src\Koko\Mesh\Mesh.cpp">
-      <Filter>src\Koko\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Koko\Mesh\Texture.cpp">
       <Filter>src\Koko\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="src\Koko\Mesh\VertexArray.cpp">

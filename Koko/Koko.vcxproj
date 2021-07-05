@@ -167,7 +167,6 @@
     <ClInclude Include="src\Koko\Layer\UILayer.h" />
     <ClInclude Include="src\Koko\Mesh\IndexBuffer.h" />
     <ClInclude Include="src\Koko\Mesh\Mesh.h" />
-    <ClInclude Include="src\Koko\Mesh\Texture.h" />
     <ClInclude Include="src\Koko\Mesh\VertexArray.h" />
     <ClInclude Include="src\Koko\Mesh\VertexBuffer.h" />
     <ClInclude Include="src\Koko\Mesh\VertexBufferLayout.h" />
@@ -478,7 +477,6 @@
     <ClCompile Include="src\Koko\Layer\UILayer.cpp" />
     <ClCompile Include="src\Koko\Mesh\IndexBuffer.cpp" />
     <ClCompile Include="src\Koko\Mesh\Mesh.cpp" />
-    <ClCompile Include="src\Koko\Mesh\Texture.cpp" />
     <ClCompile Include="src\Koko\Mesh\VertexArray.cpp" />
     <ClCompile Include="src\Koko\Mesh\VertexBuffer.cpp" />
     <ClCompile Include="src\Koko\Renderer\Buffer.cpp" />
