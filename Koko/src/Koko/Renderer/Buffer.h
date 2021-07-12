@@ -28,7 +28,7 @@ namespace Koko
 		case ShaderDataType::Bool:     return 1;
 		}
 
-		//HZ_CORE_ASSERT(false, "Unknown ShaderDataType!");
+		KK_CORE_ASSERT(false, "Unknown ShaderDataType!");
 		return 0;
 	}
 
@@ -64,7 +64,7 @@ namespace Koko
 			case ShaderDataType::Bool:    return 1;
 			}
 
-			//HZ_CORE_ASSERT(false, "Unknown ShaderDataType!");
+			KK_CORE_ASSERT(false, "Unknown ShaderDataType!");
 			return 0;
 		}
 	};
@@ -115,9 +115,13 @@ namespace Koko
 		virtual const BufferLayout& GetLayout() const = 0;
 		virtual void SetLayout(const BufferLayout& layout) = 0;
 
+		virtual void SetData(const void* data, uint32_t size) = 0;
+
+		static Ref<VertexBuffer> Create(uint32_t size);
 		static Ref<VertexBuffer> Create(float* vertices, uint32_t size);
 	};
 
+	// Currently only supports 32-bit index buffers
 	class IndexBuffer
 	{
 	public:

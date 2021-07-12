@@ -10,26 +10,21 @@ namespace Koko
 	OpenGLContext::OpenGLContext(GLFWwindow* windowHandle)
 		: m_WindowHandle(windowHandle)
 	{
-		//TODO: Error handling if windowHandle is null
-		if (!windowHandle)
-		{
-			std::cout << "Window Handle is null!\n";
-		}
+		KK_CORE_ASSERT(windowHandle, "Window handle is null!");
 	}
 
 	void OpenGLContext::Init()
 	{
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		KK_CORE_ASSERT(status, "Failed to initialize Glad!");
 
-	#ifdef KK_ENABLE_ASSERTS
-		int versionMajor;
-		int versionMinor;
-		glGetIntegerv(GL_MAJOR_VERSION, &versionMajor);
-		glGetIntegerv(GL_MINOR_VERSION, &versionMinor);
-
-		//HZ_CORE_ASSERT(versionMajor > 4 || (versionMajor == 4 && versionMinor >= 5), "Hazel requires at least OpenGL version 4.5!");
-	#endif
+		KK_CORE_INFO("OpenGL Info:");
+		KK_CORE_INFO(" Vendor: {0}", glGetString(GL_VENDOR));
+		KK_CORE_INFO(" Renderer: {0}", glGetString(GL_RENDERER));
+		KK_CORE_INFO(" Version: {0}", glGetString(GL_VERSION));
+		
+		KK_CORE_ASSERT(GLVersion.major > 4 || (GLVersion.major == 4 && glVersion.minor >= 5), "Koko requires at least OpenGL version 4.5!");
 	}
 
 	void OpenGLContext::SwapBuffers()

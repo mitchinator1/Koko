@@ -9,6 +9,8 @@
 
 #include "Koko/Core/Timestep.h"
 
+#include "Koko/ImGui/ImGuiLayer.h"
+
 namespace Koko
 {
 
@@ -29,13 +31,15 @@ namespace Koko
 
 		inline static Application& Get() { return *s_Instance; }
 
+		inline LayerStack* GetLayerStack() { return &m_LayerStack; }
+
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 
 	private:
 		std::unique_ptr<Window> m_Window;
-		//ImGuiLayer* m_ImGuiLayer;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		bool m_Minimized = false;
 		LayerStack m_LayerStack;

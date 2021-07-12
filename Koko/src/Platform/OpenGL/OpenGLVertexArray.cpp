@@ -23,7 +23,7 @@ namespace Koko
 		case ShaderDataType::Bool:     return GL_BOOL;
 		}
 
-		//HZ_CORE_ASSERT(false, "Unknown ShaderDataType!");
+		KK_CORE_ASSERT(false, "Unknown ShaderDataType!");
 		return 0;
 	}
 
@@ -49,7 +49,7 @@ namespace Koko
 
 	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer)
 	{
-		//HZ_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout!");
+		KK_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout!");
 
 		glBindVertexArray(m_RendererID);
 		vertexBuffer->Bind();

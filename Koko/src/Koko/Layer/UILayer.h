@@ -2,6 +2,7 @@
 #define UI_LAYER_H
 #include "Layer.h"
 #include "Koko/Events/Action.h"
+#include "Koko/Entity/Entity.h"
 
 namespace Koko
 {
@@ -18,10 +19,10 @@ namespace Koko
 		~UILayer() override {};
 
 		void OnAttach() override;
-		void OnUpdate()	override;
+		void OnUpdate();
 		void OnEvent(Event& e) override;
 
-		void Notify(State* state) override;
+		//void Notify(Entity::State* state) override;
 
 	private:
 		bool OnMouseMovedEvent(MouseMovedEvent& e);

@@ -1,6 +1,6 @@
 #ifndef ENTITY_COMPONENT_H
 #define ENTITY_COMPONENT_H
-#include "Koko/Core.h"
+#include "Koko/Core/Core.h"
 #include "GLM/vec2.hpp"
 #include "GLM/vec3.hpp"
 #include "GLM/vec4.hpp"

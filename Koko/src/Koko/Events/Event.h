@@ -1,6 +1,8 @@
 #ifndef EVENT_H
 #define EVENT_H
 #include "kkpch.h"
+
+#include "Koko/Debug/Instrumentor.h"
 #include "Koko/Core/Core.h"
 
 namespace Koko

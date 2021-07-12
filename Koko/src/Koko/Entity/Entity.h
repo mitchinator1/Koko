@@ -1,7 +1,7 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 #include "kkpch.h"
-#include "Koko/Core.h"
+#include "Koko/Core/Core.h"
 #include "Koko/Events/Action.h"
 
 #include "EntityComponent.h"

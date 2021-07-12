@@ -16,7 +16,7 @@ namespace Koko
 		if (type == "fragment" || type == "pixel")
 			return GL_FRAGMENT_SHADER;
 
-		//HZ_CORE_ASSERT(false, "Unknown shader type!");
+		KK_CORE_ASSERT(false, "Unknown shader type!");
 		return 0;
 	}
 
@@ -65,12 +65,12 @@ namespace Koko
 			}
 			else
 			{
-				//HZ_CORE_ERROR("Could not read from file '{0}'", filepath);
+				KK_CORE_ERROR("Could not read from file '{0}'", filepath);
 			}
 		}
 		else
 		{
-			//HZ_CORE_ERROR("Could not open file '{0}'", filepath);
+			KK_CORE_ERROR("Could not open file '{0}'", filepath);
 		}
 
 		return result;
@@ -86,13 +86,13 @@ namespace Koko
 		while (pos != std::string::npos)
 		{
 			size_t eol = source.find_first_of("\r\n", pos); //End of shader type declaration line
-			//HZ_CORE_ASSERT(eol != std::string::npos, "Syntax error");
+			KK_CORE_ASSERT(eol != std::string::npos, "Syntax error");
 			size_t begin = pos + typeTokenLength + 1; //Start of shader type name (after "#type " keyword)
 			std::string type = source.substr(begin, eol - begin);
-			//HZ_CORE_ASSERT(ShaderTypeFromString(type), "Invalid shader type specified");
+			KK_CORE_ASSERT(ShaderTypeFromString(type), "Invalid shader type specified");
 
 			size_t nextLinePos = source.find_first_not_of("\r\n", eol); //Start of shader code after shader type declaration line
-			//HZ_CORE_ASSERT(nextLinePos != std::string::npos, "Syntax error");
+			KK_CORE_ASSERT(nextLinePos != std::string::npos, "Syntax error");
 			pos = source.find(typeToken, nextLinePos); //Start of next shader type declaration line
 
 			shaderSources[ShaderTypeFromString(type)] = (pos == std::string::npos) ? source.substr(nextLinePos) : source.substr(nextLinePos, pos - nextLinePos);
@@ -104,7 +104,7 @@ namespace Koko
 	void OpenGLShader::Compile(const std::unordered_map<GLenum, std::string>& shaderSources)
 	{
 		GLuint program = glCreateProgram();
-		//HZ_CORE_ASSERT(shaderSources.size() <= 2, "We only support 2 shaders for now");
+		KK_CORE_ASSERT(shaderSources.size() <= 2, "We only support 2 shaders for now");
 		std::array<GLenum, 2> glShaderIDs;
 		int glShaderIDIndex = 0;
 		for (auto& kv : shaderSources)
@@ -131,8 +131,8 @@ namespace Koko
 
 				glDeleteShader(shader);
 
-				//HZ_CORE_ERROR("{0}", infoLog.data());
-				//HZ_CORE_ASSERT(false, "Shader compilation failure!");
+				KK_CORE_ERROR("{0}", infoLog.data());
+				KK_CORE_ASSERT(false, "Shader compilation failure!");
 				break;
 			}
 
@@ -163,8 +163,8 @@ namespace Koko
 			for (auto id : glShaderIDs)
 				glDeleteShader(id);
 
-			//HZ_CORE_ERROR("{0}", infoLog.data());
-			//HZ_CORE_ASSERT(false, "Shader link failure!");
+			KK_CORE_ERROR("{0}", infoLog.data());
+			KK_CORE_ASSERT(false, "Shader link failure!");
 			return;
 		}
 
@@ -190,6 +190,16 @@ namespace Koko
 		UploadUniformInt(name, value);
 	}
 
+	void OpenGLShader::SetIntArray(const std::string& name, int* values, uint32_t count)
+	{
+		UploadUniformIntArray(name, values, count);
+	}
+
+	void OpenGLShader::SetFloat(const std::string& name, float value)
+	{
+		UploadUniformFloat(name, value);
+	}
+
 	void OpenGLShader::SetFloat3(const std::string& name, const glm::vec3& value)
 	{
 		UploadUniformFloat3(name, value);
@@ -209,6 +219,12 @@ namespace Koko
 	{
 		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
 		glUniform1i(location, value);
+	}
+
+	void OpenGLShader::UploadUniformIntArray(const std::string& name, int* values, uint32_t count)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniform1iv(location, count, values);
 	}
 
 	void OpenGLShader::UploadUniformFloat(const std::string& name, float value)

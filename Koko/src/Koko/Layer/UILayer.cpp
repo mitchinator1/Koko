@@ -1,5 +1,5 @@
 #include "kkpch.h"
-#include "Koko/Core.h"
+#include "Koko/Core/Core.h"
 #include "UILayer.h"
 
 #include "Koko/Events/MouseEvent.h"
@@ -38,20 +38,20 @@ namespace Koko
 		}
 	}
 
-	void UILayer::Notify(State* state)
-	{
-		for (auto action : m_Actions)
-		{
-			if (action == Action::LayerRemove)
-			{
-				updatestate = Entity::State::Remove;
-				continue;
-			}
-			//state->ReceiveAction(action);
-		}
+	//void UILayer::Notify(Entity::State* state)
+	//{
+	//	for (auto action : m_Actions)
+	//	{
+	//		if (action == Action::LayerRemove)
+	//		{
+	//			updatestate = Entity::State::Remove;
+	//			continue;
+	//		}
+	//		//state->ReceiveAction(action);
+	//	}
 
-		m_Actions.clear();
-	}
+	//	m_Actions.clear();
+	//}
 
 	bool UILayer::OnMouseMovedEvent(MouseMovedEvent& e)
 	{
@@ -77,6 +77,9 @@ namespace Koko
 	{
 		bool hit = false;
 		//TODO: Pick left or right button
+
+				std::cout << "Hit" << std::endl;
+
 		for (auto& entity : m_Entities)
 		{
 			if (entity->OnMouseButtonPressedEvent(e))
@@ -84,6 +87,7 @@ namespace Koko
 				if (entity->state == Entity::State::Remove)
 				{
 					PopEntity(entity);
+					std::cout << "Hit!" << std::endl;
 				}
 				m_Actions.emplace_back(entity->GetMousePress());
 				hit = true;
@@ -96,6 +100,7 @@ namespace Koko
 			}
 		}
 
+		
 		return hit;
 	}
 

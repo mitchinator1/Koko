@@ -44,6 +44,9 @@ project "Koko"
 		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/GLM/GLM/**.hpp",
 		"%{prj.name}/vendor/GLM/GLM/**.inl",
+
+		"vendor/ImGuizmo/ImGuizmo.h",
+		"vendor/ImGuizmo/ImGuizmo.cpp"
 	}
 
 	defines
@@ -54,16 +57,20 @@ project "Koko"
 	includedirs
 	{
 		"%{prj.name}/src",
+		"vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.GLM}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.ImGuizmo}",
 	}
 
 	links 
 	{ 
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

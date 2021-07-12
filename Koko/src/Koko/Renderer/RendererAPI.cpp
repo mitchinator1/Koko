@@ -12,11 +12,11 @@ namespace Koko
 	{
 		switch (s_API)
 		{
-		case RendererAPI::API::None:    /* HZ_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); */ return nullptr;
+		case RendererAPI::API::None:    KK_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
 		case RendererAPI::API::OpenGL:  return CreateScope<OpenGLRendererAPI>();
 		}
 
-		//HZ_CORE_ASSERT(false, "Unknown RendererAPI!");
+		KK_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
 	}
 

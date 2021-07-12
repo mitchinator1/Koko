@@ -1,11 +1,12 @@
 #include "kkpch.h"
 #include "Koko/Core/Application.h"
 
-//#include "Koko/Core/Log.h"
+#include "Koko/Core/Log.h"
 
 #include "Koko/Renderer/Renderer.h"
 
 #include "Koko/Core/Input.h"
+#include "Koko/Core/KeyCodes.h"
 
 #include <glfw/glfw3.h>
 
@@ -16,15 +17,15 @@ namespace Koko
 
 	Application::Application()
 	{
-		//HZ_CORE_ASSERT(!s_Instance, "Application already exists!");
+		KK_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 		m_Window = Window::Create();
 		m_Window->SetEventCallback(KK_BIND_EVENT_FN(Application::OnEvent));
 
 		Renderer::Init();
 
-		//m_ImGuiLayer = new ImGuiLayer();
-		//PushOverlay(m_ImGuiLayer);
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 	}
 
 	Application::~Application()
@@ -53,6 +54,11 @@ namespace Koko
 			(*--it)->OnEvent(e);
 			if (e.Handled)
 				break;
+		}
+
+		if (Input::IsKeyPressed(KK_KEY_ESCAPE))
+		{
+			m_Running = false;
 		}
 	}
 

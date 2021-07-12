@@ -12,11 +12,11 @@ namespace Koko
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::API::None:    /* HZ_CORE_ASSERT(false, "RendererAPI::None is currently not supported!");*/ return nullptr;
+		case RendererAPI::API::None:    KK_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
 		case RendererAPI::API::OpenGL:  return CreateRef<OpenGLShader>(filepath);
 		}
 
-		//HZ_CORE_ASSERT(false, "Unknown RendererAPI!");
+		KK_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
 	}
 
@@ -24,17 +24,17 @@ namespace Koko
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::API::None:    /* HZ_CORE_ASSERT(false, "RendererAPI::None is currently not supported!");*/ return nullptr;
+		case RendererAPI::API::None:    KK_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
 		case RendererAPI::API::OpenGL:  return CreateRef<OpenGLShader>(name, vertexSrc, fragmentSrc);
 		}
 
-		//HZ_CORE_ASSERT(false, "Unknown RendererAPI!");
+		KK_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
 	}
 
 	void ShaderLibrary::Add(const std::string& name, const Ref<Shader>& shader)
 	{
-		//HZ_CORE_ASSERT(!Exists(name), "Shader already exists!");
+		KK_CORE_ASSERT(!Exists(name), "Shader already exists!");
 		m_Shaders[name] = shader;
 	}
 
@@ -60,7 +60,7 @@ namespace Koko
 
 	Ref<Shader> ShaderLibrary::Get(const std::string& name)
 	{
-		//HZ_CORE_ASSERT(Exists(name), "Shader not found!");
+		KK_CORE_ASSERT(Exists(name), "Shader not found!");
 		return m_Shaders[name];
 	}
 
