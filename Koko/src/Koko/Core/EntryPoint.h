@@ -1,5 +1,4 @@
-#ifndef ENTRY_POINT_H
-#define ENTRY_POINT_H
+#pragma once
 #include "Koko/Core/Core.h"
 
 #ifdef KOKO_PLATFORM_WINDOWS
@@ -10,11 +9,17 @@ int main(int argc, char** argv)
 {
 	Koko::Log::Init();
 
+	KK_PROFILE_BEGIN_SESSION("Startup", "KokoProfile-Startup.json");
 	auto app = Koko::CreateApplication();
-	app->Run();
-	delete app;
-}
+	KK_PROFILE_END_SESSION();
 
-#endif
+	KK_PROFILE_BEGIN_SESSION("Runtime", "KokoProfile-Runtime.json");
+	app->Run();
+	KK_PROFILE_END_SESSION();
+
+	KK_PROFILE_BEGIN_SESSION("Shutdown", "KokoProfile-Shutdown.json");
+	delete app;
+	KK_PROFILE_END_SESSION();
+}
 
 #endif

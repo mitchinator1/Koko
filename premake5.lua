@@ -21,7 +21,6 @@ IncludeDir["stb_image"] = "Hazel/vendor/stb_image"
 group "Dependencies"
 	include "Koko/vendor/GLFW"
 	include "Koko/vendor/Glad"
-	include "Koko/vendor/GLM"
 
 project "Koko"
 	location "Koko"
@@ -44,33 +43,27 @@ project "Koko"
 		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/GLM/GLM/**.hpp",
 		"%{prj.name}/vendor/GLM/GLM/**.inl",
-
-		"vendor/ImGuizmo/ImGuizmo.h",
-		"vendor/ImGuizmo/ImGuizmo.cpp"
 	}
 
 	defines
 	{
-		"_CRT_SECURE_NO_WARNINGS"
+		"GLFW_INCLUDE_NONE"
 	}
 
 	includedirs
 	{
 		"%{prj.name}/src",
-		"vendor/spdlog/include",
+		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.GLM}",
-		"%{IncludeDir.stb_image}",
-		"%{IncludeDir.ImGuizmo}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links 
 	{ 
 		"GLFW",
 		"Glad",
-		"ImGui",
 		"opengl32.lib"
 	}
 
@@ -80,7 +73,6 @@ project "Koko"
 		defines
 		{
 			"KOKO_BUILD_DLL",
-			"GLFW_INCLUDE_NONE"
 		}
 
 	filter "configurations:Debug"
@@ -116,15 +108,14 @@ project "Sandbox"
 
 	includedirs
 	{
+		"Koko/vendor/spdlog/include",
 		"Koko/src",
 		"Koko/vendor",
-		"%{IncludeDir.Glad}",
 		"%{IncludeDir.GLM}"
 	}
 
 	links
 	{
-		"Glad",
 		"Koko"
 	}
 

@@ -6,7 +6,6 @@
 #include "Koko/Renderer/Renderer.h"
 
 #include "Koko/Core/Input.h"
-#include "Koko/Core/KeyCodes.h"
 
 #include <glfw/glfw3.h>
 
@@ -17,6 +16,8 @@ namespace Koko
 
 	Application::Application()
 	{
+		KK_PROFILE_FUNCTION();
+		
 		KK_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 		m_Window = Window::Create();
@@ -24,23 +25,31 @@ namespace Koko
 
 		Renderer::Init();
 
-		m_ImGuiLayer = new ImGuiLayer();
-		PushOverlay(m_ImGuiLayer);
+		//m_ImGuiLayer = new ImGuiLayer();
+		//PushOverlay(m_ImGuiLayer);
 	}
 
 	Application::~Application()
 	{
+		KK_PROFILE_FUNCTION();
+		
 		Renderer::Shutdown();
 	}
 
 	void Application::PushLayer(Layer* layer)
 	{
+		KK_PROFILE_FUNCTION();
+		
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
+		KK_PROFILE_FUNCTION();
+		
 		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)
@@ -56,7 +65,7 @@ namespace Koko
 				break;
 		}
 
-		if (Input::IsKeyPressed(KK_KEY_ESCAPE))
+		if (Input::IsKeyPressed(Key::Escape))
 		{
 			m_Running = false;
 		}

@@ -1,5 +1,4 @@
 #include "Sandbox2D.h"
-#include <imgui/imgui.h>
 
 #include <GLM/gtc/matrix_transform.hpp>
 #include <GLM/gtc/type_ptr.hpp>
@@ -63,21 +62,21 @@ void Sandbox2D::OnUpdate(Koko::Timestep ts)
 	}
 }
 
-void Sandbox2D::OnImGuiRender()
-{
-	KK_PROFILE_FUNCTION();
-
-	ImGui::Begin("Settings");
-
-	auto stats = Koko::Renderer2D::GetStats();
-	ImGui::Text("Renderer2D Stats:");
-	ImGui::Text("Draw Calls: %d", stats.DrawCalls);
-	ImGui::Text("Quads: %d", stats.QuadCount);
-	ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
-	ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
-
-	ImGui::End();
-}
+//void Sandbox2D::OnImGuiRender()
+//{
+//	KK_PROFILE_FUNCTION();
+//
+//	ImGui::Begin("Settings");
+//
+//	auto stats = Koko::Renderer2D::GetStats();
+//	ImGui::Text("Renderer2D Stats:");
+//	ImGui::Text("Draw Calls: %d", stats.DrawCalls);
+//	ImGui::Text("Quads: %d", stats.QuadCount);
+//	ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
+//	ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+//
+//	ImGui::End();
+//}
 
 void Sandbox2D::OnEvent(Koko::Event& e)
 {

@@ -1,6 +1,8 @@
-#ifndef INPUT_H
-#define INPUT_H
-#include "Koko/Core/Core.h"
+#pragma once
+#include <GLM/glm.hpp>
+
+#include "Koko/Core/KeyCodes.h"
+#include "Koko/Core/MouseButtonCodes.h"
 
 namespace Koko
 {
@@ -33,5 +35,3 @@ namespace Koko
 
 	};
 }
-
-#endif
